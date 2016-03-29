@@ -4,7 +4,7 @@
   <title>Home Page</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
-  <script src="javascripts/doctor.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
@@ -15,10 +15,29 @@
     <div class="container">
       <a class="navbar-brand" href="#"> Cims </a>
       <p class="navbar-text">Find your next Doc Here!</p>
-      <p class="navbar-right navbar-text"><a href="#/login">Login</a> or <a href="#/register">Register</a></p>
-      <p class="navbar-right navbar-text"><a href="#" ng-click="signout()">Logout</a></p>
+      <p class="navbar-right navbar-text" ng-hide="authenticated"><a href="#/login">Login</a> or <a href="#/signup">Register</a></p>
+      <p class="navbar-right navbar-text" ng-show="authenticated"><a href="#" ng-click="signout()">Logout</a></p>
+      <p class="navbar-right navbar-text" ng-show="authenticated">Signed in as {{current_user}}</p>
     </div>
   </nav>
+    <div class="col-md-offset-6 col-md-6">
+      <div ng-view></div>
+</div>
+
+<div>
+  <div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Login Or Register</h4>
+      </div>
+      <div class="modal-body">
+         <div ng-view></div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </div>
 
 <div class="container" id="main-section">
@@ -32,6 +51,7 @@
         <li><a href="">Link</a></li>
       </ul>
     </div>
+  </div>
   </div>
   <div class="row">
     <div id="search-box" class="container">
@@ -104,6 +124,8 @@
     </div><!-- End Col md 8 -->
   </div><!-- END ROW -->
 </div><!-- End Main Section -->
-
+  <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="javascripts/doctor.js"></script>
 </body>
 </html>
