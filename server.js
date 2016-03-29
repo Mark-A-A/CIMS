@@ -8,6 +8,7 @@ app.use(logger('dev'));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+//to test the git changes
 app.use('/', function(req, res){
   res.send('index.html');
 });
