@@ -7,14 +7,21 @@
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="../public/ang-Ctrl/app.js"></script>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
 
   </head>
   <body>
     <!-- NAVIGATION-->
     <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
       <div class="container">
-        <a ui-sref="login">Login</a>
-        <a ui-sref="register">Register</a>
+        <ul class="nav navbar-nav">
+          <li>
+            <a ui-sref="login">Login</a>
+          </li>
+          <li>
+            <a ui-sref="register">Register</a>
+          </li>
+        </ul>
       </div>
     </nav>
 

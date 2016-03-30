@@ -1,7 +1,7 @@
 var doctorApp = angular.module('doctorApp', ['ui.router']);
 
 doctorApp.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise("/state1");
+  $urlRouterProvider.otherwise("/");
 
   $stateProvider
     .state('home', {
