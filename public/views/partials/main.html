@@ -19,15 +19,17 @@
     <ul class="results" ng-show="query">
       <li ng-repeat="item in doctors | filter: query ">
         <div class="info">
+          <img class="profilePic" src="/public/img/profile.jpeg" alt="profile"/>
           <h3>{{item.name}}<br/>
-            <small>{{item.specialty}}</small>
+            <small>{{item.specialty}} Specialist</small>
           </h3>
           <h4>Location
             <br/>
-            <small>{{item.location.city}}</small><br/>
-            <small>{{item.location.state}}</small>
+            <small>City: {{item.location.city}}</small><br/>
+            <small>State: {{item.location.state}}</small>
           </h4>
         </div>
+        <hr />
       </li>
     </ul>
   </div>
