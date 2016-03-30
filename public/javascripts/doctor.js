@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']).run(function($rootScope,$http){
+var app = angular.module("app",['ngRoute']).run(function($rootScope,$http){
 
       $rootScope.authenticated = false;
       $rootScope.current_user = " ";
@@ -9,7 +9,7 @@ var app = angular.module('app', ['ngRoute']).run(function($rootScope,$http){
         $rootScope.authenticated = false;
         $rootScope.current_user = " ";
       }
- //});
+ });
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider
@@ -20,19 +20,19 @@ app.config(['$routeProvider', function($routeProvider){
    })
    //the login display
    .when('/login', {
-    templateUrl:'/public/login.html',
+    templateUrl:'/views/partials/login.html',
     controller: 'authController'
    })
    //the signup display
    .when('/signup', {
-    templateUrl:'register.html',
+    templateUrl:'/views/partials/register.html',
     controller:'authController'
    });
 }]);
 
 app.controller('mainController', function($scope){
 
-  //Enter main content
+  //Main content here
 
 });
 
@@ -69,4 +69,3 @@ app.controller("authController",function($scope, $rootScope, $http, $location){
   };
 });
 
-});
