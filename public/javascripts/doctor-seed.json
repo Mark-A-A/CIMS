@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Eric Matthews",
+    "specialty": "Foot",
+    "location":{
+      "city": "Summit",
+      "state": "NJ"
+    }
+  },
+  {
+    "name": "Dave Urban",
+    "specialty": "heart",
+    "location":{
+      "city": "Poconos",
+      "state": "PA"
+    }
+  },
+  {
+    "name": "Shaggy Rogers",
+    "specialty": "Back",
+    "location":{
+      "city": "New York",
+      "state": "NY"
+    }
+  },
+  {
+    "name": "Geroge Lopez",
+    "specialty": "Brain",
+    "location":{
+      "city": "Pittsburg",
+      "state": "PA"
+    }
+  },
+  {
+    "name": "Lucille Ball",
+    "specialty": "GE",
+    "location":{
+      "city": "Bayonne",
+      "state": "NJ"
+    }
+  }
+]

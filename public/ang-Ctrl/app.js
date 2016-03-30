@@ -1,4 +1,4 @@
-var doctorApp = angular.module('doctorApp', ['ui.router']);
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl']);
 
 doctorApp.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
@@ -6,14 +6,12 @@ doctorApp.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/",
-      templateUrl: "partials/main.html"
+      templateUrl: "partials/main.html",
+      controller: "ListController"
     })
     .state('login', {
       url: "/login",
       templateUrl: "partials/login.html",
-      controller: function($scope) {
-        $scope.items = ["A", "List", "Of", "Items"];
-      }
     })
     .state('register', {
       url: "/register",
