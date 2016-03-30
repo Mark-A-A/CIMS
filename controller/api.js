@@ -14,6 +14,6 @@ router.use(function(req,res,next){
   }
   //user authenticated redirect to next page
   return next();
-})
+});
 
 module.exports = router;

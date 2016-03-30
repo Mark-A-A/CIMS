@@ -7,11 +7,11 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var mongoose = require('mongoose');
+
 var PORT = 3000;
 
-//connect to Mongodb
-mongoose.connect("mongodb://localhost/doctor-app");
-require('./model/users.js');
+var db = require('./config/db.js');
+var user = require('./model/users.js');
 
 var index = require('./controller/index');
 var api = require('./controller/api');
@@ -41,7 +41,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-var initPassport = require('./passport-init');
+var initPassport = require('./config/passport-init');
 initPassport(passport);
 
 //ROUTES

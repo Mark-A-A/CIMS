@@ -62,7 +62,7 @@ module.exports = function(passport){
           return done("User name is already taken",false);
         }
 
-        var user = new User();
+        user = new User();
 
         user.username = username;
         user.password = createHash(password);
