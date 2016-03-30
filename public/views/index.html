@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html ng-app="app">
-<head>
-  <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
-    <script src="./public/javascripts/doctor.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<html ng-app="doctorApp">
+  <head>
+    <title></title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../public/ang-Ctrl/app.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
-</head>
-<body>
-im in index!
-<!-- <div ng-controller="mainController">
-   <div ng-view></div>
-</div> -->
-<div ng-controller="authController">
-    <div ng-view></div>
-</div>
+  </head>
+  <body>
+    <!-- NAVIGATION-->
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
+      <div class="container">
+        <a ui-sref="login">Login</a>
+        <a ui-sref="register">Register</a>
+      </div>
+    </nav>
 
-</body>
+    <div class="container">
+      <div ui-view></div>
+    </div>
+
+  </body>
 </html>
-
