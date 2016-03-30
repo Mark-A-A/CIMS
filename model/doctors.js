@@ -1,14 +1,14 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
-var doctorSchema = {
+var doctorSchema = new mongoose.Schema {
   name: String,
   specialty: String,
   location: {
     city: String,
     state: String
-  },
-};
+  }
+}
 
-var Doctor = mongoose.model('Doctor', doctorSchema);
+mongoose.model('Doctor', doctorSchema);
 module.exports = Doctor;
