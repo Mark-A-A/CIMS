@@ -1,4 +1,4 @@
-var app = angular.module('doctorsPage', ['ngRoute']).run(function($rootScope,$http){
+var app = angular.module('app', ['ngRoute']).run(function($rootScope,$http){
 
       $rootScope.authenticated = false;
       $rootScope.current_user = " ";
@@ -9,26 +9,26 @@ var app = angular.module('doctorsPage', ['ngRoute']).run(function($rootScope,$ht
         $rootScope.authenticated = false;
         $rootScope.current_user = " ";
       }
-// });
+ //});
 
-app.config(function($routeProvider){
+app.config(['$routeProvider', function($routeProvider){
   $routeProvider
    //the timeline display
    .when('/', {
-    templateUrl: 'main.html',
+    templateUrl: '/views/partials/main.html',
     controller: 'mainController'
    })
    //the login display
    .when('/login', {
-    templateUrl:'login.html',
+    templateUrl:'/public/login.html',
     controller: 'authController'
    })
    //the signup display
    .when('/signup', {
     templateUrl:'register.html',
     controller:'authController'
-   })
-})
+   });
+}]);
 
 app.controller('mainController', function($scope){
 
