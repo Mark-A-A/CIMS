@@ -25,12 +25,14 @@ app.use(session({
 }));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
-app.use(express.static(__dirname +"/public"));
-app.use('/public' , express.static(__dirname +"/public"));
-app.use(express.static(__dirname +"/public/views"));
-app.use(express.static(__dirname +"/public/views/partials"));
+app.use(express.static(__dirname + "/public"));
+app.use('/public', express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public/views"));
+app.use(express.static(__dirname + "/public/views/partials"));
 app.set('view engine', 'ejs');
 app.use(passport.initialize());
 app.use(passport.session());
@@ -38,10 +40,10 @@ app.use(passport.session());
 var initPassport = require('./passport-init');
 initPassport(passport);
 
-app.use('/',index);
-app.use('/api',api);
-app.use('/auth',authenticate);
+app.use('/', index);
+app.use('/api', api);
+app.use('/auth', authenticate);
 
-app.listen(PORT,function (){
-  console.log("Application is listening on PORT:"+PORT)
-})
+app.listen(PORT, function() {
+  console.log("Application is listening on PORT:" + PORT)
+});

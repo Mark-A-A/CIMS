@@ -74,7 +74,7 @@ module.exports = function(passport){
           console.log("Successfully signed up user" + username);
 
           return (done, user);
-        })
+        });
       });
     })
   );
