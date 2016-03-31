@@ -26,7 +26,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider) {
       controller: "authController"
     })
     .state('register', {
-      url: "/register",
+      url: "/signup",
       templateUrl: "partials/register.html",
       controller: "authController"
     });
