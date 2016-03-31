@@ -1,0 +1,26 @@
+{
+  "name": "scoping-jive",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Ivan Baena"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ibaena/scoping-jive",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "animate.css": "latest",
+    "angular": "latest",
+    "jquery": "^2.2.2",
+    "angular-route": "^1.5.2"
+  }
+}

@@ -26,4 +26,4 @@ module.exports = function (passport) {
     res.redirect('/');
   });
   return router;
-}
+};

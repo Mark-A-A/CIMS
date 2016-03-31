@@ -1,7 +1,21 @@
- <form class="form-auth" ng-submit="login()">
-      <h2>Login</h2>
-      <p class="text-warning">{{error_message}}</p>
-      <input type="username" ng-model="user.username" placenolder="Username" class="form-control">
-      <input type="password" ng-model="user.password" placenolder="Password" class="form-control">
-      <input type="submit" value="Login" class="btn btn-primary">
- </form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="jumbotron" id="reg-form">
+        <form class="form-auth" ng-submit="login()">
+          <h2>Login</h2>
+          <p class="text-warning">{{error_message}}</p>
+          <div class="form-group">
+            <input type="username" ng-model="user.username" placenolder="Username" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="password" ng-model="user.password" placenolder="Password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
