@@ -45,25 +45,26 @@ app.controller("authController",function($scope, $rootScope, $http, $location){
 
       if(data.state === 'success'){
         $rootScope.authenticated = true;
-        $rootScope.current_user = data.username;
+        $rootScope.current_user = data.user.username;
         $location.path('/');
       } else {
         $scope.error_message = data.message;
+         // $location.path('/');
       }
     });
   };
 
   $scope.register = function(){
       console.log("called register function");
-
       $http.post('/auth/signup', $scope.user).success(function(data){
         if(data.state === 'success'){
           $rootScope.authenticated = true;
-          $rootScope.current_user = data.username;
+          $rootScope.current_user = data.user.username;
           console.log("successfully registered");
           $location.path('/');
         }else {
           $scope.error_message = data.message;
+          // $location.path('/');
         }
     });
   };
