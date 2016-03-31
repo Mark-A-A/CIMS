@@ -1,1 +1,37 @@
-hello ivan
+<div class="container">
+
+  <div class="jumbotron" id="headline">
+    <h2>Lorem Ipsum Ipum Lorem!<br/>
+      <small>Lorem Ipsum Ipum Lorem</small>
+    </h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" id-"search-bar">
+      <form>
+        <div class="form-group">
+          <label for="search">Search</label>
+          <input type="text" ng-model="query" class="form-control" id="search" placeholder="Search">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <ul class="results" ng-show="query">
+      <li ng-repeat="item in doctors | filter: query ">
+        <div class="info">
+          <img class="profilePic" src="/public/img/profile.jpeg" alt="profile"/>
+          <h3>{{item.name}}<br/>
+            <small>{{item.specialty}} Specialist</small>
+          </h3>
+          <h4>Location
+            <br/>
+            <small>City: {{item.location.city}}</small><br/>
+            <small>State: {{item.location.state}}</small>
+          </h4>
+        </div>
+        <hr />
+      </li>
+    </ul>
+  </div>
+
+</div>
