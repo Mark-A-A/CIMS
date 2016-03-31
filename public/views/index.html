@@ -1,36 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Scheduling App </title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.js"></script>
-    <script type="text/javascript" src="./javascripts/doctor.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./stylesheets/styles.css">
-</head>
-<body ng-app="app">
-  <div id="main" class="container">
-    <div class="row">
-      <nav class="navbar-fluid navbar-default navbar-fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="#"> Scheduling App !! </a>
-          <p class="navbar-right navbar-text" ng-hide="authenticated"><a href="#/login">Login</a> or <a href="#/signup">Register</a></p>
-          <p class="navbar-right navbar-text" ng-show="authenticated"><a href="#" ng-click="signout()">Logout</a></p>
-          <p class="navbar-right navbar-text" ng-show="authenticated">Signed in as {{current_user}}</p>
+<html ng-app="doctorApp">
+  <head>
+    <title></title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../public/ang-Ctrl/app.js"></script>
+    <script src="../public/ang-Ctrl/mainCtrl.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/register.css">
+  </head>
+  <body>
+    <!-- NAVIGATION-->
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li>
+            <a ui-sref="home">Home</a>
+          </li>
+          <li>
+            <a ui-sref="login">Login</a>
+          </li>
+          <li>
+            <a ui-sref="register">Register</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-        </div>
-      </nav>
-            <div><br><br></div>
+    <div class="container">
+      <div ui-view></div>
     </div>
-
-    <div class="row">
-        <div class="col-md-offset-4 col-md-4">
-            <div ng-view></div>
-        </div>
-    </div>
-
-  </div>
-</body>
+  </body>
 </html>
-
