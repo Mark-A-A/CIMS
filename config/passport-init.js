@@ -31,6 +31,7 @@ module.exports = function(passport){
     },
     function(req, username, password, done) {
       // check in mongo if a user with username exists or not
+      console.log("before checking the user name");
       User.findOne({ 'username' :  username },
         function(err, user) {
           // In case of any error, return using the done method
@@ -48,6 +49,7 @@ module.exports = function(passport){
           }
           // User and password both match, return user from done method
           // which will be treated like success
+          // console.log("successful login"+user);
           return done(null, user);
         }
       );

@@ -15,9 +15,10 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
   $scope.error_message = '';
   $scope.login = function() {
     $http.post('/auth/login', $scope.user).success(function(data) {
-      if (data.state === 'success') {
+      if (data.username) {
         $rootScope.authenticated = true;
         $rootScope.current_user = data.username;
+        console.log("successfully Logged In");
         $location.path('/');
       } else {
         $scope.error_message = data.message;
@@ -27,8 +28,8 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
 
   $scope.register = function() {
     $http.post('/auth/signup', $scope.user).success(function(data) {
-      console.log("wdew==============");
-      if (data.state === 'success') {
+      // console.log(data.user);
+      if (data.username) {
         $rootScope.authenticated = true;
         $rootScope.current_user = data.username;
         console.log("successfully registered");
