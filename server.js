@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 var db = require('./config/db.js');
 var user = require('./model/users.js');
