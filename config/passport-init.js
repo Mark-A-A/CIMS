@@ -6,7 +6,6 @@ var User = mongoose.model('User');
 module.exports = function(passport){
 
   // Passport needs to be able to serialize and deserialize users to support persistent login sessions
-  // Passport needs to be able to serialize and deserialize users to support persistent login sessions
   passport.serializeUser(function(user, done) {
     console.log('serializing user:', user._id);
     //return the unique id for the user
@@ -32,6 +31,7 @@ module.exports = function(passport){
     },
     function(req, username, password, done) {
       // check in mongo if a user with username exists or not
+      console.log("before checking the user name");
       User.findOne({ 'username' :  username },
         function(err, user) {
           // In case of any error, return using the done method
@@ -49,6 +49,7 @@ module.exports = function(passport){
           }
           // User and password both match, return user from done method
           // which will be treated like success
+          // console.log("successful login"+user);
           return done(null, user);
         }
       );
@@ -87,6 +88,7 @@ module.exports = function(passport){
                 throw err;
               }
               console.log(newUser.username + ' Registration successful');
+
               return done(null, newUser);
             });
           }
@@ -94,7 +96,8 @@ module.exports = function(passport){
       };
       // Delay the execution of findOrCreateUser and execute the method
       // in the next tick of the event loop
-      process.nextTick(findOrCreateUser);
+      // process.nextTick(findOrCreateUser);
+      findOrCreateUser();
     })
   );
 
