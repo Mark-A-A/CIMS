@@ -9,7 +9,7 @@
   },
   {
     "name": "Dave Urban",
-    "specialty": "heart",
+    "specialty": "Heart",
     "location":{
       "city": "Poconos",
       "state": "PA"
@@ -37,6 +37,94 @@
     "location":{
       "city": "Bayonne",
       "state": "NJ"
+    }
+  },
+  {
+    "name": "Peter Douglas",
+    "specialty": "Eye",
+    "location":{
+      "city": "Orlando",
+      "state": "FL"
+    }
+  },
+  {
+    "name": "Frank Kimmisky",
+    "specialty": "Oral",
+    "location":{
+      "city": "Las Vegas",
+      "state": "NV"
+    }
+  },
+  {
+    "name": "Arthur Shaw",
+    "specialty": "Cancer",
+    "location":{
+      "city": "Dallas",
+      "state": "TX"
+    }
+  },
+  {
+    "name": "Kristin Bell",
+    "specialty": "Cardiovascular Disease",
+    "location":{
+      "city": "Seattle",
+      "state": "WA"
+    }
+  },
+  {
+    "name": "Will Cohen",
+    "specialty": "Dermatology",
+    "location":{
+      "city": "Atlanta",
+      "state": "GA"
+    }
+  },
+  {
+    "name": "Bobby Smith",
+    "specialty": "HIV",
+    "location":{
+      "city": "Boston",
+      "state": "MA"
+    }
+  },
+  {
+    "name": "Alexis Fanco",
+    "specialty": "Pediactrics",
+    "location":{
+      "city": "Chicago",
+      "state": "IL"
+    }
+  },
+  {
+    "name": "Carlos Delgado",
+    "specialty": "Maternal",
+    "location":{
+      "city": "Los Angeles",
+      "state": "CA"
+    }
+  },
+  {
+    "name": "Andrew Phillips",
+    "specialty": "Neurology",
+    "location":{
+      "city": "Miami",
+      "state": "FL"
+    }
+  },
+  {
+    "name": "Phil Specter",
+    "specialty": "Plastic Surgery",
+    "location":{
+      "city": "Beverly Hills",
+      "state": "CA"
+    }
+  },
+  {
+    "name": "Wendy Rhoades",
+    "specialty": "Psychiatry",
+    "location":{
+      "city": "Phoenix",
+      "state": "AZ"
     }
   }
 ]
