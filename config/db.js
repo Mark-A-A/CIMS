@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-var mongoDBdeploy = require('./config/mongoDB.js');
+var mongoDBheroku = require('./config/mongoDB.js');
 //Database configuration
 //mongoose.connect('mongodb://localhost:27017/cims-db');
-mongoose.connect(mongoDBdeploy.url);
+mongoose.connect(mongoDBheroku.url);
 var db = mongoose.connection;
 
 db.on('error', function(err) {
