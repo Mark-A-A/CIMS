@@ -19,10 +19,16 @@
             <a ui-sref="home">Home</a>
           </li>
           <li>
-            <a ui-sref="login">Login</a>
+            <a ui-sref="login" ng-hide="authenticated">Login</a>
           </li>
           <li>
-            <a ui-sref="register">Register</a>
+            <a ui-sref="register" ng-hide="authenticated">Register</a>
+          </li>
+          <li>
+            <a ng-show="authenticated" ng-click="signout()">Log Out</a>
+          </li>
+          <li>
+            <a  ng-show="authenticated">Welcome {{current_user}} to the CIMS App</a>
           </li>
         </ul>
       </div>

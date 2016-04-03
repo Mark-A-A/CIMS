@@ -3,15 +3,22 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl']).run(funct
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
 
-  $rootScope.logout = function() {
-    $http.get('/auth/signout');
-
-    $rootScope.authenticated = false;
-    $rootScope.current_user = " ";
-  };
+  $rootScope.signout = function() {
+    console.log("Calling Angular logout");
+    $http({
+      method: 'GET',
+      url: '/auth/signout'
+    }).then(function successCallback(response) {
+        console.log("Signout Successful");
+        $rootScope.authenticated = false;
+        $rootScope.current_user = {};
+      }, function errorCallback(response) {
+        console.log("Signout failed"+response);
+    });
+  }
 });
 
-doctorApp.config(function($stateProvider, $urlRouterProvider) {
+doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
@@ -30,4 +37,5 @@ doctorApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "partials/register.html",
       controller: "authController"
     });
+
 });

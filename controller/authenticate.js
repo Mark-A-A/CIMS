@@ -1,4 +1,5 @@
 var express = require('express');
+var logout = require('express-passport-logout');
 var router = express.Router();
 
 module.exports = function (passport) {
@@ -39,8 +40,16 @@ module.exports = function (passport) {
   });
 
   router.get('/signout', function(req,res){
-    req.logout();
-    res.redirect('/');
+    console.log("Signout route hit");
+    logout();
+    // req.logout();
+    // req.session.destroy();
+    // res.redirect('/');
+    // if(req.user) {
+    //   res.json(req.user);
+    // } else {
+    //   res.json({});
+    // }
   });
   return router;
 };

@@ -39,4 +39,16 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
       }
     });
   };
+
+  $scope.signout = function() {
+    console.log("Calling Angular logout");
+     // $http.post('/auth/signout');
+    $http.get('/auth/signout').success(function(data) {
+      console.log("Signout Successful"+data);
+    }).error (function(error){
+      console.log("logout error"+error);
+    });
+    $rootScope.authenticated = false;
+    $rootScope.current_user = {};
+  };
 });
