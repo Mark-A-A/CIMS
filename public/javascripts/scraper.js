@@ -1,5 +1,5 @@
 var cheerio = require('cheerio');
-var Article = require('');
+var Article = require('../model/articles');
 
 request('http://http://www.webmd.com/news/', function(err, response, body){
   if (!error && response.statusCode == 200){
