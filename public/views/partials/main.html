@@ -17,10 +17,10 @@
   </div>
   <div class="row">
     <ul class="results" ng-show="query">
-      <li ng-repeat="item in doctors | filter: query ">
+      <li class="col-md-4 doctors" ng-repeat="item in doctors | filter: query ">
         <div class="info">
           <img class="profilePic" src="/public/img/profile.jpeg" alt="profile"/>
-          <h3>{{item.name}}<br/>
+          <h3 id="name">{{item.name}}<br/>
             <small>{{item.specialty}} Specialist</small>
           </h3>
           <h4>Location

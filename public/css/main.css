@@ -1,10 +1,15 @@
-ul{
+ul {
   list-style: none;
 }
-#headline{
+#headline {
   text-align: center;
 }
-.profilePic{
+.info{
+  text-align: center;
+}
+.profilePic {
   width: auto;
   height: 100px;
+  display: block;
+  margin: 0 auto;
 }

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 //Database configuration
-mongoose.connect('mongodb://localhost:27017/yardsale');
+mongoose.connect('mongodb://localhost:27017/doctors');
 var db = mongoose.connection;
 
 db.on('error', function(err) {
