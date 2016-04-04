@@ -20,9 +20,9 @@ request('http://http://www.webmd.com/news/', function(err, response, body){
       article.save(function(err, document){
         if(err) {
           return res.send("ERROR: " + err);
-        };
+        }
       });
     });
   } // end if statement
-  res.send('Scrape Done!')
+  res.send('Scrape Done!');
 }); // end http scrape

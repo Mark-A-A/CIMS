@@ -10,33 +10,37 @@
     <link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="../public/css/register.css">
     <link rel="stylesheet" href="../public/css/index.css">
+    <link href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
 
-
-  <body>
-    <!-- NAVIGATION-->
-    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse" id="btm-nav">
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <li>
-            <a ui-sref="home">Home</a>
-          </li>
-          <li>
-            <a ui-sref="login" ng-hide="authenticated">Login</a>
-          </li>
-          <li>
-            <a ui-sref="register" ng-hide="authenticated">Register</a>
-          </li>
-          <li>
-            <a ng-show="authenticated" ng-click="signout()">Log Out</a>
-          </li>
-          <li>
-            <a  ng-show="authenticated">Welcome {{current_user}} to the CIMS App</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <body>
+      <!-- NAVIGATION-->
+      <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse" id="btm-nav">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li>
+              <a ui-sref="home">Home</a>
+            </li>
+            <li>
+              <a ui-sref="login" ng-hide="authenticated">Login</a>
+            </li>
+            <li>
+              <a ui-sref="register" ng-hide="authenticated">Register</a>
+            </li>
+            <li>
+              <a ng-show="authenticated" ng-click="signout()">Log Out</a>
+            </li>
+            <li>
+              <a ng-show="authenticated">Welcome
+                {{current_user}}
+                to the CIMS App</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
       <div ui-view></div>
 
-  </body>
-</html>
+    </body>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
+  </html>

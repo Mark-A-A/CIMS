@@ -21,17 +21,28 @@
         <div class="info">
           <img class="profilePic" src="/public/img/profile.jpeg" alt="profile"/>
           <h3 id="name">{{item.name}}<br/>
-            <small>{{item.specialty}} Specialist</small>
+            <small>{{item.specialty}}
+              Specialist</small>
           </h3>
           <h4>Location
             <br/>
-            <small>City: {{item.location.city}}</small><br/>
-            <small>State: {{item.location.state}}</small>
+            <small>City:
+              {{item.location.city}}</small><br/>
+            <small>State:
+              {{item.location.state}}</small>
           </h4>
+          <div class="form-inline">
+            <button class="btn btn-default">Msg</button>
+            <a href="mailto:username@example.com?subject=Subject&body=message%20goes%20here" class="btn btn-default">Email</a>
+            <button class="btn btn-default">Calendar</button>
+          </div>
         </div>
-        <hr />
+        <hr/>
       </li>
     </ul>
   </div>
 
 </div>
+
+
+<div ui-calendar="uiConfig.calendar" ng-model="eventSources">

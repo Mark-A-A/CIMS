@@ -1,6 +1,7 @@
-var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
+var mainCtrl = angular.module('mainCtrl', ['ngAnimate','mwl.calendar']);
 
 mainCtrl.controller('ListController', ['$scope', '$http', function($scope, $http) {
+
   $http.get('public/javascripts/doctor-seed.json').success(function(data) {
     $scope.doctors = data;
     // console.log(data);
@@ -52,5 +53,3 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
     $rootScope.current_user = {};
   };
 });
-
-

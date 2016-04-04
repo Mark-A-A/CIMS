@@ -21,6 +21,8 @@
     "animate.css": "latest",
     "angular": "latest",
     "jquery": "^2.2.2",
-    "angular-route": "^1.5.2"
+    "angular-route": "^1.5.2",
+    "angular-ui-calendar": "latest",
+    "angular-bootstrap-calendar": "^0.19.6"
   }
 }

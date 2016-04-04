@@ -15,7 +15,7 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl']).run(funct
       }, function errorCallback(response) {
         console.log("Signout failed"+response);
     });
-  }
+  };
 });
 
 doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
