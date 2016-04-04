@@ -1,4 +1,5 @@
 var cheerio = require('cheerio');
+var request = require('request');
 var Article = require('../model/articles');
 
 request('http://http://www.webmd.com/news/', function(err, response, body){
