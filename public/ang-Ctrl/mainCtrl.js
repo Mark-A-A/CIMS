@@ -3,7 +3,7 @@ var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
 mainCtrl.controller('ListController', ['$scope', '$http', function($scope, $http) {
   $http.get('public/javascripts/doctor-seed.json').success(function(data) {
     $scope.doctors = data;
-    console.log(data);
+    // console.log(data);
   });
 }]);
 
@@ -15,9 +15,10 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
   $scope.error_message = '';
   $scope.login = function() {
     $http.post('/auth/login', $scope.user).success(function(data) {
-      if (data.state === 'success') {
+      if (data.username) {
         $rootScope.authenticated = true;
         $rootScope.current_user = data.username;
+        console.log("successfully Logged In");
         $location.path('/');
       } else {
         $scope.error_message = data.message;
@@ -26,9 +27,9 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
   };
 
   $scope.register = function() {
-    console.log("called register function");
     $http.post('/auth/signup', $scope.user).success(function(data) {
-      if (data.state === 'success') {
+      // console.log(data.user);
+      if (data.username) {
         $rootScope.authenticated = true;
         $rootScope.current_user = data.username;
         console.log("successfully registered");
@@ -39,3 +40,5 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
     });
   };
 });
+
+

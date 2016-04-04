@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 
 //Database configuration
-mongoose.connect('mongodb://localhost:27017/doctors');
+
+mongoose.connect('mongodb://localhost:27017/cims-db');
 var db = mongoose.connection;
 
 db.on('error', function(err) {
