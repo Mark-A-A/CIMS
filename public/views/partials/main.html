@@ -31,10 +31,10 @@
             <small>State:
               {{item.location.state}}</small>
           </h4>
-          <div class="form-inline">
+          <div class="form-inline" ng-controller="GetCalendar">
             <button class="btn btn-default">Msg</button>
             <a href="mailto:DOCOTORS EMAIL ADDRESS FROM OBJECT?subject=Subject&body=message%20goes%20here" class="btn btn-default">Email</a>
-            <button class="btn btn-default">Calendar</button>
+            <button class="btn btn-default" ng-click="launchCalendar()">Calendar</button>
           </div>
         </div>
         <hr/>
@@ -43,3 +43,5 @@
   </div>
 
 </div>
+
+<div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>

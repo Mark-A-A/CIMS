@@ -1,4 +1,4 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl']).run(function($rootScope, $http) {
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'calendarCtrl']).run(function($rootScope, $http) {
 
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
@@ -9,11 +9,11 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl']).run(funct
       method: 'GET',
       url: '/auth/signout'
     }).then(function successCallback(response) {
-        console.log("Signout Successful");
-        $rootScope.authenticated = false;
-        $rootScope.current_user = {};
-      }, function errorCallback(response) {
-        console.log("Signout failed"+response);
+      console.log("Signout Successful");
+      $rootScope.authenticated = false;
+      $rootScope.current_user = {};
+    }, function errorCallback(response) {
+      console.log("Signout failed" + response);
     });
   };
 });
