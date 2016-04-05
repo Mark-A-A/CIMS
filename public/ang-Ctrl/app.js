@@ -1,4 +1,4 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'calendarCtrl']).run(function($rootScope, $http) {
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl']).run(function($rootScope, $http) {
 
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
@@ -27,11 +27,11 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       views: {
         "":{
           templateUrl: "partials/main.html",
-          controller: "ListController"
+          controller: "searchBar"
         },
         "calendar@home":{
           templateUrl: "partials/appt-modal.html",
-          controller: "ListController"
+          controller: "searchBar"
         }
       }
     })
