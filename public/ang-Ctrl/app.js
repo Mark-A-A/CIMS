@@ -35,6 +35,11 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
         }
       }
     })
+    .state('doctors',{
+      url: "/doctors/:id",
+      templateUrl: "partials/dr-details.html",
+      controller: "doctorDetails"
+    })
     .state('login', {
       url: "/login",
       templateUrl: "partials/login.html",
