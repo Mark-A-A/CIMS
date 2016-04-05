@@ -1,4 +1,4 @@
-var mainCtrl = angular.module('mainCtrl', ['ngAnimate','mwl.calendar']);
+var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
 
 mainCtrl.controller('ListController', ['$scope', '$http', function($scope, $http) {
 
