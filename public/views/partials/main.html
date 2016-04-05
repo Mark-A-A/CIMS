@@ -34,14 +34,14 @@
           <div class="form-inline" ng-controller="GetCalendar">
             <button class="btn btn-default">Msg</button>
             <a href="mailto:DOCOTORS EMAIL ADDRESS FROM OBJECT?subject=Subject&body=message%20goes%20here" class="btn btn-default">Email</a>
-            <button class="btn btn-default" ng-click="launchCalendar()">Calendar</button>
+            <button type="button" class="btn btn-default" ng-click="launchCalendar()" data-toggle="modal" data-target="#myModal">Calendar</button>
           </div>
         </div>
         <hr/>
       </li>
     </ul>
   </div>
+  <div ui-view="calendar">
+  </div>
 
 </div>
-
-<div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>

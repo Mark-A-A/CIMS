@@ -24,8 +24,16 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
   $stateProvider
     .state('home', {
       url: "/",
-      templateUrl: "partials/main.html",
-      controller: "ListController"
+      views: {
+        "":{
+          templateUrl: "partials/main.html",
+          controller: "ListController"
+        },
+        "calendar@home":{
+          templateUrl: "partials/appt-modal.html",
+          controller: "GetCalendar"
+        }
+      }
     })
     .state('login', {
       url: "/login",
