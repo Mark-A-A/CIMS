@@ -31,7 +31,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
         },
         "calendar@home":{
           templateUrl: "partials/appt-modal.html",
-          controller: "GetCalendar"
+          controller: "ListController"
         }
       }
     })
