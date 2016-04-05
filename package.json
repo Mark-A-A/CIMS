@@ -21,7 +21,8 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "serve-favicon": "^2.3.0",
-    "cheerio": "~0.20.0"
+    "cheerio": "~0.20.0",
+    "request": "~2.69.0"
   },
   "devDependencies": {},
   "repository": {
