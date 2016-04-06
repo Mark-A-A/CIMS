@@ -16,3 +16,7 @@ ul {
 .dropdown-menu{
   overflow-y: scroll;
 }
+
+#mainSearch{
+  text-align: center;
+}

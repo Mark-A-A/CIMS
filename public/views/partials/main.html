@@ -6,35 +6,27 @@
     </h2>
   </div>
   <div class="row">
-    <div class="col-md-8 col-md-offset-2" id-"search-bar">
-      <form class="form-inline">
-        <div class="form-group">
-          <div class="dropdown">
-            <button id="dLabel" class="btn btn-default" ng-click="searchDoctors()" data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              Select
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dLabel">
-              <li ng-repeat="item in specialties">
-                <a href="">{{item.name}}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="search">Search</label>
-          <input type="text" ng-model="zip" class="form-control" id="search" placeholder="Enter Zip">
-        </div>
-        <div class="form-group">
-          <button class="btn btn-default" ng-click="submitSearch()">Search</button>
-        </div>
-      </form>
-    </div>
+    <form class="form-inline col-md-6 col-md-offset-3" id="mainSearch">
+      <div class="form-group ">
+        <select class="form-control">
+          <option>Select a Specialty</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="zip" id="location" placeholder="Enter Location">
+      </div>
+      <div class="form-group">
+        <button ng-click="submitSearch()" class="btn btn-default">Search</button>
+      </div>
+    </form>
   </div>
   <div class="row">
     <ul class="results" ng-show="zip">
-      <li class="col-md-4 doctors" ng-repeat="item in doctors | filter: zip ">
+      <li class="col-md-4 doctors" ng-repeat="item in doctors ">
         <div class="info">
           <a href="#/doctors/{{doctors.indexOf(item)}}" ng-click="loadDetails()">
             <img class="profilePic" ng-src={{item.profile.image_url}} alt="profile"/>
