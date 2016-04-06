@@ -1,16 +1,16 @@
 <div class="container">
 
   <div class="jumbotron" id="headline">
-    <h2>Lorem Ipsum Ipum Lorem!<br/>
-      <small>Lorem Ipsum Ipum Lorem</small>
+    <h2>CheckUp!<br/>
+      <small>"Doctors Reviews, Ratings, and Bookings"</small>
     </h2>
   </div>
   <div class="row">
     <form class="form-inline col-md-12" id="mainSearch" ng-submit="submitSearch()">
       <div class="form-group">
-        <select ng-controller="loadSpecialty"class="form-control" ng-model="$root.specialty" placeholder="Select">
-          <option>Select a Specialty</option>
-          <option ng-repeat="item in specialties" value="{{item.uid}}">{{item.name}}</option>
+        <select ng-controller="loadSpecialty"class="form-control" ng-model="$root.specialty"
+        ng-options="item.name for item in specialties">
+          <option value="">Please Select a Specialty</option>
         </select>
       </div>
       <div class="form-group">
