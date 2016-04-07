@@ -16,6 +16,8 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
       $scope.sortBy = 'distance-asc';
     }
     $http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + $scope.zip).success(function(data) {
+      $scope.userLat = data.results[0].geometry.location.lat;
+      $scope.userLon = data.results[0].geometry.location.lng;
       $rootScope.userSearch = data.results[0].geometry.location.lat + '%2C' + data.results[0].geometry.location.lng;
       if ($scope.specialty === undefined) {
         $http.get('https://api.betterdoctor.com/2016-03-01/doctors?location=' + $rootScope.userSearch + '%2C10&user_location=' + $rootScope.userSearch + '&sort=' + $scope.sortBy + '&skip=0&limit=3&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {

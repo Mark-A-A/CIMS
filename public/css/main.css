@@ -1,31 +1,30 @@
-    #headline {
-    text-align: center;
-  }
-  /*THIS CSS IS FOR THE SEARCH RESULTS*/
+#headline {
+  text-align: center;
+}
 
-  ul {
-    list-style: none;
-  }
-  .info {}
-  .profilePic {
-    padding-bottom: 10px;
-    float: left;
-    display: inline;
-  }
-  #rating {
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  .dropdown-menu {
-    overflow-y: scroll;
-  }
-  #mainSearch {
-    text-align: center;
-    /*MAP*/
-    .angular-google-map-container {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-    }
+/*THIS CSS IS FOR THE SEARCH RESULTS*/
+
+ul {
+  list-style: none;
+}
+.info {}
+.profilePic {
+  padding-bottom: 10px;
+  float: left;
+  display: inline;
+}
+#rating {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.dropdown-menu {
+  overflow-y: scroll;
+}
+#mainSearch {
+  text-align: center;
+}
+
+/*MAP*/
+#map{
+  height: 600px;
+}

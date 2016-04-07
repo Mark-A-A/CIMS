@@ -1,1 +1,5 @@
-<ng-map center="[40.74, -74.18]"></ng-map>
+<div id="map">
+  <ng-map zoom="11" center="[{{userLat}}, {{userLon}}]">
+    <marker ng-repeat="item in doctors" position="[40.71, -74.21]" title="hello"></marker>
+  </ng-map>
+</div>

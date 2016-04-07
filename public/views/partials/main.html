@@ -53,4 +53,6 @@
   </form>
 </div>
 <!--Search Results has container-->
-<div ui-view="results"></div>
+<div class="wrapper" data-ng-if="showMap">
+  <div ui-view="results"></div>
+</div>
