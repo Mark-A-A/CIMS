@@ -13,7 +13,7 @@ ul {
   float: left;
   display: inline;
 }
-#rating {
+.rating {
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -27,4 +27,10 @@ ul {
 /*MAP*/
 #map{
   height: 600px;
+}
+
+.markerImg{
+  height:60px;
+  width: auto;
+  float: left;
 }
