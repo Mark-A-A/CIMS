@@ -29,8 +29,8 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
           templateUrl: "partials/main.html",
           controller: "searchBar"
         },
-        "calendar@home":{
-          templateUrl: "partials/appt-modal.html",
+        "results@home":{
+          templateUrl: "partials/results.html",
           controller: "searchBar"
         }
       }

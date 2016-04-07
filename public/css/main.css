@@ -8,10 +8,8 @@ ul {
   text-align: center;
 }
 .profilePic {
-  width: auto;
-  height: 100px;
-  display: block;
-  margin: 0 auto;
+padding-bottom: 10px;
+  float: left;
 }
 .dropdown-menu{
   overflow-y: scroll;
@@ -19,4 +17,8 @@ ul {
 
 #mainSearch{
   text-align: center;
+  display: block;
+}
+
+.radio-inline{
 }
