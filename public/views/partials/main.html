@@ -23,27 +23,34 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 col-md-offset-3" id="radioSort">
+      <div class="col-md-12 form-group" id="radioSort">
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="sortBy" value="best-match-desc">
+          best-match-desc
+        </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="sortBy" value="best-match-asc">
           best-match-asc
         </label>
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="sortBy" value="best-match-desc">
-          best-match-desc
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio4" ng-model="sortBy" value="rating-desc">
+          rating-desc
         </label>
         <label class="radio-inline">
           <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="sortBy" value="rating-asc">
           rating-asc
         </label>
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="sortBy" value="rating-desc">
-          rating-desc
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio5" ng-model="sortBy" value="distance-desc">
+          distance-desc
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio5" ng-model="sortBy" value="distance-asc">
+          distance-asc
         </label>
       </div>
     </div>
   </form>
-{{sortBy}}
-  <div ui-view="results"></div>
-
 </div>
+<!--Search Results has container-->
+<div ui-view="results"></div>

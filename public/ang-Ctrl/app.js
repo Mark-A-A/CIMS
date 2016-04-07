@@ -32,6 +32,10 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
         "results@home":{
           templateUrl: "partials/results.html",
           controller: "searchBar"
+        },
+        "map@home":{
+          templateUrl: "partials/map.html",
+          controller: "searchBar"
         }
       }
     })

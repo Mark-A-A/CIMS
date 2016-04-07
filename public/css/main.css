@@ -1,24 +1,31 @@
-ul {
-  list-style: none;
-}
-#headline {
-  text-align: center;
-}
-.info{
-  text-align: center;
-}
-.profilePic {
-padding-bottom: 10px;
-  float: left;
-}
-.dropdown-menu{
-  overflow-y: scroll;
-}
+    #headline {
+    text-align: center;
+  }
+  /*THIS CSS IS FOR THE SEARCH RESULTS*/
 
-#mainSearch{
-  text-align: center;
-  display: block;
-}
-
-.radio-inline{
-}
+  ul {
+    list-style: none;
+  }
+  .info {}
+  .profilePic {
+    padding-bottom: 10px;
+    float: left;
+    display: inline;
+  }
+  #rating {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .dropdown-menu {
+    overflow-y: scroll;
+  }
+  #mainSearch {
+    text-align: center;
+    /*MAP*/
+    .angular-google-map-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
