@@ -52,3 +52,5 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
     $rootScope.current_user = {};
   };
 });
+
+
