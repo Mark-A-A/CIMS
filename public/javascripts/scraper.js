@@ -23,10 +23,14 @@ request('http://www.webmd.com/news/', function(err, response, body){
       article.save(function(err, document){
         if(err) {
           return res.send("ERROR: " + err);
-        };
+        }
       });
     });
   } // end if statement
+<<<<<<< HEAD
+  res.send('Scrape Done!');
+=======
+>>>>>>> 41cdb187bce95dd70c66fc97fc68e1b7164ed70d
 }); // end http scrape
 
 request('http://www.news-medical.net/', function(err, response, body){
