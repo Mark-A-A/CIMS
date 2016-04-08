@@ -1,24 +1,48 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl']).run(function($rootScope, $http) {
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl']).run(function($rootScope, $http) {
 
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
 
-  $rootScope.logout = function() {
-    $http.get('/auth/signout');
-
-    $rootScope.authenticated = false;
-    $rootScope.current_user = " ";
+  $rootScope.signout = function() {
+    console.log("Calling Angular logout");
+    $http({
+      method: 'GET',
+      url: '/auth/signout'
+    }).then(function successCallback(response) {
+      console.log("Signout Successful");
+      $rootScope.authenticated = false;
+      $rootScope.current_user = {};
+    }, function errorCallback(response) {
+      console.log("Signout failed" + response);
+    });
   };
 });
 
-doctorApp.config(function($stateProvider, $urlRouterProvider) {
+doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
     .state('home', {
       url: "/",
-      templateUrl: "partials/main.html",
-      controller: "ListController"
+      views: {
+        "":{
+          templateUrl: "partials/main.html",
+          controller: "searchBar"
+        },
+        "results@home":{
+          templateUrl: "partials/results.html",
+          controller: "searchBar"
+        },
+        "map@home":{
+          templateUrl: "partials/map.html",
+          controller: "searchBar"
+        }
+      }
+    })
+    .state('doctors',{
+      url: "/doctors/:id",
+      templateUrl: "partials/dr-details.html",
+      controller: "searchBar"
     })
     .state('login', {
       url: "/login",
@@ -30,4 +54,5 @@ doctorApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "partials/register.html",
       controller: "authController"
     });
+
 });

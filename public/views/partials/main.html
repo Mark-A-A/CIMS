@@ -1,37 +1,58 @@
 <div class="container">
 
   <div class="jumbotron" id="headline">
-    <h2>Lorem Ipsum Ipum Lorem!<br/>
-      <small>Lorem Ipsum Ipum Lorem</small>
+    <h2>CheckUp!<br/>
+      <small>"Doctors Reviews, Ratings, and Bookings"</small>
     </h2>
   </div>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3" id-"search-bar">
-      <form>
+  <form class="form-inline" id="mainSearch" ng-submit="submitSearch()">
+    <div class="row">
+      <div class="col-md">
         <div class="form-group">
-          <label for="search">Search</label>
-          <input type="text" ng-model="query" class="form-control" id="search" placeholder="Search">
+          <select ng-controller="loadSpecialty" class="form-control" ng-model="$root.specialty" ng-options="item.name for item in specialties">
+            <option value="">Please Select a Specialty
+            </option>
+          </select>
         </div>
-      </form>
+        <div class="input-group">
+          <input type="text" class="form-control" ng-model="zip" id="location" placeholder="Enter Location">
+          <div class="input-group-btn">
+            <button class="btn btn-default">Search</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <ul class="results" ng-show="query">
-      <li ng-repeat="item in doctors | filter: query ">
-        <div class="info">
-          <img class="profilePic" src="/public/img/profile.jpeg" alt="profile"/>
-          <h3>{{item.name}}<br/>
-            <small>{{item.specialty}} Specialist</small>
-          </h3>
-          <h4>Location
-            <br/>
-            <small>City: {{item.location.city}}</small><br/>
-            <small>State: {{item.location.state}}</small>
-          </h4>
-        </div>
-        <hr />
-      </li>
-    </ul>
-  </div>
-
+    <div class="row">
+      <div class="col-md-12 form-group" id="radioSort">
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="sortBy" value="best-match-desc">
+          best-match-desc
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="sortBy" value="best-match-asc">
+          best-match-asc
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio4" ng-model="sortBy" value="rating-desc">
+          rating-desc
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="sortBy" value="rating-asc">
+          rating-asc
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio5" ng-model="sortBy" value="distance-desc">
+          distance-desc
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio5" ng-model="sortBy" value="distance-asc">
+          distance-asc
+        </label>
+      </div>
+    </div>
+  </form>
+</div>
+<!--Search Results has container-->
+<div class="wrapper" data-ng-if="showMap">
+  <div ui-view="results"></div>
 </div>
