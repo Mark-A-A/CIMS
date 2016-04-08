@@ -1,6 +1,6 @@
 var cheerio = require('cheerio');
 var request = require('request');
-var Article = require('../model/articles');
+var Article = require('.../model/articles');
 
 // not sure which site we will scrape from, but this is the code we need for both
 
@@ -27,10 +27,7 @@ request('http://www.webmd.com/news/', function(err, response, body){
       });
     });
   } // end if statement
-<<<<<<< HEAD
   res.send('Scrape Done!');
-=======
->>>>>>> 41cdb187bce95dd70c66fc97fc68e1b7164ed70d
 }); // end http scrape
 
 request('http://www.news-medical.net/', function(err, response, body){
