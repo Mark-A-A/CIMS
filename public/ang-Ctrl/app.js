@@ -54,5 +54,4 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       templateUrl: "partials/register.html",
       controller: "authController"
     });
-
 });
