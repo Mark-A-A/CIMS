@@ -1,10 +1,36 @@
-ul{
-  list-style: none;
-}
-#headline{
+#headline {
   text-align: center;
 }
-.profilePic{
+
+/*THIS CSS IS FOR THE SEARCH RESULTS*/
+
+ul {
+  list-style: none;
+}
+.info {}
+.profilePic {
+  padding-bottom: 10px;
+  float: left;
+  display: inline;
+}
+.rating {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.dropdown-menu {
+  overflow-y: scroll;
+}
+#mainSearch {
+  text-align: center;
+}
+
+/*MAP*/
+#map{
+  height: 600px;
+}
+
+.markerImg{
+  height:60px;
   width: auto;
-  height: 100px;
+  float: left;
 }
