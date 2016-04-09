@@ -39,6 +39,11 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
         }
       }
     })
+    .state('news',{
+      url: "/news",
+      templateUrl: "partials/news.html",
+      controller: ""
+    })
     .state('doctors',{
       url: "/doctors/:id",
       templateUrl: "partials/dr-details.html",
@@ -54,5 +59,4 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       templateUrl: "partials/register.html",
       controller: "authController"
     });
-
 });
