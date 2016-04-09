@@ -1,4 +1,4 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl']).run(function($rootScope, $http) {
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl']).run(function($rootScope, $http) {
 
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
@@ -38,6 +38,11 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
           controller: "searchBar"
         }
       }
+    })
+    .state('news',{
+      url: "/news",
+      templateUrl: "partials/news.html",
+      controller: ""
     })
     .state('doctors',{
       url: "/doctors/:id",
