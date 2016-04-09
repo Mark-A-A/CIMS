@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 var articleSchema = new mongoose.Schema({
+  img: String,
   title: String,
-  link: String,
+  body: String,
+  link: String
 });
 
 mongoose.model('Article', articleSchema);
-module.exports = Article;
