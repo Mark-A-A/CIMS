@@ -3,6 +3,7 @@ var router = express.Router();
 var request = require('request');
 var cheerio = require('cheerio');
 var Article = require('../model/article');
+var mongoose = require('mongoose');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -27,46 +28,54 @@ router.get('/scraper', function(req, res, next){
             img: img,
             title: title,
             body: body,
-            link: link
+            link: link,
+            provider: "med-news"
           });
 
           article.save(function(err, document){
             if(err) {
-              return res.send("ERROR: " + err);
+              console.log("ERROR: " + err);
             } else {
-              console.log('Scraped MNT!');
+              console.log("SUCCESS")
             }
           });
         });
       });
     }// end if statement
+  });// END first request
+  request('http://www.webmd.com/news/', function(err, response, body){
+    if (!err && response.statusCode == 200){
+
+      $ = cheerio.load(body);
+
+      $('#more-news').each(function(i, element){
+        $(element).find('li').each(function(){
+          var link = $(this).attr('href') ;
+          var title = $(this).text();
+
+          var article = new Article({
+            title: title,
+            link: link,
+            provider: "web-md"
+          });
+
+          article.save(function(err, document){
+            if(err) {
+              return res.send("ERROR: " + err);
+            }
+          });
+        });
+      });
+    } // end if statement
+    console.log('Scrape Done!');
+  }); // end http scrape
+  mongoose.model('Article').find(function(err, docs){
+    if(!err){
+      res.send(docs);
+    }
   });
-});
+}); // end scraper route
 
-// request('http://www.webmd.com/news/', function(err, response, body){
-//   if (!error && response.statusCode == 200){
 
-//     $ = cheerio.load(body);
-
-//     $('#more-news').each(function(i, element){
-//       $(element).find('li').each(function(){
-//         var link = $(this).attr('href') ;
-//         var title = $(this).text();
-//       });
-
-//       var md-article = new WebMD({
-//         title: title,
-//         link: link
-//       });
-
-//       md-article.save(function(err, document){
-//         if(err) {
-//           return res.send("ERROR: " + err);
-//         }
-//       });
-//     });
-//   } // end if statement
-//   console.log('Scrape Done!');
-// }); // end http scrape
 
 module.exports = router;
