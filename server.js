@@ -40,7 +40,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-var initPassport = require('./config/passport-init');
+var initPassport = require('./config/passport-login-authenticate');
 initPassport(passport);
 
 //ROUTES
@@ -48,6 +48,15 @@ initPassport(passport);
 app.use('/', index);
 app.use('/api', api);
 app.use('/auth', authenticate);
+app.use('/auth/example',
+     passport.authenticate('oauth2'), function (req, res){
+      console.log("did something: ");
+      if(err){ 
+        console.log("err: "+err);
+      } else {
+        res.render("oauth2 with passport did something")  
+      };
+});
 
 app.listen(PORT, function() {
   console.log("Application is listening on PORT:" + PORT);
