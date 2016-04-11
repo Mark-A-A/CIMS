@@ -19,8 +19,8 @@ router.get('/scraper', function(req, res, next){
 
       $('.writtens_top').each(function(i, element){
         $(element).find('li').each(function(){
-          var img = $(this).find('img').attr('data-src');
-          var title = $(this).find('.headline').find("strong").text();
+          var img = $(this).find("img").attr('data-src');
+          var title = $(this).find(".headline").find("strong").text();
           var link = $(this).find("a").attr('href');
           var body =$(this).find('.headline').find("em").text();
 

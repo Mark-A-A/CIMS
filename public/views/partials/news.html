@@ -6,14 +6,14 @@
   </div>
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-7" ng-controller="loadArticles">
+    <div class="col-md-7" ng-controller="articleController">
       <h3>Top Stories</h3>
       <div class="panel panel-default" ng-repeat="article in articles">
         <div class="panel-body">
-          <img src="{{ response.img }}">
-          <h4><a href="http://www.medicalnewstoday.com/ + {{response.link}} + ">{{ response.title }}</a></h4>
+          <img src="{{ data[i].img }}">
+          <h4><a href="http://www.medicalnewstoday.com/ + {{ data[i].link }} + ">{{ data[i].title }}</a></h4>
         </div>
-        <div class="panel-footer">{{ response.body }}</div>
+        <div class="panel-footer">{{ data[i].body }}</div>
       </div>
     </div><!-- End Col-md-8 -->
     <div class="col-md-1"></div>
