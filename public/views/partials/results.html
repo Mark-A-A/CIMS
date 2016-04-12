@@ -4,7 +4,7 @@
       <ul class="results list-group" ng-show="showMap">
         <li class="doctors" ng-repeat="item in doctors ">
           <div class="info">
-            <a href="#/doctors/{{doctors.indexOf(item)}}" ng-click="loadDetails()">
+            <a ui-sref="doctors({uid:'{{item.uid}}'})">
               <h3 id="name">
                 {{item.profile.first_name}}
                 {{item.profile.middle_name}}.
@@ -15,8 +15,10 @@
                 </small>
               </h3>
               <img class="img-thumbnail" ng-src={{item.profile.image_url}} alt="profile"/>
-            </a><br />
-            <h4><small>{{item.specialties[0].description}}</small></h4>
+            </a><br/>
+            <h4>
+              <small>{{item.specialties[0].description}}</small>
+            </h4>
             <img class="rating" ng-src="{{item.ratings[0].image_url_large}}"/><br/>
             <h4<small>{{item.practices[0].visit_address.street}},
               {{item.practices[0].visit_address.city}},
@@ -29,9 +31,7 @@
     </ul>
   </div>
   <div class="col-md-4">
-    <div ui-view="map">
-
-    </div>
+    <div ui-view="map"></div>
   </div>
 </div>
 

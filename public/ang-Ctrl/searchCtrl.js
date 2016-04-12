@@ -13,7 +13,7 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
   NgMap.getMap().then(function(map) {
     $rootScope.map = map;
   });
-  
+
   $scope.submitSearch = function() {
     if ($scope.sortBy === undefined) {
       $scope.sortBy = 'distance-asc';
@@ -38,12 +38,14 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
       }
     });
   };
+}]);
 
-  $scope.loadDetails = function() {
-    $http.get('https://api.betterdoctor.com/2016-03-01/doctors?' + $rootScope.userSpecialty + 'location=' + $rootScope.userSearch + '%2C100&user_location=' + $rootScope.userSearch + '&sort=best-match-desc&skip=0&limit=3&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
-      console.log('i made it');
-      $scope.details = data.data;
-      $scope.whichItem = $stateParams.id;
+searchCtrl.controller('loadDetails', ['$scope', '$http', '$rootScope', '$stateParams', 'NgMap', function($scope, $http, $rootScope, $stateParams, NgMap) {
+  console.log($stateParams);
+  $scope.loadList = function() {
+    $http.get('https://api.betterdoctor.com/2016-03-01/doctors?location=' + $rootScope.userSearch + '%2C10&user_location=' + $rootScope.userSearch + '&sort=' + $scope.sortBy + '&skip=0&limit=10&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
+      console.log(data.data);
+      $scope.doctors = data.data;
     });
   };
 }]);
