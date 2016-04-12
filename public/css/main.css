@@ -1,3 +1,6 @@
+html, body{
+font-family: 'Lora', serif;
+}
 #headline {
   text-align: center;
 }
