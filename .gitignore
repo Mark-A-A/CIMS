@@ -1,2 +1,6 @@
 node_modules
 DS_Store
+.env
+google.auth
+google.conf
+google-oauth2-config.js
