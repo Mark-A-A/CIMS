@@ -18,7 +18,7 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
     if ($scope.sortBy === undefined) {
       $scope.sortBy = 'distance-asc';
     }
-    $http.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + $scope.zip).success(function(data) {
+    $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + $scope.zip).success(function(data) {
       $scope.userLat = data.results[0].geometry.location.lat;
       $scope.userLon = data.results[0].geometry.location.lng;
       $rootScope.userSearch = data.results[0].geometry.location.lat + '%2C' + data.results[0].geometry.location.lng;
