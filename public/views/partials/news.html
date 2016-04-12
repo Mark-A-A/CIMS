@@ -19,9 +19,9 @@
     <div class="col-md-1"></div>
     <div class="col-md-4">
       <h4>Other Stories</h4>
-      <div class="well">
+      <div class="well" ng-controller="mdController">
         <ul>
-          <li ng-repeat="link in links"><a href="{{link.link}}">{{link.title}}</a></li>
+          <li ng-repeat="link in links"><a href="{{link.link}}" target="_blank">{{link.title}}</a></li>
         </ul>
       </div>
     </div>

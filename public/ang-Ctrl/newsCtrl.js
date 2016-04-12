@@ -16,8 +16,8 @@ newsCtrl.controller('mdController', ['$scope', '$http', function($scope, $http) 
 
   $http.get('/webmd').success(function(data) {
     for (var i = 0; i < data.length; i++) {
-      console.log(data[i]);
-      //$scope.links.push(data[i]);
+      //console.log(data[i]);
+      $scope.links.push(data[i]);
     }
   });
 }]);
