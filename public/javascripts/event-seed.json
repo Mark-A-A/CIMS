@@ -1,0 +1,38 @@
+[
+  {
+    "doctorId": "1",
+    "eventTitle": "Appointment with Mr.X",
+    "startDateTime": "04/10/2016 10AM",
+    "endDateTime": "04/10/2016 11AM"
+  },
+  {
+    "doctorId": "1",
+    "eventTitle": "Appointment with Mr.Y",
+    "startDateTime": "04/10/2016 11:00 AM",
+    "endDateTime": "04/10/2016 12:00 PM"
+  },
+  {
+    "doctorId": "1",
+    "eventTitle": "Appointment with Mr.Z",
+    "startDateTime": "04/10/2016 1:00 PM",
+    "endDateTime": "04/10/2016 2:00 PM"
+  },
+  {
+    "doctorId": "2",
+    "eventTitle": "Appointment with Mr.X",
+    "startDateTime": "04/10/2016 10AM",
+    "endDateTime": "04/10/2016 11AM"
+  },
+  {
+    "doctorId": "2",
+    "eventTitle": "Appointment with Mr.Y",
+    "startDateTime": "04/10/2016 11:00 AM",
+    "endDateTime": "04/10/2016 12:00 PM"
+  },
+  {
+    "doctorId": "2",
+    "eventTitle": "Appointment with Mr.Z",
+    "startDateTime": "04/10/2016 1:00 PM",
+    "endDateTime": "04/10/2016 2:00 PM"
+  },
+]

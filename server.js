@@ -11,6 +11,8 @@ var PORT = 3000;
 
 var db = require('./config/db.js');
 var user = require('./model/users.js');
+var doctor = require('./model/doctors.js');
+var event = require('./model/events.js');
 
 var index = require('./controller/index');
 var api = require('./controller/api');
