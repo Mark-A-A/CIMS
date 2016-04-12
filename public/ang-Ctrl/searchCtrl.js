@@ -13,7 +13,7 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
   NgMap.getMap().then(function(map) {
     $rootScope.map = map;
   });
-
+  
   $scope.submitSearch = function() {
     if ($scope.sortBy === undefined) {
       $scope.sortBy = 'distance-asc';
