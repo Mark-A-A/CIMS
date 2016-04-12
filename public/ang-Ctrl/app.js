@@ -25,29 +25,37 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('home', {
       url: "/",
       views: {
-        "":{
+        "": {
           templateUrl: "partials/main.html",
           controller: "searchBar"
         },
-        "results@home":{
+        "results@home": {
           templateUrl: "partials/results.html",
           controller: "searchBar"
         },
-        "map@home":{
+        "map@home": {
           templateUrl: "partials/map.html",
           controller: "searchBar"
         }
       }
     })
-    .state('news',{
+    .state('news', {
       url: "/news",
       templateUrl: "partials/news.html",
       controller: ""
     })
-    .state('doctors',{
-      url: "/doctors/:uid",
-      templateUrl: "partials/dr-details.html",
-      controller: "loadDetails"
+    .state('doctors', {
+      url: "/doctors/:name/:uid",
+      views: {
+        "": {
+          templateUrl: "partials/dr-details.html",
+          controller: "loadDetails"
+        },
+        "map@doctors": {
+          templateUrl: "partials/map-single.html",
+          controller: ""
+        }
+      },
     })
     .state('login', {
       url: "/login",

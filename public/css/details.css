@@ -1,0 +1,14 @@
+.detailImg{
+  float: left;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#detailHead{
+  font-size: 35px;
+
+}
+
+#detailProfesion{
+  font-size: 16px !important;
+}

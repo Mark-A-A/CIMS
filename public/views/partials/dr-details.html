@@ -1,9 +1,95 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-md-offset-1">
+        <p id="detailHead">
+          <img class="img-thumbnail detailImg" ng-src={{singleDr.profile.image_url}} alt="profile"/>
+          {{singleDr.profile.first_name}}
+          {{singleDr.profile.last_name}}<br/>
+          <span id="detailProfesion">
+            {{singleDr.specialties[0].actor}}
+            |
+            {{singleDr.specialties[0].name}}<br/>
+            <img class="rating" ng-src="{{singleDr.ratings[0].image_url_large}}"/><br/>
+            Practice:
+            {{singleDr.practices[0].name}}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-4 col-md-2">
-    <div class="info-card">
-      <h1>{{singleDr.profile.first_name}} {{singleDr.profile.last_name}}</h1>
+    <div class="col-md-8">
+      <div class="table-responsive">
+        <table class="table">
+
+
+              <h3>Qualifications & Education</h3>
+
+          <tbody>
+            <tr>
+              <td>Education</td>
+              <td>
+                <ul ng-repeat="item in singleDr.educations">
+                  <li>
+                    {{item.school}}<br />
+                    {{item.degree}} {{item.graduation_year}}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Languages</td>
+              <td>
+                <ul ng-repeat="item in singleDr.profile.languages">
+                  <li>
+                    {{item.name}}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Insurance</td>
+              <td>
+                <ul>
+                  <li>
+                    <select class="form-control" ng-options="item.insurance_provider.name for item in singleDr.insurances" ng-model="insurance">
+                      <option value="">Please Select a Specialty
+                      </option>
+                    </select>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Specialties</td>
+              <td>
+                <ul>
+                  <li ng-repeat="item in singleDr.specialties">
+                    {{item.actor}} - {{item.description}}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Statement</td>
+              <td>
+                <ul>
+                  <li>
+                    {{singleDr.profile.bio}}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+    <div class="col-md-4">
+      <div ui-view="map"></div>
     </div>
   </div>
 </div>

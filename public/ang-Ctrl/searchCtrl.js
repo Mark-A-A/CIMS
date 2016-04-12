@@ -24,14 +24,12 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
       $rootScope.userSearch = data.results[0].geometry.location.lat + '%2C' + data.results[0].geometry.location.lng;
       if ($scope.specialty === undefined) {
         $http.get('https://api.betterdoctor.com/2016-03-01/doctors?location=' + $rootScope.userSearch + '%2C10&user_location=' + $rootScope.userSearch + '&sort=' + $scope.sortBy + '&skip=0&limit=10&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
-          console.log(data.data);
           $scope.showMap = true;
           $scope.doctors = data.data;
         });
       } else {
         $rootScope.userSpecialty = 'query=' + $rootScope.specialty.uid + '&';
         $http.get('https://api.betterdoctor.com/2016-03-01/doctors?' + $rootScope.userSpecialty + 'location=' + $rootScope.userSearch + '%2C10&user_location=' + $rootScope.userSearch + '&sort=' + $scope.sortBy + '&skip=0&limit=10&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
-          console.log(data.data);
           $scope.showMap = true;
           $scope.doctors = data.data;
         });
@@ -40,7 +38,7 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
   };
 }]);
 
-searchCtrl.controller('loadDetails', ['$scope', '$http', '$rootScope', '$stateParams', 'NgMap', function($scope, $http, $rootScope, $stateParams, NgMap) {
+searchCtrl.controller('loadDetails', ['$scope', '$http', '$stateParams', 'NgMap', function($scope, $http, $stateParams, NgMap) {
   $scope.drIdentifier = $stateParams.uid;
   $http.get('https://api.betterdoctor.com/2016-03-01/doctors/' + $scope.drIdentifier + '?user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
     console.log(data.data);
