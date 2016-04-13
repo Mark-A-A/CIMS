@@ -29,8 +29,7 @@ router.get('/scraper', function(req, res, next){
             img: img,
             title: title,
             body: body,
-            link: link,
-            provider: "med-news"
+            link: link
           });
 
           article.save(function(err, document){
@@ -58,15 +57,14 @@ router.get('/webmd', function(req, res, next) {
 
       $ = cheerio.load(body);
 
-      $('#more-news').each(function(i, element){
+      $('.moreNews_rdr').each(function(i, element){
         $(element).find('li').each(function(){
-          var link = $(this).attr('href') ;
-          var title = $(this).text();
+          var link = $(this).find('a').attr('href') ;
+          var title = $(this).find('a').text();
 
           var webmd = new WebMD({
             title: title,
-            link: link,
-            provider: "web-md"
+            link: link
           });
 
           webmd.save(function(err, document){
