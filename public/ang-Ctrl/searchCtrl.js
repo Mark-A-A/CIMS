@@ -9,7 +9,7 @@ searchCtrl.controller('loadSpecialty', ['$rootScope', '$http', function($rootSco
   $rootScope.loadList();
 }]);
 
-searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$stateParams', 'NgMap', function($scope, $http, $rootScope, $stateParams, NgMap) {
+searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$stateParams', 'NgMap', function($scope, $http, $rootScope, $location, NgMap) {
   NgMap.getMap().then(function(map) {
     $rootScope.map = map;
   });
@@ -35,6 +35,8 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
         });
       }
     });
+
+
   };
 }]);
 

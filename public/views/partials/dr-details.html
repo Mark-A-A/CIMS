@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" id="detailJumbo">
   <div class="container">
     <div class="row">
       <div class="col-md-9 col-md-offset-1">
@@ -22,7 +22,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8" id="detailCard">
       <div class="table-responsive">
         <table class="table">
 
@@ -57,7 +57,7 @@
                 <ul>
                   <li>
                     <select class="form-control" ng-options="item.insurance_provider.name for item in singleDr.insurances" ng-model="insurance">
-                      <option value="">Please Select a Specialty
+                      <option value="">See All
                       </option>
                     </select>
                   </li>
