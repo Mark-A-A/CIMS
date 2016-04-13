@@ -20,6 +20,6 @@ var articleSchema = new mongoose.Schema({
   }
 });
 
-articleSchema.plugin(uniqueValidator);
+articleSchema.plugin(uniqueValidator, { message: '' });
 var Article = mongoose.model('Article', articleSchema);
 module.exports = Article;

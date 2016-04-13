@@ -12,6 +12,6 @@ var webmdSchema = new mongoose.Schema({
   }
 });
 
-webmdSchema.plugin(uniqueValidator);
+webmdSchema.plugin(uniqueValidator, { message: '' });
 var WebMD = mongoose.model('WebMD', webmdSchema);
 module.exports = WebMD;
