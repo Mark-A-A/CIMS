@@ -1,6 +1,7 @@
 var express = require('express');
 var logout = require('express-passport-logout');
 var router = express.Router();
+var googleOauth2 = require("../config/passport-google-oauth.js")
 
 module.exports = function (passport) {
 
@@ -53,7 +54,7 @@ module.exports = function (passport) {
   });
   
 
-
+//send user to Google to Authenticate
 // GET /auth/google
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Google authentication will involve
@@ -62,6 +63,7 @@ module.exports = function (passport) {
 router.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
+//Google sends user back with token and profile
 // GET /auth/google/callback
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  If authentication fails, the user will be redirected back to the
@@ -76,7 +78,16 @@ router.get('/auth/google/callback',
 return router;
 };
 
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
 
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}
 
 /////////////////////// Scrap
 

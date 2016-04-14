@@ -1,4 +1,4 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl']).run(function($rootScope, $http) {
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl']).run(function($rootScope, $http) {
 
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
@@ -58,5 +58,10 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       url: "/register",
       templateUrl: "partials/register.html",
       controller: "authController"
-    });
+    })
+    .state('login-google', {
+      url: "/google-login",
+      templateUrl: "partials/google-login.html",
+      controller: "authController"
+    })
 });

@@ -1,19 +1,16 @@
 var passport = require('passport');
 var passportLocal = require('passport-local');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
-console.log(CLIENT_ID);
-console.log(CLIENT_SECRET);
-
-
+//var Keys = require("../.env");
+//console.log(Keys);
 
 
 
 // load up the user model
-var User       = require('../app/models/user');
+var User       = require('../model/users');
 
 // load the auth variables
-var configAuth = require('./auth');
+var configAuth = require('../controller/authenticate.js');
 
 module.exports = function(passport) {
 
@@ -49,8 +46,6 @@ passport.use(new GoogleStrategy({
     callbackURL: 'https://localhost:3000/auth/google/callback'
   },
   
-
-
     
     function(token, refreshToken, profile, done) {
 
@@ -133,16 +128,16 @@ passport.use(new GoogleStrategy({
 //   Strategies in Passport require a `verify` function, which accept
 //   credentials (in this case, an accessToken, refreshToken, and Google
 //   profile), and invoke a callback with a user object.
-passport.use(new GoogleStrategy({
-    clientID: "400014578934-b30rgatg0io0enn3u9svht9djnpj9kpp.apps.googleusercontent.com",//CLIENT_ID,
-    clientSecret: "TpsmKDTmKiuZ0S_tFhK2UBFM", //CLIENT_SECRET,
-    callbackURL: 'https://localhost:3000/auth/google/callback'
-  },
-  function(accessToken, refreshToken, profile, done) {
-       User.findOrCreate({ googleId: profile.id }, function (err, user) {
-         return done(err, user);
-       });
-  }
-));
+// passport.use(new GoogleStrategy({
+//     clientID: "400014578934-b30rgatg0io0enn3u9svht9djnpj9kpp.apps.googleusercontent.com",//CLIENT_ID,
+//     clientSecret: "TpsmKDTmKiuZ0S_tFhK2UBFM", //CLIENT_SECRET,
+//     callbackURL: 'https://localhost:3000/auth/google/callback'
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//          return done(err, user);
+//        });
+//   }
+// ));
 
 

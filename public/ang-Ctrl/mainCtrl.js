@@ -1,5 +1,4 @@
 var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
-
 mainCtrl.controller("authController", function($scope, $rootScope, $http, $location) {
   $scope.user = {
     username: '',
@@ -9,7 +8,7 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
   $scope.login = function() {
     $http.post('/auth/login', $scope.user).success(function(data) {
       if (data.username) {
-        $rootScope.authenticated = true;
+        $rootScope.authenticat2ed = true;
         $rootScope.current_user = data.username;
         console.log("successfully Logged In");
         $location.path('/');
