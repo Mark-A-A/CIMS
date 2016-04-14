@@ -1,8 +1,17 @@
 var mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 
 var webmdSchema = new mongoose.Schema({
-  title: String,
-  link: String
+  title: {
+    type: String,
+    unique: true
+  },
+  link: {
+    type: String,
+    unique: true
+  }
 });
 
-mongoose.model('Web-Md', webmdSchema);
+webmdSchema.plugin(uniqueValidator, { message: 'Ignore' });
+var WebMD = mongoose.model('WebMD', webmdSchema);
+module.exports = WebMD;

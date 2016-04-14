@@ -1,0 +1,10 @@
+.articleImage {
+  width: 175px;
+  height: 125px;
+  padding-right: 10px;
+}
+
+.md-links {
+  padding-bottom: 10px;
+  display: block;
+}
