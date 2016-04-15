@@ -15,8 +15,8 @@ var user = require('./model/users.js');
 
 var index = require('./controller/index');
 var api = require('./controller/api');
-var authenticate = require('./controller/authenticate')(passport);
-
+var authenticate = require('./controller/authenticate.js')(passport);
+var googleAuthenticate = require('./controller/google-authenticate.js')(passport);
 var app = express();
 
 //LOAD DIR
@@ -49,6 +49,7 @@ initPassport(passport);
 app.use('/', index);
 app.use('/api', api);
 app.use('/auth', authenticate);
+app.use('/auth/google', googleAuthenticate);
 // app.use('/auth/example',
 //      passport.authenticate('oauth2'), function (req, res){
 //       console.log("did something: ");
