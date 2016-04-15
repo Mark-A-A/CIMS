@@ -1,11 +1,10 @@
-
 /**
  * calendarApp - 0.9.0
  */
-var calendarApp = angular.module('calendarApp', ['ui.calendar', 'ui.bootstrap']);
+var CalendarCtrl = angular.module('CalendarCtrl', ['ui.calendar', 'ui.bootstrap']);
 
-calendarApp.controller('CalendarCtrl',
-   function($scope, $compile, $timeout, uiCalendarConfig) {
+CalendarCtrl.controller('CalendarCtrl',
+   function($scope, $compile, $timeout, uiCalendarConfig, $http) {
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -21,12 +20,32 @@ calendarApp.controller('CalendarCtrl',
     /* event source that contains custom events on the scope */
     $scope.events = [
       {title: 'All Day Event',start: new Date(y, m, 1)},
-      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
-      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
+      // {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
+      // {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
+      // {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
+      // {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
       {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
     ];
+
+    $http.get('/auth/populateCalendar/1').success(function(data) {
+        console.log(data);
+      // if (data.username) {
+      //   $rootScope.authenticated = true;
+      //   $rootScope.current_user = data.username;
+      //   console.log("successfully Logged In");
+      //   $location.path('/');
+      // } else {
+      //   $scope.error_message = data.message;
+      // }
+    });
+
+    // $scope.events.push({
+    //   title: 'Open Sesame',
+    //   start: new Date(y, m, 28),
+    //   end: new Date(y, m, 29),
+    //   className: ['openSesame']
+    // });
+
     /* event source that calls a function on every view switch */
     $scope.eventsF = function (start, end, timezone, callback) {
       var s = new Date(start).getTime() / 1000;

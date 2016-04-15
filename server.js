@@ -27,6 +27,7 @@ app.use(express.static(__dirname + "/public/views"));
 app.use(express.static(__dirname + "/public/views/partials"));
 app.use('/bower_components', express.static(__dirname + "/bower_components"));
 
+
 //MIDDLEWARE
 app.use(logger('dev'));
 app.use(session({
@@ -53,10 +54,10 @@ app.use('/auth', authenticate);
 // app.use('/auth/example',
 //      passport.authenticate('oauth2'), function (req, res){
 //       console.log("did something: ");
-//       if(err){ 
+//       if(err){
 //         console.log("err: "+err);
 //       } else {
-//         res.render("oauth2 with passport did something")  
+//         res.render("oauth2 with passport did something")
 //       };
 // });
 

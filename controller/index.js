@@ -5,6 +5,9 @@ var cheerio = require('cheerio');
 var Article = require('../model/article');
 var WebMD = require('../model/md-link');
 var mongoose = require('mongoose');
+var db = require('../config/db.js');
+var Event = require('../model/events.js');
+var Doctor = require('../model/doctors.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -80,11 +83,13 @@ router.get('/webmd', function(req, res, next) {
       });
     } // end if statement
   }); // end web-md scrape
+
   mongoose.model('WebMD').find(function(err, docs){
     if(!err){
       res.send(docs);
     }
   });
+
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@
       <h3>Top Stories</h3>
       <div class="panel panel-default" ng-repeat="article in articles">
         <div class="panel-body">
-          <img class="articleImage" src="{{article.img}}" align="left">
+          <img class="articleImage" src={{article.img}} align="left">
           <h4><a href="http://www.medicalnewstoday.com/ + {{article.link}} + " target="_blank">{{article.title}}</a></h4>
         </div>
         <div class="panel-footer">{{article.body}}</div>

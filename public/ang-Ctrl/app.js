@@ -58,5 +58,10 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       url: "/register",
       templateUrl: "partials/register.html",
       controller: "authController"
+    })
+    .state('calendar', {
+      url: "/calendar",
+      templateUrl: "partials/calendar.html",
+      controller: "CalendarCtrl"
     });
 });
