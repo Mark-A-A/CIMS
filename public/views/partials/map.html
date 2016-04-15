@@ -1,9 +1,10 @@
 <div id="map">
   <ng-map zoom="10" center="[{{userLat}}, {{userLon}}]">
-    <marker ng-repeat="item in doctors" position="[{{item.practices[0].visit_address.lat}}, {{item.practices[0].visit_address.lon}}]" title="{{item.profile.name}}" on-click="map.showInfoWindow(event, '{{item.npi}}')"></marker>
-    <info-window id="{{item.npi}}" max-width="200" ng-repeat="item in doctors">
-      <div ng-non-bindable>
-        <div id="siteNotice">  <img class="img-circle markerImg" ng-src={{item.profile.image_url}} alt="profile"/></div>
+    <marker ng-repeat="item in doctors" position="[{{item.practices[0].visit_address.lat}}, {{item.practices[0].visit_address.lon}}]" title="{{item.profile.name}}" on-click="showInfoWindow('myInfoWindow')" id="{{item.npi}}"></marker>
+    <info-window id="myInfoWindow" max-width="200">
+      <div ng-non-bindable="">
+        <div id="siteNotice">
+          <img class="img-circle markerImg" ng-src={{item.profile.image_url}} alt="profile"/></div>
         <h4 id="firstHeading" class="firstHeading">{{item.profile.first_name}}
           {{item.profile.last_name}}</h4>
         <div id="bodyContent">

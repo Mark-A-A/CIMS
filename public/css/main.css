@@ -1,5 +1,18 @@
+html, body{
+font-family: 'Lora', serif;
+background-color: #EDF2F4;
+}
 #headline {
   text-align: center;
+  background-color: #2B2D42;
+  color: #DCDCDD;
+}
+#headline small{
+  color: #EDF2F4;
+}
+
+#btm-nav{
+  background-color: #2B2D42 !important;
 }
 
 /*THIS CSS IS FOR THE SEARCH RESULTS*/
@@ -7,7 +20,18 @@
 ul {
   list-style: none;
 }
-.info {}
+.doctors {
+  background-color: #F8FCFF;
+}
+
+.doctors:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.info{
+  padding-left: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
 .profilePic {
   padding-bottom: 10px;
   float: left;

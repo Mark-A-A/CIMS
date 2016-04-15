@@ -1,13 +1,26 @@
 <html ng-app="doctorApp">
   <head>
     <title></title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/css/main.css">
-    <link rel="stylesheet" href="../public/css/register.css">
-    <link rel="stylesheet" href="../public/css/index.css">
-    <link rel="stylesheet" href="../public/css/news.css">
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU"></script>
+      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="../../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../../bower_components/angular-ui-calendar/src/calendar.js"></script>
+      <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+      <script src="../../bower_components/moment/moment.js"></script>
+      <script src="../../bower_components/fullcalendar/dist/fullcalendar.js"></script>
+      <script src="../../bower_components/fullcalendar/dist/gcal.js"></script>
+
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+      <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="../public/css/main.css">
+      <link rel="stylesheet" href="../public/css/register.css">
+      <link rel="stylesheet" href="../public/css/index.css">
+      <link rel="stylesheet" href="../public/css/details.css">
+      <link rel="stylesheet" href="../public/css/news.css">
+      <link rel="icon" href="favicon.ico" />
+      <link rel="stylesheet" href="../../bower_components/bootstrap-css/css/bootstrap.css" />
+      <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.css">
+      <link rel="stylesheet" href="../css/calendar.css" />
 
     <body>
       <!-- NAVIGATION-->
@@ -35,7 +48,7 @@
                 to the CIMS App</a>
             </li>
             <li>
-              <a ui-sref="calendar" ng-click="calendar()">Calendar</a>
+              <a ui-sref="calendar">Calendar</a>
             </li>
           </ul>
         </div>
@@ -43,12 +56,15 @@
 
       <div ui-view></div>
 
+      </div>
+
     </body>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="../public/ang-Ctrl/app.js"></script>
     <script src="../public/ang-Ctrl/mainCtrl.js"></script>
     <script src="../public/ang-Ctrl/searchCtrl.js"></script>
     <script src="../public/ang-Ctrl/newsCtrl.js"></script>
+    <script src="../public/ang-ctrl/calendarCtrl.js"></script>
     <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>

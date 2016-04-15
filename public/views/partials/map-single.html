@@ -1,0 +1,23 @@
+<div id="map">
+  <ng-map zoom="12" center="[{{singleDr.practices[0].visit_address.lat}},{{singleDr.practices[0].visit_address.lon}}]">
+    <marker position="[{{singleDr.practices[0].visit_address.lat}}, {{singleDr.practices[0].visit_address.lon}}]" title="{{singleDr.profile.name}}" on-click="showInfoWindow('myInfoWindow')" id="{{singleDr.npi}}"></marker>
+    <info-window id="myInfoWindow" max-width="200">
+      <div ng-non-bindable="">
+        <div id="siteNotice">
+          <img class="img-circle markerImg" ng-src={{singleDr.profile.image_url}} alt="profile"/></div>
+        <h4 id="firstHeading" class="firstHeading">{{singleDr.profile.first_name}}
+          {{singleDr.profile.last_name}}</h4>
+        <div id="bodyContent">
+          <img class="rating" ng-src="{{singleDr.ratings[0].image_url_small}}"/>
+          <p>
+            <h4<small>{{singleDr.practices[0].visit_address.street}},
+              {{singleDr.practices[0].visit_address.city}},
+              {{singleDr.practices[0].visit_address.state}}
+              {{singleDr.practices[0].visit_address.zip}}</small>
+          </h4>
+        </p>
+      </div>
+    </div>
+  </info-window>
+</ng-map>
+</div>

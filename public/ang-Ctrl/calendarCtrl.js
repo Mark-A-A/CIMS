@@ -1,9 +1,6 @@
-/**
- * calendarApp - 0.9.0
- */
-var CalendarCtrl = angular.module('CalendarCtrl', ['ui.calendar', 'ui.bootstrap']);
+var CalendarCtrl = angular.module('CalendarCtrl', ['ui.calendar', 'ui.bootstrap','ngAnimate']);
 
-CalendarCtrl.controller('CalendarCtrl',
+CalendarCtrl.controller('calendarCtrl',
    function($scope, $compile, $timeout, uiCalendarConfig, $http) {
     var date = new Date();
     var d = date.getDate();

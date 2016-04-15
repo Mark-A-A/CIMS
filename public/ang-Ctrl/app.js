@@ -1,4 +1,4 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl']).run(function($rootScope, $http) {
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','CalendarCtrl']).run(function($rootScope, $http) {
 
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
@@ -25,29 +25,37 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('home', {
       url: "/",
       views: {
-        "":{
+        "": {
           templateUrl: "partials/main.html",
           controller: "searchBar"
         },
-        "results@home":{
+        "results@home": {
           templateUrl: "partials/results.html",
           controller: "searchBar"
         },
-        "map@home":{
+        "map@home": {
           templateUrl: "partials/map.html",
           controller: "searchBar"
         }
       }
     })
-    .state('news',{
+    .state('news', {
       url: "/news",
       templateUrl: "partials/news.html",
       controller: ""
     })
-    .state('doctors',{
-      url: "/doctors/:id",
-      templateUrl: "partials/dr-details.html",
-      controller: "searchBar"
+    .state('doctors', {
+      url: "/doctors/:name/:uid",
+      views: {
+        "": {
+          templateUrl: "partials/dr-details.html",
+          controller: "loadDetails"
+        },
+        "map@doctors": {
+          templateUrl: "partials/map-single.html",
+          controller: ""
+        }
+      },
     })
     .state('login', {
       url: "/login",
@@ -62,6 +70,6 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('calendar', {
       url: "/calendar",
       templateUrl: "partials/calendar.html",
-      controller: "CalendarCtrl"
+      controller: "calendarCtrl"
     });
 });

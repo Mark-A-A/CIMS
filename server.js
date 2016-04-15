@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
+var scraper = require('./config/scraper.js');
 
 var PORT = process.env.PORT || 3000;
 
