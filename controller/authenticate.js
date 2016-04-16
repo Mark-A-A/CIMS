@@ -54,7 +54,7 @@ module.exports = function (passport) {
   
 
 
-return router;
+  return router;
 };
 
 // route middleware to make sure a user is logged in

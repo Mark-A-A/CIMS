@@ -39,11 +39,11 @@ module.exports = function(passport) {
     //   credentials (in this case, an accessToken, refreshToken, and Google
     //   profile), and invoke a callback with a user object.
 passport.use(new GoogleStrategy({
-  clientID: "----",//CLIENT_ID,
-  clientSecret: "----", //CLIENT_SECRET,
+  clientID: Keys.oAuth2.CLIENT_ID,//CLIENT_ID,
+  clientSecret: Keys.oAuth2.CLIENT_SECRET, //CLIENT_SECRET,
   //callbackURL: 'https://localhost:3000/auth/google/callback'
-  callbackURL: 'https://cimsmed.dev/auth/google/callback'
-  passReqToCallback   : true
+  callbackURL: 'http://cimsmed.dev/auth/google/callback',
+  passReqToCallback: true
 },
       
 
