@@ -1,4 +1,6 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','CalendarCtrl']).run(function($rootScope, $http) {
+
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','CalendarCtrl','CalendarCtrl2',])
+.run(function($rootScope, $http) {
 
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
@@ -69,7 +71,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     })
     .state('calendar', {
       url: "/calendar",
-      templateUrl: "partials/calendar.html",
-      controller: "calendarCtrl"
+      templateUrl: "partials/calendar2.html",
+      controller: "KitchenSinkCtrl"
     });
 });
