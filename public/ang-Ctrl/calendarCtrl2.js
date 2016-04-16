@@ -6,7 +6,7 @@ angular
     var vm = this;
 
     //These variables MUST be set as a minimum for the calendar to work
-    vm.calendarView = 'month';
+    vm.calendarView = 'week';
     vm.viewDate = new Date();
     vm.events = [
       {
@@ -34,6 +34,17 @@ angular
       }
     ];
 
+    // $http.get('/auth/populateCalendar/:uid').success(function(data) {
+    //     console.log(data);
+    //   if (data.username) {
+    //     $rootScope.authenticated = true;
+    //     $rootScope.current_user = data.username;
+    //     console.log("successfully Logged In");
+    //     $location.path('/');
+    //   } else {
+    //     $scope.error_message = data.message;
+    //   }
+    // });
     vm.isCellOpen = true;
 
     // vm.eventClicked = function(event) {
