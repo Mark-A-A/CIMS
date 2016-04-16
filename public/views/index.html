@@ -4,6 +4,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="../public/css/register.css">
@@ -15,18 +16,18 @@
       <!-- NAVIGATION-->
       <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse" id="btm-nav">
         <div class="container">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav"> 
             <li>
-              <a ui-sref="home">Home</a>
+              <a ui-sref="home"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
             </li>
             <li>
-              <a ui-sref="news">News Articles</a>
+              <a ui-sref="news"><i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i></a>
             </li>
             <li>
-              <a ui-sref="login" ng-hide="authenticated">Login</a>
+              <a ui-sref="login" ng-hide="authenticated"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
             </li>
             <li>
-              <a ui-sref="register" ng-hide="authenticated">Register</a>
+              <a ui-sref="register" ng-hide="authenticated"><i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a>
             </li>
             <li>
               <a ng-show="authenticated" ng-click="signout()">Log Out</a>
@@ -41,7 +42,7 @@
       </nav>
 
       <div ui-view></div>
-  
+
 
       </div>
 
