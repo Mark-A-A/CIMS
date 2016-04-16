@@ -1,28 +1,6 @@
 
-<<<<<<< HEAD
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','CalendarCtrl','CalendarCtrl2'])
-=======
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl','newsCtrl','CalendarCtrl2'])
->>>>>>> 157e1b85ad1aa451a646a63175ad1a5fce3c4ddd
-.run(function($rootScope, $http) {
 
-  $rootScope.authenticated = false;
-  $rootScope.current_user = " ";
-
-  $rootScope.signout = function() {
-    console.log("Calling Angular logout");
-    $http({
-      method: 'GET',
-      url: '/auth/signout'
-    }).then(function successCallback(response) {
-      console.log("Signout Successful");
-      $rootScope.authenticated = false;
-      $rootScope.current_user = {};
-    }, function errorCallback(response) {
-      console.log("Signout failed" + response);
-    });
-  };
-});
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','CalendarCtrl2']);
 
 doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
