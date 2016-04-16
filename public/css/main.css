@@ -2,6 +2,9 @@ html, body{
 font-family: 'Lora', serif;
 background-color: #EDF2F4;
 }
+.navbar-inverse .navbar-nav>li>a{
+  padding-right: 20px;
+}
 #headline {
   text-align: center;
   background-color: #2B2D42;
