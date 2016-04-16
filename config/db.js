@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 //Database configuration
 
 if( process.env.PORT) {
-  mongoose.connect("mongodb://greenlantern:greenlantern@ds011231.mlab.com:11231/heroku_2dcmrzw5");  
+  mongoose.connect("mongodb://greenlantern:greenlantern@ds011231.mlab.com:11231/heroku_2dcmrzw5");
 } else {
   mongoose.connect('mongodb://localhost:27017/cims-db');
 }
