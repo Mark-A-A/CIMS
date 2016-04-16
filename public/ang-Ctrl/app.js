@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 
+=======
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl','newsCtrl','CalendarCtrl2'])
+
+.run(function($rootScope, $http) {
+>>>>>>> afa5e622e467c34db0648e21393da93066266cd4
 
 var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','CalendarCtrl2']);
 
