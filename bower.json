@@ -22,7 +22,7 @@
     "angular": "latest",
     "jquery": "^2.2.2",
     "angular-route": "^1.5.2",
-    "angular-ui-calendar": "latest",
+    "angular-ui-calendar": "*",
     "angular-bootstrap-calendar": "^0.19.6",
     "ngmap": "^1.17.3"
   }

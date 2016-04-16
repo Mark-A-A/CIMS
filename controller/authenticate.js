@@ -1,6 +1,12 @@
 var express = require('express');
 var logout = require('express-passport-logout');
 var router = express.Router();
+var mongojs = require('mongojs');
+var eventDb = mongojs("cims-db",["Events"]);
+
+eventDb.on('error',function(err){
+  console.log('database error'+err);
+});
 
 module.exports = function (passport) {
 
@@ -12,16 +18,6 @@ module.exports = function (passport) {
   router.get('/failure', function(req,res){
     res.send({state:'failure', user:null, message:"Invalid username or password"});
   });
-
-  // router.post('/login', passport.authenticate('login',{
-  //   successRedirect: '/auth/success',
-  //   failureRedirect: '/auth/failure'
-  // }));
-
-  // router.post('/signup', passport.authenticate('signup',{
-  //   successRedirect: '/auth/success',
-  //   failureRedirect: '/auth/failure'
-  // }));
 
   router.post('/login', passport.authenticate('login'), function(req, res) {
     if(req.user) {
@@ -51,8 +47,19 @@ module.exports = function (passport) {
     //   res.json({});
     // }
   });
-  
 
+  router.get('/populateCalendar/:id',function(req,res,next){
+    var doctorId = req.params.id;
+
+   eventDb.Events.find({doctorId: doctorId}, function(err, documents){
+        if(err){
+            console.log(err);
+        } else {
+          console.log("Pulled Calendar for the doctor"+doctorId);
+            res.json(documents);
+        }
+    })
+  });
 
 // GET /auth/google
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -67,7 +74,7 @@ router.get('/auth/google',
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-router.get('/auth/google/callback', 
+router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
@@ -80,19 +87,19 @@ return router;
 
 /////////////////////// Scrap
 
-  // router.get('/auth/example', 
+  // router.get('/auth/example',
   //   passport.authenticate('oauth2'), function (req, res){
   //     console.log("did something: ");
-  //     if(err){ 
+  //     if(err){
   //       console.log("err: "+err);
   //     } else {
-  //       res.render("oauth2 with passport did something")  
+  //       res.render("oauth2 with passport did something")
   //     };
-      
+
   //   });
 
-  // router.get('/auth/example/callback', 
-  //   passport.authenticate('oauth2', { failureRedirect: '/login' }), 
+  // router.get('/auth/example/callback',
+  //   passport.authenticate('oauth2', { failureRedirect: '/login' }),
   //     function(req, res) {
   //   // Successful authentication, redirect home.
   //       res.redirect('/');
@@ -106,12 +113,12 @@ return router;
 //     /auth/provider/callback
   // router.get('/auth/google', passport.authenticate('provider', function (req, res){
   //     console.log("did something: ");
-  //     if(err){ 
+  //     if(err){
   //       console.log("err: "+err);
   //     } else {
-  //       res.render("oauth2 with passport did something")  
+  //       res.render("oauth2 with passport did something")
   //     };
-      
+
   //   }));
 
 // The OAuth provider has redirected the user back to the application.
