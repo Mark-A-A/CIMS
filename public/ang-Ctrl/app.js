@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','CalendarCtrl','CalendarCtrl2'])
+=======
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl','newsCtrl','CalendarCtrl2'])
+>>>>>>> 157e1b85ad1aa451a646a63175ad1a5fce3c4ddd
 .run(function($rootScope, $http) {
 
   $rootScope.authenticated = false;
