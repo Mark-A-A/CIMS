@@ -12,14 +12,20 @@ searchCtrl.controller('loadSpecialty', ['$rootScope', '$http', function($rootSco
 searchCtrl.controller('sideNavCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.showNav = false;
   $scope.activeNav = function() {
-  $scope.showNav = !$scope.showNav;
-};
+    $scope.showNav = !$scope.showNav;
+  };
 
-$scope.showFullSearch = false;
-$scope.activeSearch = function() {
-  console.log('hey');
-$scope.showFullSearch = !$scope.showFullSearch;
-};
+  $scope.showFullSearch = false;
+  $scope.activeSearch = function() {
+    $scope.showNav = !$scope.showNav;
+    $scope.showFullSearch = !$scope.showFullSearch;
+  };
+
+  $scope.fullSearchSubmit = function(){
+      $http.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+$scope.fullScInput+'&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&sort=best-match-desc&skip=0&limit=2&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
+        console.log(data);
+      });
+  };
 }]);
 
 searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$stateParams', 'NgMap', function($scope, $http, $rootScope, $location, NgMap) {
