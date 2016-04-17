@@ -100,18 +100,23 @@
 }
 
 /*Sidenav styles*/
-.sidebar-nav li a{
-margin-top: 8px;
-margin-bottom: 28px;
-}
 
-#sidebar-Pic{
+.sidebar-nav li a {
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+#sidebar-Pic {
   position: relative;
   top: 20px;
   display: block;
-margin: 0 auto;
+  margin: 0 auto;
 }
-
-.menu-text{
+.menu-text {
   text-align: right;
+}
+#menu-toggle {
+  float: left;
+  position: fixed;
+  z-index: 999;
+  opacity: 0.8;
 }

@@ -34,6 +34,7 @@
     <body ng-controller="sideNavCtrl">
       <div id="wrapper" ng-class="{'toggled': showNav}">
         <!-- Sidebar -->
+        <a href="" class="btn btn-default" id="menu-toggle" ng-click="activeNav()" ng-hide="showFullSearch"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
         <div id="sidebar-wrapper" ng-class="{'toggled ': showNav}">
           <ul class="sidebar-nav">
             <div>
@@ -101,19 +102,15 @@
         <div id="page-content-wrapper" ng-class="{'toggled': showNav}">
           <div class="container-fluid">
             <div class="row">
-              <a href="" class="btn btn-default" id="menu-toggle" ng-click="activeNav()">{{showNav}}</a>
               <div class="col-lg-12">
                 <div ui-view></div>
-
                 <div id="search" ng-class="({'open': showFullSearch})">
                   <a type="button" class="close" ng-click="activeSearch()">×</a>
                   <form ng-submit="fullSearchSubmit()">
                     <input type="search" ng-model="fullScInput" placeholder="type keyword(s) here"/>
-                    <button type="submit" class="btn btn-primary">Search</button>
                   </form>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
