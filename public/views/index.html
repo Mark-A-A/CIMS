@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/sidebar.css">
     <link rel="stylesheet" href="../public/css/register.css">
     <link rel="stylesheet" href="../public/css/index.css">
     <link rel="stylesheet" href="../public/css/details.css">
@@ -30,28 +31,39 @@
     <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.css">
 
     <body>
-      <!-- NAVIGATION-->
-      <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse" id="btm-nav">
-        <div class="container">
-          <ul class="nav navbar-nav">
+
+      <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+            <div>
+              <img src="http://placehold.it/125x125" class="img-circle" id="sidebar-Pic" alt="Circular Image">
+            </div>
+            <li class="sidebar-brand">
+              <a href="#">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              Welcome Guest!
+              </a>
+            </li>
             <li>
               <a ui-sref="home">
-                <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-home fa-2x" aria-hidden="true">&nbsp; Home</i>
               </a>
             </li>
             <li>
               <a ui-sref="news">
-                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true">&nbsp; News</i>
               </a>
             </li>
             <li>
               <a ui-sref="login" ng-hide="authenticated">
-                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-user fa-2x" aria-hidden="true">&nbsp; Login</i>
               </a>
             </li>
             <li>
               <a ui-sref="register" ng-hide="authenticated">
-                <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-user-plus fa-2x" aria-hidden="true">&nbsp; Register</i>
               </a>
             </li>
             <li>
@@ -63,13 +75,24 @@
                 to the CIMS App</a>
             </li>
             <li>
-              <a ui-sref="calendar">Calendar</a>
+              <a ui-sref="calendar"><i class="fa fa-calendar fa-2x" aria-hidden="true">&nbsp; Calendar</i></a>
             </li>
           </ul>
         </div>
-      </nav>
+        <!-- /#sidebar-wrapper -->
+        <div id="page-content-wrapper">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div ui-view></div>
+                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /#page-content-wrapper -->
 
-      <div ui-view></div>
+      </div>
 
     </body>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>

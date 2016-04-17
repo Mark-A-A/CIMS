@@ -18,7 +18,7 @@
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background:#2B2D42;
+  background: #2B2D42;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -97,4 +97,17 @@
     position: relative;
     margin-right: 0;
   }
+}
+
+/*Sidenav styles*/
+.sidebar-nav li a{
+margin-top: 8px;
+margin-bottom: 28px;
+}
+
+#sidebar-Pic{
+  position: relative;
+  top: 20px;
+  display: block;
+margin: 0 auto;
 }
