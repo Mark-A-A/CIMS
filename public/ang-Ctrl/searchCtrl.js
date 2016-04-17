@@ -9,7 +9,7 @@ searchCtrl.controller('loadSpecialty', ['$rootScope', '$http', function($rootSco
   $rootScope.loadList();
 }]);
 
-searchCtrl.controller('sideNavCtrl', ['$scope', '$http', function($scope, $http) {
+searchCtrl.controller('sideNavCtrl', ['$scope', '$http', '$stateParams', 'NgMap', function($scope, $http, NgMap) {
   $scope.showNav = false;
   $scope.activeNav = function() {
     $scope.showNav = !$scope.showNav;
@@ -21,10 +21,12 @@ searchCtrl.controller('sideNavCtrl', ['$scope', '$http', function($scope, $http)
     $scope.showFullSearch = !$scope.showFullSearch;
   };
 
-  $scope.fullSearchSubmit = function(){
-      $http.get('https://api.betterdoctor.com/2016-03-01/doctors?query='+$scope.fullScInput+'&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&sort=best-match-desc&skip=0&limit=2&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
-        console.log(data);
-      });
+  $scope.fullSearchSubmit = function() {
+    $http.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + $scope.fullScInput + '&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&sort=best-match-desc&skip=0&limit=2&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
+      console.log(data.data);
+      $scope.showMap = true;
+      $scope.doctors = data.data;
+    });
   };
 }]);
 
