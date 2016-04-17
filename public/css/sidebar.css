@@ -111,3 +111,7 @@ margin-bottom: 28px;
   display: block;
 margin: 0 auto;
 }
+
+.menu-text{
+  text-align: right;
+}

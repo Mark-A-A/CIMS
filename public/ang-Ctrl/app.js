@@ -1,5 +1,4 @@
-
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl','newsCtrl','CalendarCtrl2'])
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl', 'CalendarCtrl2'])
 
 .run(function($rootScope, $http) {
 
@@ -39,7 +38,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
         "map@home": {
           templateUrl: "partials/map.html",
           controller: "searchBar"
-        }
+        },
       }
     })
     .state('news', {

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../public/css/details.css">
     <link rel="stylesheet" href="../public/css/news.css">
     <link rel="stylesheet" href="../css/calendar.css"/>
+    <link rel="stylesheet" href="../css/fullscreen.css"/>
 
     <script src="../../bower_components/angular-ui-calendar/src/calendar.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
@@ -31,9 +32,7 @@
     <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.css">
 
     <body ng-controller="sideNavCtrl">
-
       <div id="wrapper" ng-class="{'toggled': showNav}">
-
         <!-- Sidebar -->
         <div id="sidebar-wrapper" ng-class="{'toggled ': showNav}">
           <ul class="sidebar-nav">
@@ -48,26 +47,37 @@
             </li>
             <li>
               <a ui-sref="home">
-                <i class="fa fa-home fa-2x" aria-hidden="true"></i>
-                &nbsp; Home
+                <i class="fa fa-home fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Home</span>
+                </i>
+              </a>
+            </li>
+            <li>
+              <a href="#search" ng-click="activeSearch()">
+                <i class="fa fa-search fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Search</span>
+                </i>
               </a>
             </li>
             <li>
               <a ui-sref="news">
-                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i>
-                &nbsp; News
+                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; News</span>
+                </i>
               </a>
             </li>
             <li>
               <a ui-sref="login" ng-hide="authenticated">
-                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-                &nbsp; Login
+                <i class="fa fa-user fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Login</span>
+                </i>
               </a>
             </li>
             <li>
               <a ui-sref="register" ng-hide="authenticated">
-                <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
-                &nbsp; Register
+                <i class="fa fa-user-plus fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Register</span>
+                </i>
               </a>
             </li>
             <li>
@@ -80,8 +90,9 @@
             </li>
             <li>
               <a ui-sref="calendar">
-                <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
-                &nbsp; Calendar
+                <i class="fa fa-calendar fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Calendar</span>
+                </i>
               </a>
             </li>
           </ul>
@@ -90,16 +101,24 @@
         <div id="page-content-wrapper" ng-class="{'toggled': showNav}">
           <div class="container-fluid">
             <div class="row">
+              <a href="" class="btn btn-default" id="menu-toggle" ng-click="activeNav()">{{showNav}}</a>
               <div class="col-lg-12">
                 <div ui-view></div>
-                <a href="" class="btn btn-default" id="menu-toggle" ng-click="activeNav()">{{showNav}}</a>
+
+                <div id="search" ng-class="({'open': showFullSearch})">
+                  <a type="button" class="close" ng-click="activeSearch()">×</a>
+                  <form>
+                    <input type="search" value="" placeholder="type keyword(s) here"/>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                  </form>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
-        <!-- /#page-content-wrapper -->
-
       </div>
+      <!-- /#page-content-wrapper -->
 
     </body>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>

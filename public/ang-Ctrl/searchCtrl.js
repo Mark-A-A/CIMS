@@ -14,6 +14,12 @@ searchCtrl.controller('sideNavCtrl', ['$scope', '$http', function($scope, $http)
   $scope.activeNav = function() {
   $scope.showNav = !$scope.showNav;
 };
+
+$scope.showFullSearch = false;
+$scope.activeSearch = function() {
+  console.log('hey');
+$scope.showFullSearch = !$scope.showFullSearch;
+};
 }]);
 
 searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$stateParams', 'NgMap', function($scope, $http, $rootScope, $location, NgMap) {
