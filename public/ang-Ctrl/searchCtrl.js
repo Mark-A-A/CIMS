@@ -9,6 +9,13 @@ searchCtrl.controller('loadSpecialty', ['$rootScope', '$http', function($rootSco
   $rootScope.loadList();
 }]);
 
+searchCtrl.controller('sideNavCtrl', ['$scope', '$http', function($scope, $http) {
+  $scope.showNav = false;
+  $scope.activeNav = function() {
+  $scope.showNav = !$scope.showNav;
+};
+}]);
+
 searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$stateParams', 'NgMap', function($scope, $http, $rootScope, $location, NgMap) {
   NgMap.getMap().then(function(map) {
     $rootScope.map = map;
