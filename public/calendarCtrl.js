@@ -1,51 +1,69 @@
-angular
-  .module('CalendarCtrl2',['mwl.calendar', 'ui.bootstrap','ngAnimate']) //you will need to declare your module with the dependencies ['mwl.calendar', 'ui.bootstrap', 'ngAnimate']
-  .controller('KitchenSinkCtrl', function(moment) {
-      // .controller('KitchenSinkCtrl', function(moment,alert) {
+var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstrap','ngAnimate']);
+
+  CalendarCtrl2.controller('KitchenSinkCtrl',['$scope','moment', '$stateParams','$http',function($scope,moment,$stateParams,$http) {
 
     var vm = this;
-
     //These variables MUST be set as a minimum for the calendar to work
-    vm.calendarView = 'week';
+    vm.calendarView = 'day';
     vm.viewDate = new Date();
-    vm.events = [
-      {
-        title: 'An event',
-        type: 'warning',
-        startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-        endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
-        draggable: true,
-        resizable: true
-      }, {
-        title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
-        type: 'info',
-        startsAt: moment().subtract(1, 'day').toDate(),
-        endsAt: moment().add(5, 'days').toDate(),
-        draggable: true,
-        resizable: true
-      }, {
-        title: 'This is a really long event title that occurs on every year',
-        type: 'important',
-        startsAt: moment().startOf('day').add(7, 'hours').toDate(),
-        endsAt: moment().startOf('day').add(19, 'hours').toDate(),
-        recursOn: 'year',
-        draggable: true,
-        resizable: true
-      }
-    ];
 
-    // $http.get('/auth/populateCalendar/:uid').success(function(data) {
-    //     console.log(data);
-    //   if (data.username) {
-    //     $rootScope.authenticated = true;
-    //     $rootScope.current_user = data.username;
-    //     console.log("successfully Logged In");
-    //     $location.path('/');
-    //   } else {
-    //     $scope.error_message = data.message;
+    this.events =[];
+
+    // $scope.drIdentifier = $stateParams.uid;
+    // console.log($scope.drIdentifier);
+
+    $http.get('/auth/populateCalendar/1').success(function(data) {
+      $scope.appointments = data;
+      // console.log(data);
+       for(i=0;i<1;i++){
+         $scope.events.push({
+            title:data[i].eventTitle,
+            type: 'warning',
+            // startsAt: new Date(data[i].startDateTime),
+            // endsAt: new Date(data[i].endDateTime),
+            startsAt: new Date(2016,3,17,9),
+            endsAt: new Date(2016,3,17,11),
+            draggable: true,
+            resizable: true,
+            editable: false,
+            deletable :false
+        })
+       }
+       // console.log($scope.events);
+    });
+
+    vm.events.push($scope.events) ;
+
+    console.log(vm.events);
+
+    // vm.events = [
+    //   {
+    //     title: 'An event',
+    //     type: 'warning',
+    //     startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
+    //     endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
+    //     draggable: true,
+    //     resizable: true
+    //   }, {
+    //     title: '<i class="glyphicon glyphicon-asterisk"></i> <span class="text-primary">Another event</span>, with a <i>html</i> title',
+    //     type: 'info',
+    //     startsAt: moment().subtract(1, 'day').toDate(),
+    //     endsAt: moment().add(5, 'days').toDate(),
+    //     draggable: true,
+    //     resizable: true
+    //   }, {
+    //     title: 'This is a really long event title that occurs on every year',
+    //     type: 'important',
+    //     startsAt: moment().startOf('day').add(7, 'hours').toDate(),
+    //     endsAt: moment().startOf('day').add(19, 'hours').toDate(),
+    //     recursOn: 'year',
+    //     draggable: true,
+    //     resizable: true
     //   }
+    // ];
+
     // });
-    vm.isCellOpen = true;
+    $scope.isCellOpen = true;
 
     // vm.eventClicked = function(event) {
     //   alert.show('Clicked', event);
@@ -63,10 +81,30 @@ angular
     //   alert.show('Dropped or resized', event);
     // };
 
-    vm.toggle = function($event, field, event) {
+    $scope.toggle = function($event, field, event) {
       $event.preventDefault();
       $event.stopPropagation();
       event[field] = !event[field];
     };
 
-  });
+  }]);
+
+// CalendarCtrl2.factory('myAppointment','$stateParams','$http',function($scope,$stateParams,$http){
+//   var appointments = [];
+//   var factory = {};
+//   factory.getAppointments = function (){
+//     $scope.drIdentifier = $stateParams.uid;
+//     console.log($scope.drIdentifier);
+//     $http.get('/auth/populateCalendar/'+$scope.drIdentifier).success(function(data) {
+//       $scope.appointments = data;
+//        console.log($scope.appointments);
+//     });
+//     return appointments;
+//   }
+
+//   factory.postAppointments = function(){
+
+//   }
+
+//   return factory;
+// });
