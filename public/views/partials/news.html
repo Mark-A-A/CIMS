@@ -8,7 +8,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-6" id="newsDiv" ng-controller="articleController">
       <h3>Top Stories</h3>
-      <div class="panel panel-default" ng-repeat="article in articles">
+      <div class="panel panel-default" ng-repeat="article in articles" id="repeatDivs">
         <div class="panel-body">
           <img class="articleImage" ng-src="{{article.img}}" align="left">
           <h4 class="articleTitle"><a href="https://www.medicalnewstoday.com/{{article.link}}" target="_blank">{{article.title}}</a></h4>
