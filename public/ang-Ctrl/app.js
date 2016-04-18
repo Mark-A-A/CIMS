@@ -30,9 +30,13 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       controller: ""
     })
     .state('search', {
-      url: "/search",
+      url: "/search/:query",
       views: {
         "": {
+          templateUrl: "partials/fullSearch.html",
+          controller: "searchBar"
+        },
+        "advance@search": {
           templateUrl: "partials/main.html",
           controller: "searchBar"
         },
