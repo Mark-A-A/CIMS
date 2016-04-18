@@ -7,7 +7,7 @@ var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstra
     vm.calendarView = 'day';
     vm.viewDate = new Date();
 
-    this.events =[];
+    vm.events =[];
 
     // $scope.drIdentifier = $stateParams.uid;
     // console.log($scope.drIdentifier);
@@ -15,8 +15,8 @@ var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstra
     $http.get('/auth/populateCalendar/1').success(function(data) {
       $scope.appointments = data;
       // console.log(data);
-       for(i=0;i<1;i++){
-         $scope.events.push({
+       for(i=0;i<data.length;i++){
+         vm.events.push({
             title:data[i].eventTitle,
             type: 'warning',
             // startsAt: new Date(data[i].startDateTime),
@@ -29,12 +29,8 @@ var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstra
             deletable :false
         })
        }
-       // console.log($scope.events);
+       console.log(vm.events);
     });
-
-    vm.events.push($scope.events) ;
-
-    console.log(vm.events);
 
     // vm.events = [
     //   {

@@ -38,7 +38,7 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
   };
 }]);
 
-searchCtrl.controller('loadDetails',['$scope','$http', '$stateParams', 'NgMap', function($scope,$http, $stateParams, NgMap,myAppointment) {
+searchCtrl.controller('loadDetails',['$scope','$http', '$stateParams', 'NgMap', function($scope,$http, $stateParams, NgMap) {
   $scope.drIdentifier = $stateParams.uid;
   $http.get('https://api.betterdoctor.com/2016-03-01/doctors/' + $scope.drIdentifier + '?user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
     console.log(data.data);
@@ -46,14 +46,14 @@ searchCtrl.controller('loadDetails',['$scope','$http', '$stateParams', 'NgMap', 
   });
 
   $scope.getAppointments = function (){
-    myAppointment.getAppointments();
-    // $scope.drIdentifier = $stateParams.uid;
-    // console.log($scope.drIdentifier);
-    // $http.get('/auth/populateCalendar/'+$scope.drIdentifier).success(function(data) {
-    //   $scope.appointments = data;
-    //    // console.log("In search"+$scope.appointments);
-    //    return $scope.appointments;
-    // });
+    // myAppointment.getAppointments();
+    $scope.drIdentifier = $stateParams.uid;
+    console.log($scope.drIdentifier);
+    $http.get('/auth/populateCalendar/'+$scope.drIdentifier).success(function(data) {
+      $scope.appointments = data;
+       console.log($scope.appointments);
+       return $scope.appointments;
+    });
   };
 }]);
 
