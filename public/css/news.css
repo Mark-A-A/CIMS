@@ -1,10 +1,40 @@
+
 .articleImage {
-  width: 175px;
-  height: 125px;
-  padding-right: 10px;
+  width: 220px;
+  height: 130px;
+  padding-right: 15px;
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
+#repeatDivs {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .md-links {
   padding-bottom: 10px;
   display: block;
 }
+
+.md-links a {
+  color: #DCDCDD;
+  text-align: center;
+}
+
+.md-links a:hover {
+  color: #9D9D9D;
+}
+
+#newsDiv h3 {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+#mdDiv h3 {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.well {
+  background-color: #2B2D42;
+}
+

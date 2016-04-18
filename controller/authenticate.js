@@ -1,6 +1,12 @@
 var express = require('express');
 var logout = require('express-passport-logout');
 var router = express.Router();
+var mongojs = require('mongojs');
+var eventDb = mongojs("cims-db",["Events"]);
+
+eventDb.on('error',function(err){
+  console.log('database error'+err);
+});
 
 module.exports = function (passport) {
 
@@ -12,16 +18,6 @@ module.exports = function (passport) {
   router.get('/failure', function(req,res){
     res.send({state:'failure', user:null, message:"Invalid username or password"});
   });
-
-  // router.post('/login', passport.authenticate('login',{
-  //   successRedirect: '/auth/success',
-  //   failureRedirect: '/auth/failure'
-  // }));
-
-  // router.post('/signup', passport.authenticate('signup',{
-  //   successRedirect: '/auth/success',
-  //   failureRedirect: '/auth/failure'
-  // }));
 
   router.post('/login', passport.authenticate('login'), function(req, res) {
     if(req.user) {
@@ -51,10 +47,22 @@ module.exports = function (passport) {
     //   res.json({});
     // }
   });
-  
 
+  router.get('/populateCalendar/:id',function(req,res,next){
+    var doctorId = req.params.id;
+
+   eventDb.Events.find({doctorId: doctorId}, function(err, documents){
+        if(err){
+            console.log(err);
+        } else {
+          console.log("Pulled Calendar for the doctor"+doctorId);
+            res.json(documents);
+        }
+    })
+  });
 
   return router;
+
 };
 
 // route middleware to make sure a user is logged in

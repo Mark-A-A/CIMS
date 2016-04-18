@@ -2,6 +2,9 @@ html, body{
 font-family: 'Lora', serif;
 background-color: #EDF2F4;
 }
+.navbar-inverse .navbar-nav>li>a{
+  padding-right: 20px;
+}
 #headline {
   text-align: center;
   background-color: #2B2D42;
@@ -22,6 +25,9 @@ ul {
 }
 .doctors {
   background-color: #F8FCFF;
+}
+
+.doctors:hover{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .info{

@@ -1,24 +1,24 @@
+<div class="row">
+  <div class="jumbotron" id="headline">
+    <h2>Your Source for Health News!</h2>
+  </div>
+</div><!-- End Row -->
 <div class="container">
   <div class="row">
-    <div class="col-md">
-      <h1>Get your Latest Medical News Here!</h1><hr >
-    </div>
-  </div>
-  <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-6" ng-controller="articleController">
+    <div class="col-md-6" id="newsDiv" ng-controller="articleController">
       <h3>Top Stories</h3>
-      <div class="panel panel-default" ng-repeat="article in articles">
+      <div class="panel panel-default" ng-repeat="article in articles" id="repeatDivs">
         <div class="panel-body">
           <img class="articleImage" ng-src="{{article.img}}" align="left">
-          <h4><a href="https://www.medicalnewstoday.com/{{article.link}}" target="_blank">{{article.title}}</a></h4>
+          <h4 class="articleTitle"><a href="https://www.medicalnewstoday.com/{{article.link}}" target="_blank">{{article.title}}</a></h4>
         </div>
         <div class="panel-footer">{{article.body}}</div>
       </div>
     </div><!-- End Col-md-8 -->
     <div class="col-md-1"></div>
-    <div class="col-md-4">
-      <h4>Other Stories</h4>
+    <div class="col-md-4" id="mdDiv">
+      <h3>Other Stories</h3>
       <div class="well" ng-controller="mdController">
         <ul>
           <li class="md-links" ng-repeat="link in links"><a href="{{link.link}}" target="_blank">{{link.title}}</a></li>

@@ -12,6 +12,8 @@ var PORT = process.env.PORT || 3000;
 
 var db = require('./config/db.js');
 var user = require('./model/users.js');
+var doctor = require('./model/doctors.js');
+var event = require('./model/events.js');
 
 var index = require('./controller/index');
 var api = require('./controller/api');
@@ -25,6 +27,7 @@ app.use('/public', express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/public/views"));
 app.use(express.static(__dirname + "/public/views/partials"));
 app.use('/bower_components', express.static(__dirname + "/bower_components"));
+
 
 //MIDDLEWARE
 app.use(logger('dev'));
