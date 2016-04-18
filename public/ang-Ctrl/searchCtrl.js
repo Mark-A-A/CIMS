@@ -28,7 +28,7 @@ searchCtrl.controller('sideNavCtrl', ['$scope', '$http', '$stateParams', 'NgMap'
       $scope.showMap = true;
       $scope.doctors = data.data;
     });
-    $scope.fullScInput = " ";
+    $scope.fullScInput = "Search";
   };
 }]);
 
@@ -64,6 +64,7 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
 }]);
 
 searchCtrl.controller('loadDetails', ['$scope', '$http', '$stateParams', 'NgMap', function($scope, $http, $stateParams, NgMap) {
+  console.log($stateParams);
   $scope.drIdentifier = $stateParams.uid;
   $http.get('https://api.betterdoctor.com/2016-03-01/doctors/' + $scope.drIdentifier + '?user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
     console.log(data.data);
