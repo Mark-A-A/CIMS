@@ -1,13 +1,14 @@
 var express = require('express');
 var logout = require('express-passport-logout');
 var router = express.Router();
+var passport = require("passport");
 var googleOauth2 = require("../config/passport-google-oauth.js");
 
 debugger
 
 var googleAuthenticate = function () {
 
-var passport = require("passport");
+
 debugger
 console.log(passport.authenticate());
 
@@ -38,12 +39,12 @@ console.log(passport.authenticate());
   //     res.redirect('/');
   //   });
   router.get( '/auth/google/callback', 
-      passport.authenticate( 'google', { 
-        successRedirect: '/',
-        failureRedirect: '/login'
-      })
+    passport.authenticate( 'google', { 
+      successRedirect: '/',
+      failureRedirect: '/login'
+    })
   );
-
+ 
 
   return router;
 

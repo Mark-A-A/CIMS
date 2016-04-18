@@ -50,7 +50,7 @@ app.use('/', index);
 app.use('/api', api);
 app.use('/authentication', authenticate);
 //app.use('/googleSuccess', googleAuthenticate);
-app.use('/auth/google', googleAuthenticate;
+app.use('/auth/google', googleAuthenticate);
 // app.use('/auth/example',
 //      passport.authenticate('oauth2'), function (req, res){
 //       console.log("did something: ");

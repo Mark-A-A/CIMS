@@ -1,6 +1,6 @@
 var passport = require('passport');
 var passportLocal = require('passport-local');
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var GoogleStrategy = require('passport-google-oauth2').Strategy;
 var Keys = require("../.env");
 //console.log(Keys);
 
@@ -14,15 +14,15 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-      done(null, user.id);
+      done(null, user);
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-      User.findById(id, function(err, user) {
-        done(err, user);
-      });
+    
+    passport.deserializeUser(function(obj, done) {
+      done(null, obj);
     });
+
     
     // code for login (use('local-login', new LocalStategy))
     // code for signup (use('local-signup', new LocalStategy))
@@ -42,7 +42,7 @@ passport.use(new GoogleStrategy({
   clientID: Keys.oAuth2.CLIENT_ID,//CLIENT_ID,
   clientSecret: Keys.oAuth2.CLIENT_SECRET, //CLIENT_SECRET,
   //callbackURL: 'https://localhost:3000/auth/google/callback'
-  callbackURL: 'http://cimsmed.dev/auth/google/callback',
+  callbackURL: 'http://cimsmed.dev:3000/auth/google/callback',
   passReqToCallback: true
 },
       
@@ -53,33 +53,34 @@ passport.use(new GoogleStrategy({
     // User.findOne won't fire until we have all our data back from Google
     process.nextTick(function() {
 
+       return done(null, profile);
       // try to find the user based on their google id
-      User.findOne({ 'google.id' : profile.id }, function(err, user) {
-        if (err)
-          return done(err);
+      // User.findOrCreate({ 'google.id' : profile.id }, function(err, user) {
+      //   if (err)
+      //     return done(err);
 
-        if (user) {
+      //   if (user) {
 
-              // if a user is found, log them in
-          return done(null, user);
-        } else {
-          // if the user isnt in our database, create a new user
-          var newUser          = new User();
+      //         // if a user is found, log them in
+      //     return done(null, user);
+      //   } else {
+      //     // if the user isnt in our database, create a new user
+      //     var newUser          = new User();
 
-          // set all of the relevant information
-          newUser.google.id    = profile.id;
-          newUser.google.token = token;
-          newUser.google.name  = profile.displayName;
-          newUser.google.email = profile.emails[0].value; // pull the first email
+      //     // set all of the relevant information
+      //     newUser.google.id    = profile.id;
+      //     newUser.google.token = token;
+      //     newUser.google.name  = profile.displayName;
+      //     newUser.google.email = profile.emails[0].value; // pull the first email
 
-          // save the user
-          newUser.save(function(err) {
-            if (err)
-              throw err;
-            return done(null, newUser);
-          });
-        };
-      });
+      //     // save the user
+      //     newUser.save(function(err) {
+      //       if (err)
+      //         throw err;
+      //       return done(null, newUser);
+      //     });
+      //   };
+      // });
     });
 
   }));
