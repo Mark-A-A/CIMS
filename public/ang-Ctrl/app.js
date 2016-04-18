@@ -26,16 +26,21 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
   $stateProvider
     .state('home', {
       url: "/",
+      templateUrl: "partials/landing.html",
+      controller: ""
+    })
+    .state('search', {
+      url: "/search",
       views: {
         "": {
           templateUrl: "partials/main.html",
           controller: "searchBar"
         },
-        "results@home": {
+        "results@search": {
           templateUrl: "partials/results.html",
           controller: "searchBar"
         },
-        "map@home": {
+        "map@search": {
           templateUrl: "partials/map.html",
           controller: "searchBar"
         },

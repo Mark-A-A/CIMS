@@ -21,7 +21,17 @@ searchCtrl.controller('sideNavCtrl', ['$scope', '$http', '$stateParams', 'NgMap'
     $scope.showFullSearch = !$scope.showFullSearch;
   };
 
+  $scope.getLocation = function() {
+    if (navigator.geolocation) navigator.geolocation.getCurrentPosition(onPositionUpdate);
+    function onPositionUpdate(position) {
+      $scope.geolat = position.coords.latitude;
+      $scope.geolng = position.coords.longitude;
+      console.log(position);
+    }
+  };
+  $scope.getLocation();
   $scope.fullSearchSubmit = function() {
+
     $scope.showFullSearch = !$scope.showFullSearch;
     $http.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + $scope.fullScInput + '&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&sort=best-match-desc&skip=0&limit=2&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
       console.log(data.data);
