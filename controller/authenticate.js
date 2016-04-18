@@ -50,12 +50,13 @@ module.exports = function (passport) {
 
   router.get('/populateCalendar/:id',function(req,res,next){
     var doctorId = req.params.id;
+    // console.log("doctor id is :"+doctorId);
 
    eventDb.Events.find({doctorId: doctorId}, function(err, documents){
         if(err){
             console.log(err);
         } else {
-          console.log("Pulled Calendar for the doctor"+doctorId);
+          // console.log("Pulled Calendar for the doctor"+doctorId);
             res.json(documents);
         }
     })

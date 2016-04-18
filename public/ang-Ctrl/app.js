@@ -57,6 +57,10 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
         "map@doctors": {
           templateUrl: "partials/map-single.html",
           controller: ""
+        },
+        "calendar@doctors": {
+          templateUrl: "partials/calendar.html",
+          controller: "KitchenSinkCtrl"
         }
       },
     })
@@ -72,7 +76,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     })
     .state('calendar', {
       url: "/calendar",
-      templateUrl: "partials/calendar2.html",
+      templateUrl: "partials/calendar.html",
       controller: "KitchenSinkCtrl"
     });
 });
