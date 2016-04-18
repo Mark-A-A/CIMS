@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl']).run(function($rootScope, $http) {
-=======
-
 var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl','newsCtrl','CalendarCtrl2'])
 
 .run(function($rootScope, $http) {
->>>>>>> 3206cfbd7f8730bc4d6863296cd83401622dc75e
+
 
   $rootScope.authenticated = false;
   $rootScope.current_user = " ";
@@ -74,18 +70,9 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       templateUrl: "partials/register.html",
       controller: "authController"
     })
-<<<<<<< HEAD
-    .state('login-google', {
-      url: "/google-login",
-      templateUrl: "partials/google-login.html",
-      controller: "authController"
-    })
-});
-=======
     .state('calendar', {
       url: "/calendar",
       templateUrl: "partials/calendar2.html",
       controller: "KitchenSinkCtrl"
     });
 });
->>>>>>> 3206cfbd7f8730bc4d6863296cd83401622dc75e
