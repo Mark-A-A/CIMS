@@ -1,6 +1,7 @@
 /*** Docs ***/
 body {
-  margin-top: 40px;
+  margin-top: 10px;
+  margin-bottom: 100px;
 }
 section {
   padding-top: 40px;
@@ -48,7 +49,16 @@ section {
   background-color: rgb(132, 222, 175);
   color: black;
 }
-
 .calTools{
   margin-bottom: 10px;
+}
+#calendar {
+  margin-bottom: 50px;
+}
+.css-form input.ng-invalid.ng-touched {
+  background-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-touched {
+  background-color: #78FA89;
 }

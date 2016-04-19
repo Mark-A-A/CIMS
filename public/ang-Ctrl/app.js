@@ -1,5 +1,4 @@
 var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl','newsCtrl','CalendarCtrl2'])
-
 .run(function($rootScope, $http) {
 
 
@@ -80,8 +79,9 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       controller: "KitchenSinkCtrl"
     })
     .state('profile', {
-      url: "/profile/:user_id",
+      url: "/profile/:user_id/:user_name",
       templateUrl: "partials/profile.html",
       controller: "authController"
     });
+
 });
