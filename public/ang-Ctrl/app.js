@@ -81,7 +81,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('profile', {
       url: "/profile/:user_id/:user_name",
       templateUrl: "partials/profile.html",
-      controller: "authController"
+      controller: "profileViewCtrl"
     });
 
 });

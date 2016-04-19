@@ -1,9 +1,11 @@
 var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
 mainCtrl.controller("authController", function($scope, $rootScope, $http, $location, $stateParams) {
+  
   $scope.user = {
     username: '',
     password: ''
   };
+
   $scope.error_message = '';
 
   $scope.login = function() {
@@ -15,7 +17,7 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
       console.log("show the current user is...." + data.username);
       if (data.username) {
 
-        
+
         $rootScope.authenticated = true;
         $rootScope.user_id = data._id
         $rootScope.current_user = data.username;
@@ -52,5 +54,9 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
     });
     $rootScope.authenticated = false;
     $rootScope.current_user = {};
+
+
   };
+
+
 });
