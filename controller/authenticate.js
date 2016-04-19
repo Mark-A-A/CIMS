@@ -2,15 +2,15 @@ var express = require('express');
 var logout = require('express-passport-logout');
 var router = express.Router();
 var mongojs = require('mongojs');
-var eventDb = mongojs("cims-db",["events"]);
+// var eventDb = mongojs("cims-db",["events"]);
 // var Event = require('../model/events.js');
-// var Db = require('../config/db.js');
+var db = require('../config/db.js');
 var mongoose = require('mongoose');
 var Event = mongoose.model('Event');
 
-eventDb.on('error',function(err){
-  console.log('database error'+err);
-});
+// eventDb.on('error',function(err){
+//   console.log('database error'+err);
+// });
 
 module.exports = function (passport) {
 
@@ -56,7 +56,7 @@ module.exports = function (passport) {
     var doctorId = req.params.id;
     // console.log("doctor id is :"+doctorId);
     // var newEvent = new Event();
-    eventDb.events.find({drIdentifier: doctorId}, function(err, documents){
+    Event.find({drIdentifier: doctorId}, function(err, documents){
         if(err){
             console.log(err);
         } else {
@@ -90,7 +90,7 @@ module.exports = function (passport) {
         // console.log("Event Successfully saved");
       });
 
-     return true;
+     res.json({});
   });
 // GET /auth/google
 //   Use passport.authenticate() as route middleware to authenticate the

@@ -31,7 +31,7 @@
             deletable :false
         })
        }
-        console.log(vm.events);
+        // console.log(vm.events);
       });
     };
 
@@ -43,13 +43,6 @@
       $scope.appointment.eventStartsAt = $scope.event.startsAt,
       $scope.appointment.eventEndsAt = moment($scope.event.startsAt).add(1, 'h')._d,
 
-      // console.log("Add event clicked");
-      // console.log($scope.appointment);
-      // console.log("Event start at :");
-      // console.log($scope.appointment.eventStartsAt);
-      // console.log("Event Ends at :");
-      // console.log($scope.appointment.eventEndsAt);
-
       // Simple POST request to add Event into the database:
       $http({
         method: 'POST',
@@ -58,7 +51,6 @@
       }).then(function successCallback(response) {
           // this callback will be called asynchronously
           // when the response is available
-          console.log("Successfully logged the event in the database")
          vm.events.push({
             title:$scope.appointment.name,
             type: 'warning',
