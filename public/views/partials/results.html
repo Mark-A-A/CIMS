@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8" id="resultContent">
+
       <ul class="results list-group" ng-show="showMap">
         <li class="doctors" ng-repeat="item in doctors ">
           <a ui-sref="doctors({uid:'{{item.uid}}', name:'{{item.profile.first_name}}-{{item.profile.last_name}}-{{item.profile.title}}'})">
-            <div class="info">
+            <div class="info" class="col-md-5">
               <h3 id="name">
                 {{item.profile.first_name}}
                 {{item.profile.middle_name}}.
@@ -24,7 +25,8 @@
                 {{item.practices[0].visit_address.city}},
                 {{item.practices[0].visit_address.state}}
                 {{item.practices[0].visit_address.zip}}</small>
-            </h4>
+              </h4>
+               &nbsp  &nbsp <button type="button" class="btn btn-warning">Book an Appointment</button>
           </div>
         </a>
         <hr/>
