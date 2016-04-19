@@ -53,6 +53,11 @@
               <a ng-show="authenticated" ng-click="signout()">Log Out</a>
             </li>
             <li>
+              <a ui-sref="profile" ng-show="authenticated">
+                <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
               <a ng-show="authenticated">Welcome
                 {{current_user}}
                 to the CIMS App</a>
