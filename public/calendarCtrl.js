@@ -6,7 +6,6 @@ var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstra
     //These variables MUST be set as a minimum for the calendar to work
     vm.calendarView = 'day';
     vm.viewDate = new Date();
-
     vm.events =[];
 
     // $scope.drIdentifier = $stateParams.uid;
@@ -19,10 +18,10 @@ var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstra
          vm.events.push({
             title:data[i].eventTitle,
             type: 'warning',
-            // startsAt: new Date(data[i].startDateTime),
-            // endsAt: new Date(data[i].endDateTime),
-            startsAt: new Date(2016,3,17,9),
-            endsAt: new Date(2016,3,17,11),
+            startsAt: new Date(data[i].startDateTime),
+            endsAt: new Date(data[i].endDateTime),
+            // startsAt: new Date(2016,3,17,9),
+            // endsAt: new Date(2016,3,17,11),
             draggable: true,
             resizable: true,
             editable: false,
@@ -31,6 +30,23 @@ var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstra
        }
        console.log(vm.events);
     });
+
+    $scope.addEvent = function(){
+      console.log("Add event clicked");
+      $scope.date = new Date;
+      $scope.added = true;
+
+      vm.events.push({
+        title:"Your Name",
+        type: 'warning',
+        startsAt:$scope.date ,
+        endsAt: $scope.date,
+        draggable: true,
+        resizable: true,
+        editable: true,
+        deletable :true
+      });
+    }
 
     // vm.events = [
     //   {
@@ -61,21 +77,25 @@ var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstra
     // });
     $scope.isCellOpen = true;
 
-    // vm.eventClicked = function(event) {
-    //   alert.show('Clicked', event);
-    // };
+    vm.eventClicked = function(event) {
+      // alert.show('Clicked', event);
+      console.log('Clicked', event);
+    };
 
-    // vm.eventEdited = function(event) {
-    //   alert.show('Edited', event);
-    // };
+    vm.eventEdited = function(event) {
+      // alert.show('Edited', event);
+      console.log('Edited', event);
+    };
 
-    // vm.eventDeleted = function(event) {
-    //   alert.show('Deleted', event);
-    // };
+    vm.eventDeleted = function(event) {
+      // alert.show('Deleted', event);
+      console.log('Deleted', event);
+    };
 
-    // vm.eventTimesChanged = function(event) {
-    //   alert.show('Dropped or resized', event);
-    // };
+    vm.eventTimesChanged = function(event) {
+      // alert.show('Dropped or resized', event);
+      console.log('Dropped or resized', event);
+    };
 
     $scope.toggle = function($event, field, event) {
       $event.preventDefault();

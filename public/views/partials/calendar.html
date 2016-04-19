@@ -1,63 +1,72 @@
 
-<div class="col-md-offset-2 col-md-8" id="calendar">
-    <div ng-controller="KitchenSinkCtrl as vm">
-      <h2 class="text-center">{{ vm.calendarTitle }}</h2>
-      <div class="row">
-        <div class="col-md-6 text-center">
-          <div class="btn-group">
-            <button
-              class="btn btn-primary"
-              mwl-date-modifier
-              date="vm.viewDate"
-              decrement="vm.calendarView">
-              Previous
-            </button>
-            <button
-              class="btn btn-default"
-              mwl-date-modifier
-              date="vm.viewDate"
-              set-to-today>
-              Today
-            </button>
-            <button
-              class="btn btn-primary"
-              mwl-date-modifier
-              date="vm.viewDate"
-              increment="vm.calendarView">
-              Next
-            </button>
-          </div>
-        </div>
-        <br class="visible-xs visible-sm">
-        <div class="col-md-6 text-center">
-          <div class="btn-group">
-            <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'">Year</label>
-            <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'">Month</label>
-            <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'">Week</label>
-            <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'">Day</label>
-          </div>
+<div ng-controller="KitchenSinkCtrl as vm">
+  <div class="col-md-offset-1 col-md-7" id="calendar">
+    <h2 class="text-center">{{ vm.calendarTitle }}</h2>
+
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <div class="btn-group">
+
+          <button
+            class="btn btn-primary"
+            mwl-date-modifier
+            date="vm.viewDate"
+            decrement="vm.calendarView">
+            Previous
+          </button>
+          <button
+            class="btn btn-default"
+            mwl-date-modifier
+            date="vm.viewDate"
+            set-to-today>
+            Today
+          </button>
+          <button
+            class="btn btn-primary"
+            mwl-date-modifier
+            date="vm.viewDate"
+            increment="vm.calendarView">
+            Next
+          </button>
         </div>
       </div>
-      <br>
-      <mwl-calendar
-        events="vm.events"
-        view="vm.calendarView"
-        view-title="vm.calendarTitle"
-        view-date="vm.viewDate"
-        on-event-click="vm.eventClicked(calendarEvent)"
-        on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-        edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
-        delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
-        on-edit-event-click="vm.eventEdited(calendarEvent)"
-        on-delete-event-click="vm.eventDeleted(calendarEvent)"
-        cell-is-open="vm.isCellOpen"
-        day-view-start="06:00"
-        day-view-end="22:00"
-        day-view-split="30"
-        cell-modifier="vm.modifyCell(calendarCell)">
-      </mwl-calendar>
-      <br><br><br>
-      <h3 id="event-editor">
+
+      <br class="visible-xs visible-sm">
+
+      <div class="col-md-6 text-center">
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'">Year</label>
+          <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'">Month</label>
+          <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'">Week</label>
+          <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'">Day</label>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+
+    <mwl-calendar
+      events="vm.events"
+      view="vm.calendarView"
+      view-title="vm.calendarTitle"
+      view-date="vm.viewDate"
+      on-event-click="vm.eventClicked(calendarEvent)"
+      on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+      edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+      delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+      on-edit-event-click="vm.eventEdited(calendarEvent)"
+      on-delete-event-click="vm.eventDeleted(calendarEvent)"
+      cell-is-open="vm.isCellOpen"
+      day-view-start="08:00"
+      day-view-end="20:00"
+      day-view-split="30"
+      cell-modifier="vm.modifyCell(calendarCell)">
+    </mwl-calendar>
+
+    <br><br><br>
+
+    <!--   <h3 id="event-editor">
         Edit events
         <button
           class="btn btn-primary pull-right"
@@ -66,7 +75,9 @@
         </button>
         <div class="clearfix"></div>
       </h3>
+
       <table class="table table-bordered">
+
         <thead>
           <tr>
             <th>Title</th>
@@ -76,6 +87,7 @@
             <th>Remove</th>
           </tr>
         </thead>
+
         <tbody>
           <tr ng-repeat="event in vm.events track by $index">
             <td>
@@ -155,7 +167,60 @@
             </td>
           </tr>
         </tbody>
-      </table>
+
+      </table> -->
+  </div>
+  <div class="col-md-4">
+    <br><br><br>
+    <button type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">Schedule An Appointment</button>
+    <br><br>
+    <hr>
+    <div uib-collapse="isCollapsed">
+      <div class="well well-lg">
+        <form novalidate class="simple-form">
+          Name : <input type="text" ng-model="user.name" />
+          <br><br>
+          E-mail: <input type="email" ng-model="user.email" />
+          <br><br>
+          Phone: <input type="phone" ng-model="user.phone" />
+          <br><br>
+          Gender: <input type="radio" ng-model="user.gender" value="male" /> male
+          <input type="radio" ng-model="user.gender" value="female" /> female
+          <br /><br>
+          Request an Appointment(Date & Time) :
+            <uib-timepicker
+              ng-model="event.startsAt"
+              hour-step="1"
+              minute-step="15"
+              show-meridian="true">
+            </uib-timepicker>
+            <p class="input-group" style="max-width: 250px">
+              <input
+                type="text"
+                class="form-control"
+                readonly
+                uib-datepicker-popup="dd MMMM yyyy"
+                ng-model="event.startsAt"
+                is-open="event.startOpen"
+                close-text="Close" >
+              <span class="input-group-btn">
+                <button
+                  type="button"
+                  class="btn btn-default"
+                  ng-click="vm.toggle($event, 'startOpen', event)">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+              </span>
+            </p>
+
+          <br><br>
+          <input type="button" ng-click="reset()" value="Reset" />&nbsp &nbsp
+          <input type="submit" ng-click="update(user)" value="Save" />
+        </form>
+      </div>
     </div>
+  </div>
+
 </div>
+
 
