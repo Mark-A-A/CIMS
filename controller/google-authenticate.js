@@ -4,12 +4,9 @@ var router = express.Router();
 var passport = require("passport");
 var googleOauth2 = require("../config/passport-google-oauth.js");
 
-debugger
 
 var googleAuthenticate = function () {
 
-
-debugger
 console.log(passport.authenticate());
 
   console.log("google-authenticate being exported");

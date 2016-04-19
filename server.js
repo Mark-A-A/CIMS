@@ -19,6 +19,8 @@ var index = require('./controller/index');
 var api = require('./controller/api');
 var authenticate = require('./controller/authenticate.js')(passport);
 var googleAuthenticate = require('./controller/google-authenticate.js');
+var profileDocs = require('./controller/profile-documents.js');
+
 var app = express();
 
 //LOAD DIR
@@ -52,6 +54,8 @@ initPassport(passport);
 app.use('/', index);
 app.use('/api', api);
 app.use('/auth', authenticate);
+//app.use('/profile', authenticate);
+
 //app.use('/googleSuccess', googleAuthenticate);
 //app.use('/auth/google', googleAuthenticate);
 // app.use('/auth/example',

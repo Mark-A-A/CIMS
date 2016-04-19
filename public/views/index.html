@@ -53,8 +53,9 @@
               <a ng-show="authenticated" ng-click="signout()">Log Out</a>
             </li>
             <li>
-              <a ui-sref="profile" ng-show="authenticated">
-                <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+              <a ui-sref="profile/({ user_id: '{{user_id}}' })" ng-show="authenticated">
+                Profile for... {{user_id}}
+                <!-- <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i -->
               </a>
             </li>
             <li>
@@ -63,7 +64,9 @@
                 to the CIMS App</a>
             </li>
             <li>
-              <a ui-sref="calendar">Calendar</a>
+              <a ui-sref="calendar">
+                <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+              </a>
             </li>
           </ul>
         </div>

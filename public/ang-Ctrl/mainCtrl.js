@@ -1,17 +1,27 @@
 var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
-mainCtrl.controller("authController", function($scope, $rootScope, $http, $location) {
+mainCtrl.controller("authController", function($scope, $rootScope, $http, $location, $stateParams) {
   $scope.user = {
     username: '',
     password: ''
   };
   $scope.error_message = '';
+
   $scope.login = function() {
-    $http.post('/auth/login', $scope.user).success(function(data) {
+    //debugger
+    console.log("stateParams" + $stateParams);
+    $http.post('/auth/login', $scope.user).success( function (data) {
+      //debugger
+      console.log("data...... "+ data);
+      console.log("show the current user is...." + data.username);
       if (data.username) {
-        $rootScope.authenticat2ed = true;
+
+        
+        $rootScope.authenticated = true;
+        $rootScope.user_id = data._id
         $rootScope.current_user = data.username;
         console.log("successfully Logged In");
         $location.path('/');
+        // $location.path('/profile');
       } else {
         $scope.error_message = data.message;
       }
@@ -19,7 +29,7 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
   };
 
   $scope.register = function() {
-    $http.post('/auth/signup', $scope.user).success(function(data) {
+    $http.post('/auth/signup', $scope.user).success( function (data) {
       // console.log(data.user);
       if (data.username) {
         $rootScope.authenticated = true;

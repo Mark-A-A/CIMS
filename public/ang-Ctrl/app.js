@@ -78,9 +78,10 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       url: "/calendar",
       templateUrl: "partials/calendar.html",
       controller: "KitchenSinkCtrl"
-    .state('/profile'),{
-      url: "/profile",
+    })
+    .state('profile', {
+      url: "/profile/:user_id",
       templateUrl: "partials/profile.html",
-      controller: "KitchenSinkCtrl"
+      controller: "authController"
     });
 });
