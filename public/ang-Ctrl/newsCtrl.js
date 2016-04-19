@@ -2,7 +2,7 @@ var newsCtrl = angular.module('newsCtrl', ['ngAnimate', 'ui.bootstrap']);
 
 newsCtrl.controller('articleController', ['$scope', '$http', function($scope, $http) {
   $scope.articles = [];
-  $scope.pageSize = 5;
+  $scope.pageSize = 4;
   $scope.currentPage = 1;
 
   $http.get('/scraper').success(function(data) {
