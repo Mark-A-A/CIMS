@@ -3,11 +3,15 @@ var Doctor = require('./doctors.js');
 var Schema = mongoose.Schema;
 
 var eventSchema = new mongoose.Schema({
-  // doctorId: [{ type: Schema.ObjectId, ref: 'Doctor' }],
-  doctorId: Number,
-  eventTitle: String,
-  startDateTime:Date,
-  endDateTime:Date,
+  drIdentifier: String,
+  name: String,
+  eventStartsAt:Date,
+  eventEndsAt:Date,
+  aggree:Boolean,
+  agreeSign:String,
+  email:String,
+  gender:String,
+  phone:String,
   created_at: {
     type: Date,
     default: Date.now
