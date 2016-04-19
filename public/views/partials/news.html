@@ -8,13 +8,14 @@
     <div class="col-md-1"></div>
     <div class="col-md-6" id="newsDiv" ng-controller="articleController">
       <h3>Top Stories</h3>
-      <div class="panel panel-default" ng-repeat="article in articles" id="repeatDivs">
+      <div class="panel panel-default" ng-repeat="article in articles | startFrom:(currentPage - 1) * pageSize | limitTo: pageSize" id="repeatDivs">
         <div class="panel-body">
           <img class="articleImage" ng-src="{{article.img}}" align="left">
           <h4 class="articleTitle"><a href="https://www.medicalnewstoday.com/{{article.link}}" target="_blank">{{article.title}}</a></h4>
         </div>
         <div class="panel-footer">{{article.body}}</div>
       </div>
+      <pagination total-items="articles.length" ng-model="currentPage" items-per-page="pageSize"></pagination>
     </div><!-- End Col-md-8 -->
     <div class="col-md-1"></div>
     <div class="col-md-4" id="mdDiv">
