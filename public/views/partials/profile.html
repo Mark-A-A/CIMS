@@ -22,8 +22,16 @@
     <div class="row">
       <input type="file" id="file_input"/>
 
-        <p id="status">Please select a file</p>
-        <img style="border:1px solid gray;width:300px;"  id="preview" src="/img/profile.jpeg" />  
+      <p id="status">Please select a file</p>
+      <img style="border:1px solid gray;width:300px;"  id="preview" src="/img/profile.jpeg" />
+
+      <form method="POST" action="/submit_form/">
+        <input type="hidden" id="avatar_url" name="avatar_url" value="/public/default.png" />
+        <input type="text" name="username" placeholder="Username" /><br />
+        <input type="text" name="full_name" placeholder="Full name" /><br /><br />
+        <input type="submit" value="Update profile" />
+      </form>
+
     </div>
     
 
