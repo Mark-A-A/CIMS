@@ -1,5 +1,10 @@
 <html ng-app="doctorApp">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title></title>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqHWFDIibdD6pRFtI0jSW-s2OU1XLa_jU"></script>
@@ -8,14 +13,16 @@
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/sidebar.css">
     <link rel="stylesheet" href="../public/css/register.css">
-    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="../public/css/landing.css">
     <link rel="stylesheet" href="../public/css/details.css">
     <link rel="stylesheet" href="../public/css/news.css">
     <link rel="stylesheet" href="../css/calendar.css"/>
+    <link rel="stylesheet" href="../css/fullscreen.css"/>
 
     <script src="../../bower_components/angular-ui-calendar/src/calendar.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
     <script src="../../bower_components/moment/moment.js"></script>
 
     <link href="../../bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
@@ -24,29 +31,56 @@
     <link rel="icon" href="favicon.ico"/>
     <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.css">
 
-    <body>
-      <!-- NAVIGATION-->
-      <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse" id="btm-nav">
-        <div class="container">
-          <ul class="nav navbar-nav">
+    <body ng-controller="sideNavCtrl">
+      <div id="wrapper" ng-class="{'toggled': showNav}">
+        <!-- Sidebar -->
+        <a href="" class="btn btn-default" id="menu-toggle" ng-click="activeNav()" ng-hide="showFullSearch">
+          <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+        </a>
+        <div id="sidebar-wrapper" ng-class="{'toggled ': showNav}">
+          <ul class="sidebar-nav">
+            <div>
+              <img src="http://placehold.it/125x125" class="img-circle" id="sidebar-Pic" alt="Circular Image">
+            </div>
+            <li class="sidebar-brand">
+              <a href="#">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                Welcome Guest!
+              </a>
+            </li>
             <li>
               <a ui-sref="home">
-                <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-home fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Home</span>
+                </i>
+              </a>
+            </li>
+            <li>
+              <a ui-sref="search" href="#search" ng-click="activeSearch()">
+                <i class="fa fa-search fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Search</span>
+                </i>
               </a>
             </li>
             <li>
               <a ui-sref="news">
-                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; News</span>
+                </i>
               </a>
             </li>
             <li>
               <a ui-sref="login" ng-hide="authenticated">
-                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-user fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Login</span>
+                </i>
               </a>
             </li>
             <li>
               <a ui-sref="register" ng-hide="authenticated">
-                <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-user-plus fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Register</span>
+                </i>
               </a>
             </li>
             <li>
@@ -58,13 +92,26 @@
                 to the CIMS App</a>
             </li>
             <li>
-              <a ui-sref="calendar">Calendar</a>
+              <a ui-sref="calendar">
+                <i class="fa fa-calendar fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; Calendar</span>
+                </i>
+              </a>
             </li>
           </ul>
         </div>
-      </nav>
-
-      <div ui-view></div>
+        <!-- /#sidebar-wrapper -->
+        <div id="page-content-wrapper" ng-class="{'toggled': showNav}">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12 col-xs-12">
+                <div ui-view></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
 
     </body>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
