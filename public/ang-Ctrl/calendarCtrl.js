@@ -15,12 +15,8 @@
     vm.events =[];
 
     $scope.populateCalendar = function(){
-      // $scope.drIdentifier = $stateParams.uid;
-      // console.log($scope.drIdentifier);
-      console.log("hit the populate in calendar");
-      console.log("In calendar :"+$stateParams.uid);
 
-      $http.get('/auth/populateCalendar/1').success(function(data) {
+      $http.get('/auth/populateCalendar/'+$stateParams.uid).success(function(data) {
       // $scope.appointments = data;
        for(i=0;i<data.length;i++){
          vm.events.push({
@@ -41,8 +37,8 @@
     $scope.populateCalendar(); //It should be integrated with in the doctor search page
 
     $scope.addEvent = function(appointment,event){
-      // $scope.appointment.drIdentifier = $stateParams.uid;
-      $scope.appointment.drIdentifier = "1"
+      $scope.appointment.drIdentifier = $stateParams.uid;
+      // $scope.appointment.drIdentifier = "1";
       $scope.appointment.eventStartsAt = $scope.event.startsAt,
       $scope.appointment.eventEndsAt = moment($scope.event.startsAt).add(1, 'h')._d,
 

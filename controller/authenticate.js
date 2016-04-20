@@ -81,6 +81,9 @@ module.exports = function (passport) {
       newEvent.gender = req.body.appointment.gender,
       newEvent.phone = req.body.appointment.phone,
 
+      console.log("event startsAt :"+newEvent.eventStartsAt);
+      console.log("event endsAt :"+newEvent.eventEndsAt);
+
       // save the Event
       newEvent.save(function(err) {
         if (err){
