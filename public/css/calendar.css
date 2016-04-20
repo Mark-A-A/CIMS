@@ -62,3 +62,4 @@ section {
 .css-form input.ng-valid.ng-touched {
   background-color: #78FA89;
 }
+.modal-dialog{overflow:visible;min-height:100%!important;}

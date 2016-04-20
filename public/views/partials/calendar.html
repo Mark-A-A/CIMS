@@ -1,12 +1,9 @@
-
 <div ng-controller="KitchenSinkCtrl as vm">
   <div class="col-md-offset-1 col-md-7" id="calendar">
     <h2 class="text-center">{{ vm.calendarTitle }}</h2>
-
     <div class="row">
       <div class="col-md-6 text-center">
         <div class="btn-group">
-
           <button
             class="btn btn-primary"
             mwl-date-modifier
@@ -30,9 +27,7 @@
           </button>
         </div>
       </div>
-
       <br class="visible-xs visible-sm">
-
       <div class="col-md-6 text-center">
         <div class="btn-group">
           <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'">Year</label>
@@ -43,9 +38,7 @@
       </div>
 
     </div>
-
     <br>
-
     <mwl-calendar
       events="vm.events"
       view="vm.calendarView"
@@ -65,110 +58,6 @@
     </mwl-calendar>
 
     <br><br><br>
-
-    <!--   <h3 id="event-editor">
-        Edit events
-        <button
-          class="btn btn-primary pull-right"
-          ng-click="vm.events.push({title: 'New event', type: 'important', draggable: true, resizable: true})">
-          Add new
-        </button>
-        <div class="clearfix"></div>
-      </h3>
-
-      <table class="table table-bordered">
-
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Type</th>
-            <th>Starts at</th>
-            <th>Ends at</th>
-            <th>Remove</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr ng-repeat="event in vm.events track by $index">
-            <td>
-              <input
-                type="text"
-                class="form-control"
-                ng-model="event.title">
-            </td>
-            <td>
-              <select ng-model="event.type" class="form-control">
-                <option value="important">Important</option>
-                <option value="warning">Warning</option>
-                <option value="info">Info</option>
-                <option value="inverse">Inverse</option>
-                <option value="success">Success</option>
-                <option value="special">Special</option>
-              </select>
-            </td>
-            <td>
-              <p class="input-group" style="max-width: 250px">
-                <input
-                  type="text"
-                  class="form-control"
-                  readonly
-                  uib-datepicker-popup="dd MMMM yyyy"
-                  ng-model="event.startsAt"
-                  is-open="event.startOpen"
-                  close-text="Close" >
-                <span class="input-group-btn">
-                  <button
-                    type="button"
-                    class="btn btn-default"
-                    ng-click="vm.toggle($event, 'startOpen', event)">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                  </button>
-                </span>
-              </p>
-              <uib-timepicker
-                ng-model="event.startsAt"
-                hour-step="1"
-                minute-step="15"
-                show-meridian="true">
-              </uib-timepicker>
-            </td>
-            <td>
-              <p class="input-group" style="max-width: 250px">
-                <input
-                  type="text"
-                  class="form-control"
-                  readonly
-                  uib-datepicker-popup="dd MMMM yyyy"
-                  ng-model="event.endsAt"
-                  is-open="event.endOpen"
-                  close-text="Close">
-                <span class="input-group-btn">
-                  <button
-                    type="button"
-                    class="btn btn-default"
-                    ng-click="vm.toggle($event, 'endOpen', event)">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                  </button>
-                </span>
-              </p>
-              <uib-timepicker
-                ng-model="event.endsAt"
-                hour-step="1"
-                minute-step="15"
-                show-meridian="true">
-              </uib-timepicker>
-            </td>
-            <td>
-              <button
-                class="btn btn-danger"
-                ng-click="vm.events.splice($index, 1)">
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-
-      </table> -->
   </div>
   <div class="col-md-4">
     <br><br><br>
@@ -210,12 +99,13 @@
                 uib-datepicker-popup="dd MMMM yyyy"
                 ng-model="event.startsAt"
                 is-open="event.startOpen"
+                is-open="true"
                 close-text="Close" >
               <span class="input-group-btn">
                 <button
                   type="button"
                   class="btn btn-default"
-                  ng-click="vm.toggle($event, 'startOpen', event)">
+                  ng-click="vm.toggle($event,'startOpen', event)">
                   <i class="glyphicon glyphicon-calendar"></i>
                 </button>
               </span>
