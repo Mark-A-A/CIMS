@@ -1,5 +1,4 @@
 var express = require('express');
-var logout = require('express-passport-logout');
 var router = express.Router();
 var mongojs = require('mongojs');
 var path = require('path');

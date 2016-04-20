@@ -1,7 +1,7 @@
 var express = require('express');
 var logout = require('express-passport-logout');
 var router = express.Router();
-var mongojs = require('mongojs');
+
 // var eventDb = mongojs("cims-db",["events"]);
 // var Event = require('../model/events.js');
 var db = require('../config/db.js');
@@ -39,11 +39,16 @@ module.exports = function (passport) {
     }
   });
 
-  router.get('/signout', function(req,res){
+  router.get('/auth/signout', function(req,res){
+    debugger
     console.log("Signout route hit");
-    logout();
-    // req.logout();
-    // req.session.destroy();
+
+    
+      req.logout();
+      req.session.destroy();
+      res.redirect('/');
+    
+      
     // res.redirect('/');
     // if(req.user) {
     //   res.json(req.user);
@@ -93,15 +98,7 @@ module.exports = function (passport) {
      res.json({});
   });
 
-  // GET /auth/google
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request.  The first step in Google authentication will involve
-  //   redirecting the user to google.com.  After authorization, Google
-  //   will redirect the user back to this application at /auth/google/callback
-  router.get('/auth/google',
-    passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] 
-  }));
-
+ 
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {

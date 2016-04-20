@@ -8,18 +8,41 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtr
   $rootScope.current_user = " ";
 
   $rootScope.signout = function() {
+    debugger
     console.log("Calling Angular logout");
-    $http({
-      method: 'GET',
-      url: '/auth/signout'
-    }).then(function successCallback(response) {
-      console.log("Signout Successful");
-      $rootScope.authenticated = false;
-      $rootScope.current_user = '';
-    }, function errorCallback(response) {
-      console.log("Signout failed" + response);
+    // $http.post('/auth/signout');
+    $http.get('/auth/signout').success(function (req, res) {
+      debugger
+      console.log("Signout Successful" + data);
+
+      
+    
+      
+    }).error(function (error) {
+      debugger
+
+      console.log("logging out");
+      console.log("logout error" + error);
     });
+    $rootScope.authenticated = false;
+    $rootScope.current_user = {};
+
+
   };
+
+  // $rootScope.signout = function() {
+  //   console.log("Calling Angular logout");
+  //   $http({
+  //     method: 'GET',
+  //     url: '/auth/signout'
+  //   }).then(function successCallback(response) {
+  //     console.log("Signout Successful");
+  //     $rootScope.authenticated = false;
+  //     $rootScope.current_user = '';
+  //   }, function errorCallback(response) {
+  //     console.log("Signout failed" + response);
+  //   });
+  // };
 });
 
 doctorApp.service('sharedProperties', function() {
