@@ -1,7 +1,8 @@
+var profileController = angular.module('doctorApp');
 
-var profileController = angular.module('profileController', ['ngAnimate']);
-profileController.controller("profileViewCtrl", function($scope, $rootScope, $http, $location, $stateParams, authController) {
+profileController.controller("ProfileViewCtrl", function($scope, sharedProperties) {
   console.log("did something with profile Angular");
- 
-
+  var test = sharedProperties.getUser();
+  console.log(sharedProperties);
+  debugger
 });

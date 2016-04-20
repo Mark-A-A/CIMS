@@ -20,6 +20,20 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtr
   };
 });
 
+doctorApp.service('sharedProperties', function() {
+    var user = 'test string value';
+    
+    return {
+        getUser: function() {
+            return user;
+        },
+        setUser: function(value) {
+            user = value;
+        }
+    }
+});
+
+
 doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
 
@@ -81,7 +95,9 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('profile', {
       url: "/profile/:user_id/:user_name",
       templateUrl: "partials/profile.html",
-      controller: "profileViewCtrl"
+      controller: "ProfileViewCtrl"
     });
 
 });
+
+
