@@ -1,7 +1,7 @@
-<div id="search" ng-class="({'open': showFullSearch})">
+<div id="search" class="container-fluid" ng-class="({'open': showFullSearch})">
   <a type="button" class="close" ng-click="activeSearch()">×</a>
   <form  ng-controller"searchBar" ng-submit="submitSearch()">
-    <input type="search" ng-model="fullScInput" placeholder="type keyword(s) here"/>
+    <input type="search" ng-model="fullScInput" placeholder="Search"/>
   </form>
 </div>
 <div ui-view="advance" ng-show="!showFullSearch">

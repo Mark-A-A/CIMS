@@ -46,7 +46,7 @@ searchCtrl.controller('searchBar', ['$scope', '$http', '$rootScope', '$statePara
   $scope.submitSearch = function() {
     if ($rootScope.showFullSearch) {
       $rootScope.showFullSearch = !$rootScope.showFullSearch;
-      $http.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + $scope.fullScInput + '&location=' + $rootScope.geoCoord + '%2C10&user_location=' + $rootScope.geoCoord + '&sort=best-match-desc&skip=0&limit=2&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
+      $http.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + $scope.fullScInput + '&location=' + $rootScope.geoCoord + '%2C100&user_location=' + $rootScope.geoCoord + '&sort=distance-asc&skip=0&limit=8&user_key=c77db2625ba3d0debf3e9be3b74158bd').success(function(data) {
         $scope.showMap = true;
         $scope.doctors = data.data;
       });
