@@ -1,7 +1,8 @@
   var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstrap','ngAnimate']);
 
-  CalendarCtrl2.controller('KitchenSinkCtrl',['$scope','moment', '$stateParams','$http','alert',function($scope,moment,$stateParams,$http,alert) {
-    $scope.isCollapsed = true; //To show appoinment form only on click
+  CalendarCtrl2.controller('KitchenSinkCtrl',['$scope','moment', '$stateParams','$http','alert',function($scope, moment, $stateParams, $http, alert) {
+    $scope.isCollapsed = true; //To show appoinment form on click
+
     $scope.reset = function() {
         $scope.user = {};
         $scope.user.email="";
