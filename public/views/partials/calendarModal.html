@@ -1,0 +1,139 @@
+<div ng-controller="KitchenSinkCtrl as vm">
+  <div id="appointmentModal">
+    <div class="modal-header">
+      <h3 class="modal-title">Appointment Details</h3>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+
+          <div class="col-md-12" id="calendar">
+            <h2 class="text-center">{{ vm.calendarTitle }}</h2>
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <div class="btn-group">
+                  <button
+                    class="btn btn-primary"
+                    mwl-date-modifier
+                    date="vm.viewDate"
+                    decrement="vm.calendarView">
+                    Previous
+                  </button>
+                  <button
+                    class="btn btn-default"
+                    mwl-date-modifier
+                    date="vm.viewDate"
+                    set-to-today>
+                    Today
+                  </button>
+                  <button
+                    class="btn btn-primary"
+                    mwl-date-modifier
+                    date="vm.viewDate"
+                    increment="vm.calendarView">
+                    Next
+                  </button>
+                </div>
+              </div>
+              <br class="visible-xs visible-sm">
+              <div class="col-md-6 text-center">
+                <div class="btn-group">
+                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'year'">Year</label>
+                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'month'">Month</label>
+                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'week'">Week</label>
+                  <label class="btn btn-primary" ng-model="vm.calendarView" uib-btn-radio="'day'">Day</label>
+                </div>
+              </div>
+            </div>
+            <br>
+            <mwl-calendar
+              events="vm.events"
+              view="vm.calendarView"
+              view-title="vm.calendarTitle"
+              view-date="vm.viewDate"
+              on-event-click="vm.eventClicked(calendarEvent)"
+              on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+              edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+              delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+              on-edit-event-click="vm.eventEdited(calendarEvent)"
+              on-delete-event-click="vm.eventDeleted(calendarEvent)"
+              cell-is-open="vm.isCellOpen"
+              day-view-start="08:00"
+              day-view-end="20:00"
+              day-view-split="30"
+              cell-modifier="vm.modifyCell(calendarCell)">
+            </mwl-calendar>
+          </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">Schedule An Appointment</button>
+          <hr>
+          <div uib-collapse="isCollapsed">
+            <div class="well well-lg">
+              <form novalidate class="simple-form">
+                Name : <input type="text" ng-model="appointment.name" name="uName" required=""/>
+                <br><br>
+                <div ng-show="form.$submitted || form.uName.$touched">
+                  <div ng-show="form.uName.$error.required">Tell us your name.</div>
+                </div>
+                E-mail: <input type="email" ng-model="appointment.email" name="uEmail" required=""/>
+                <br><br>
+                <div ng-show="form.$submitted || form.uEmail.$touched">
+                  <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+                  <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+                </div>
+                Phone: <input type="phone" ng-model="appointment.phone" required  />
+                <br><br>
+                Gender: <input type="radio" ng-model="appointment.gender" value="male" /> male
+                <input type="radio" ng-model="appointment.gender" value="female" /> female
+                <br /><br>
+                <form ng-model="appointment.startsAt">
+                  Request an Appointment(Date & Time) :
+                  <uib-timepicker
+                    ng-model="event.startsAt"
+                    hour-step="1"
+                    minute-step="15"
+                    show-meridian="true">
+                  </uib-timepicker>
+                  <p class="input-group" style="max-width: 250px">
+                    <input
+                      type="text"
+                      class="form-control"
+                      readonly
+                      uib-datepicker-popup="dd MMMM yyyy"
+                      ng-model="event.startsAt"
+                      is-open="event.startOpen"
+                      close-text="Close" >
+                    <span class="input-group-btn">
+                      <button
+                        type="button"
+                        class="btn btn-default"
+                        ng-click="vm.toggle($event, 'startOpen', event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                    </span>
+                  </p>
+                </form>
+                <br>
+                <input type="checkbox" ng-model="appointment.agree" name="userAgree" required="" />
+                I agree to the terms and conditions set by the doctor while scheduling the appointment.
+                <input ng-show="appointment.agree" type="text" ng-model="appointment.agreeSign" required="" placeholder="Type your name to sign"/>
+                <br />
+                <div ng-show="form.$submitted || form.userAgree.$touched">
+                  <div ng-show="!appointment.agree || !appointment.agreeSign">Please agree and sign.</div>
+                </div>
+                <br>
+                <input type="button" class="btn btn-danger" ng-click="reset()" value="Reset" />&nbsp &nbsp
+                <input type="submit" class="btn btn-success" ng-click="addEvent(appointment)" value="Save" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="$close()">OK</button>
+    </div>
+  </div>
+</div>

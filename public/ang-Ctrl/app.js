@@ -13,7 +13,7 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtr
     }).then(function successCallback(response) {
       console.log("Signout Successful");
       $rootScope.authenticated = false;
-      $rootScope.current_user = {};
+      $rootScope.current_user = '';
     }, function errorCallback(response) {
       console.log("Signout failed" + response);
     });
@@ -65,6 +65,10 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
         "map@doctors": {
           templateUrl: "partials/map-single.html",
           controller: ""
+        },
+        "calendar@doctors": {
+          templateUrl: "partials/calendar.html",
+          controller: "KitchenSinkCtrl"
         }
       },
     })
@@ -80,7 +84,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     })
     .state('calendar', {
       url: "/calendar",
-      templateUrl: "partials/calendar2.html",
+      templateUrl: "partials/calendar.html",
       controller: "KitchenSinkCtrl"
     });
 });
