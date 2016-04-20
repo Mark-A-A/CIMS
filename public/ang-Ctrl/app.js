@@ -1,4 +1,6 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl','newsCtrl','CalendarCtrl2'])
+
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl', 'CalendarCtrl2'])
+
 .run(function($rootScope, $http) {
 
 
@@ -13,7 +15,7 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtr
     }).then(function successCallback(response) {
       console.log("Signout Successful");
       $rootScope.authenticated = false;
-      $rootScope.current_user = {};
+      $rootScope.current_user = '';
     }, function errorCallback(response) {
       console.log("Signout failed" + response);
     });
@@ -40,19 +42,28 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
   $stateProvider
     .state('home', {
       url: "/",
+      templateUrl: "partials/landing.html",
+      controller: ""
+    })
+    .state('search', {
+      url: "/search/:query",
       views: {
         "": {
+          templateUrl: "partials/fullSearch.html",
+          controller: "searchBar"
+        },
+        "advance@search": {
           templateUrl: "partials/main.html",
           controller: "searchBar"
         },
-        "results@home": {
+        "results@search": {
           templateUrl: "partials/results.html",
           controller: "searchBar"
         },
-        "map@home": {
+        "map@search": {
           templateUrl: "partials/map.html",
           controller: "searchBar"
-        }
+        },
       }
     })
     .state('news', {
@@ -99,5 +110,3 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     });
 
 });
-
-

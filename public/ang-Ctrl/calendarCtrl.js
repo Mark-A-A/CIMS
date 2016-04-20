@@ -2,10 +2,11 @@
 
   CalendarCtrl2.controller('KitchenSinkCtrl',['$scope','moment', '$stateParams','$http','alert',function($scope, moment, $stateParams, $http, alert) {
     $scope.isCollapsed = true; //To show appoinment form on click
+
     $scope.reset = function() {
         $scope.user = {};
         $scope.user.email="";
-        $scope.isCollapsed = true;;
+        $scope.isCollapsed = true;
     };
     var vm = this;
 
@@ -17,6 +18,9 @@
     $scope.populateCalendar = function(){
       // $scope.drIdentifier = $stateParams.uid;
       // console.log($scope.drIdentifier);
+      console.log("hit the populate in calendar");
+      console.log("In calendar :"+$stateParams.uid);
+
       $http.get('/auth/populateCalendar/1').success(function(data) {
       // $scope.appointments = data;
        for(i=0;i<data.length;i++){
@@ -62,7 +66,7 @@
             deletable :true
           });
          $scope.appointment ={};
-
+         $scope.isCollapsed = true;
         }, function errorCallback(response) {
           // called asynchronously if an error occurs
           // or server returns response with an error status.
