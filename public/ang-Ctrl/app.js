@@ -1,4 +1,3 @@
-
 var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl', 'CalendarCtrl2'])
 
 .run(function($rootScope, $http) {
@@ -27,19 +26,28 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
   $stateProvider
     .state('home', {
       url: "/",
+      templateUrl: "partials/landing.html",
+      controller: ""
+    })
+    .state('search', {
+      url: "/search/:query",
       views: {
         "": {
+          templateUrl: "partials/fullSearch.html",
+          controller: "searchBar"
+        },
+        "advance@search": {
           templateUrl: "partials/main.html",
           controller: "searchBar"
         },
-        "results@home": {
+        "results@search": {
           templateUrl: "partials/results.html",
           controller: "searchBar"
         },
-        "map@home": {
+        "map@search": {
           templateUrl: "partials/map.html",
           controller: "searchBar"
-        }
+        },
       }
     })
     .state('news', {
@@ -80,4 +88,3 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       controller: "KitchenSinkCtrl"
     });
 });
-
