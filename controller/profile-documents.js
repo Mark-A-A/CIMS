@@ -6,11 +6,10 @@ var aws = require('aws-sdk');
 
 var docsDb = mongojs("cims-db",["documents"]);
 
-var Keys = require("../.env");
-//var Keys = process.env.Keys;
 
-console.log(Keys);
-console.log("Keys.AWS......"+ Keys.AWS);
+var Keys = process.env.Keys;
+
+
 
 docsDb.on('error',function(err){
   console.log('database error: '+err);
