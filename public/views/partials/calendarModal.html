@@ -72,26 +72,26 @@
             <div class="well well-lg">
               <form class="simple-form" name="form" novalidate>
                 <div class="form-group"  ng-class="{'has-error': form.uName.$invalid}">
-                  Name : <input type="text" ng-model="appointment.name" name="uName" required=""/>
+                  Name &nbsp: <input type="text" ng-model="appointment.name" name="uName" required=""/>
                   <div ng-show="form.$submitted || form.uName.$touched">
                     <span class="errorMessage" ng-show="form.uName.$error.required">Tell us your name.</span>
                   </div>
                 </div>
                 <div class="form-group" ng-class="{'has-error': form.uEmail.$invalid}">
-                  E-mail: <input type="email" ng-model="appointment.email" name="uEmail" required/>
+                  E-mail : <input type="email" ng-model="appointment.email" name="uEmail" required/>
                   <div ng-show="form.$submitted || form.uEmail.$touched">
                     <span class="errorMessage" ng-show="form.uEmail.$error.required">Tell us your email.</span>
                     <span class="errorMessage" ng-show="form.uEmail.$error.email">This is not a valid email.</span>
                   </div>
                 </div>
                 <div class="form-group"  ng-class="{'has-error': form.uPhone.$invalid}">
-                  Phone: <input type="phone" name="uPhone" ng-minlength="10" ng-maxlength="10" ng-model="appointment.phone" required/>
+                  Phone : <input type="phone" name="uPhone" ng-minlength="10" ng-maxlength="10" ng-model="appointment.phone" required/>
                   <div ng-show="form.$submitted || form.uPhone.$touched">
                     <span class="errorMessage" ng-show="form.uPhone.$error.required">Please provide your phone number.</span>
                     <span class="errorMessage" ng-show="form.uPhone.$error.phone">The phone must be 10 digit.</span>
                   </div>
                 </div>
-                Gender: <input type="radio" ng-model="appointment.gender" value="male" /> male
+                Gender : <input type="radio" ng-model="appointment.gender" value="male" /> male
                 <input type="radio" ng-model="appointment.gender" value="female" /> female
                 <br /><br>
                 <div ng-model="appointment.startsAt">
