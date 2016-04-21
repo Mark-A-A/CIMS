@@ -1,14 +1,17 @@
   var CalendarCtrl2 = angular.module('CalendarCtrl2', ['mwl.calendar','ui.bootstrap','ngAnimate']);
 
   CalendarCtrl2.controller('KitchenSinkCtrl',['$scope','moment', '$stateParams','$http','alert',function($scope,moment,$stateParams,$http,alert) {
+
     $scope.isCollapsed = true; //To show appoinment form only on click
+    $scope.currentDate = new Date(); // To validate that appointment can not be made prior to current date
+    $scope.maxAppointmentDate = moment($scope.currentDate).add(3, 'M')._d;
+    console.log("Current date :"+$scope.currentDate+" and Max date :"+$scope.maxAppointmentDate);
     $scope.reset = function() {
-        $scope.user = {};
-        $scope.user.email="";
+        $scope.appointment = "";
         $scope.isCollapsed = true;
     };
-    var vm = this;
 
+    var vm = this;
     //These variables MUST be set as a minimum for the calendar to work
     vm.calendarView = 'month';
     vm.viewDate = new Date();
@@ -93,5 +96,4 @@
       $event.stopPropagation();
       event[field] = !event[field];
     };
-
-  }]);
+}]);

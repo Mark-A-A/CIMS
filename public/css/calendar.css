@@ -63,3 +63,6 @@ section {
   background-color: #78FA89;
 }
 .modal-dialog{overflow:visible;min-height:100%!important;}
+.errorMessage{
+  color: red;
+}
