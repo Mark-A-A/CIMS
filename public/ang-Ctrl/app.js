@@ -1,25 +1,4 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl', 'CalendarCtrl2'])
-
-.run(function($rootScope, $http) {
-
-
-  $rootScope.authenticated = false;
-  $rootScope.current_user = " ";
-
-  $rootScope.signout = function() {
-    console.log("Calling Angular logout");
-    $http({
-      method: 'GET',
-      url: '/auth/signout'
-    }).then(function successCallback(response) {
-      console.log("Signout Successful");
-      $rootScope.authenticated = false;
-      $rootScope.current_user = '';
-    }, function errorCallback(response) {
-      console.log("Signout failed" + response);
-    });
-  };
-});
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','timerCtrl', 'CalendarCtrl2']);
 
 doctorApp.service('sharedProperties', function() {
   var user = 'test string value';
@@ -34,7 +13,6 @@ doctorApp.service('sharedProperties', function() {
   };
 });
 
-
 doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
 
@@ -42,7 +20,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('home', {
       url: "/",
       templateUrl: "partials/landing.html",
-      controller: ""
+      controller: "loadClock"
     })
     .state('search', {
       url: "/search/:query",

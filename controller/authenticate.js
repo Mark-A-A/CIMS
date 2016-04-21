@@ -1,5 +1,6 @@
 var express = require('express');
 var logout = require('express-passport-logout');
+var passport = require('passport');
 var router = express.Router();
 //var mongojs = require('mongojs');
 // var eventDb = mongojs("cims-db",["events"]);
@@ -29,9 +30,8 @@ router.post('/signup', passport.authenticate('signup'), function(req, res) {
 });
 
 router.get('/logout', function(req, res) {
-  console.log('hey');
-  req.logOut();  // <-- not req.logout();
-  res.redirect('/');
+req.logout();
+res.redirect('/');
 });
 
 router.get('/populateCalendar/:id', function(req, res, next) {

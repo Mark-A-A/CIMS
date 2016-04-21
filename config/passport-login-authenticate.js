@@ -15,7 +15,7 @@ passport.use('signup', new Strategy({
       'username': req.body.username
     }, function(err, user) {
       if (err) {
-        console.log('1-err');
+        console.log('error');
         return (err);
       }
       if (user) {
@@ -39,6 +39,7 @@ passport.use('signup', new Strategy({
     });
   }));
 
+//DEFINE LOGIN STRATEGY
 passport.use('login', new Strategy({
     usernameField: 'username',
     passwordField: 'password',

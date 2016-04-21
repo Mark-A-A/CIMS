@@ -1,11 +1,8 @@
-var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
+var mainCtrl = angular.module('mainCtrl', ['ngAnimate', 'ngStorage']);
 
-
-
-mainCtrl.controller("authController", function($scope, $rootScope, $http, $location, $stateParams, sharedProperties) {
-
+mainCtrl.controller("authController", function($scope, $rootScope, $http, $location, $stateParams, sharedProperties, $localStorage) {
   $scope.user = {
-    user_id:  '',
+    user_id: '',
     username: '',
     password: ''
   };
@@ -13,12 +10,8 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
   $scope.error_message = '';
 
   $scope.login = function() {
-    console.log("stateParams" + $stateParams);
-    $http.post('/auth/login', $scope.user).success( function (data) {
-      console.log("data...... "+ data);
-      console.log("show the current user is...." + data.username);
+    $http.post('/auth/login', $scope.user).success(function(data) {
       if (data.username) {
-
 
         $rootScope.authenticated = true;
         $rootScope.user_id = data._id;
@@ -29,13 +22,11 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
           user_id: data._id,
           username: data.username,
         };
-
         //Assign User Data to Service to share between controllers
         sharedProperties.setUser($rootScope.user);
 
-        console.log("successfully Logged In");
-        $location.path('/');
-        // $location.path('/profile');
+        console.log("successfully Logged In  - Avengers Assemble");
+        $location.path('/profile');
       } else {
         $scope.error_message = data.message;
       }
@@ -43,7 +34,7 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
   };
 
   $scope.register = function() {
-    $http.post('/auth/signup', $scope.user).success( function (data) {
+    $http.post('/auth/signup', $scope.user).success(function(data) {
       // console.log(data.user);
       if (data.username) {
         $rootScope.authenticated = true;
@@ -55,12 +46,4 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
       }
     });
   };
-
-  $scope.signout = function() {
-    $http.get('/auth/logout').success(function(data) {
-      console.log('i made it hee');
-    });
-
-  };
-
 });

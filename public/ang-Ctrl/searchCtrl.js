@@ -25,6 +25,10 @@ searchCtrl.controller('sideNavCtrl', ['$scope', '$http', '$rootScope', '$state',
   $scope.activeNav = function() {
     $scope.showNav = !$scope.showNav;
   };
+  $scope.animateState = false;
+  $scope.activeState = function() {
+    $scope.animateState = !$scope.animateState;
+  };
 
   $rootScope.showFullSearch = false;
   $scope.activeSearch = function() {
