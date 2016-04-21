@@ -5,7 +5,7 @@
     $scope.isCollapsed = true; //To show appoinment form only on click
     $scope.currentDate = new Date(); // To validate that appointment can not be made prior to current date
     $scope.maxAppointmentDate = moment($scope.currentDate).add(3, 'M')._d;
-    console.log("Current date :"+$scope.currentDate+" and Max date :"+$scope.maxAppointmentDate);
+
     $scope.reset = function() {
         $scope.appointment = "";
         $scope.isCollapsed = true;
@@ -18,9 +18,10 @@
     vm.events =[];
 
     $scope.populateCalendar = function(){
+      // console.log("single dr");
+      // console.log($scope.singleDr);
 
       $http.get('/auth/populateCalendar/'+$stateParams.uid).success(function(data) {
-      // $scope.appointments = data;
        for(i=0;i<data.length;i++){
          vm.events.push({
             title:data[i].name,
