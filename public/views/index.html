@@ -38,13 +38,13 @@
         </a>
         <div id="sidebar-wrapper" ng-class="{'toggled ': showNav}">
           <ul class="sidebar-nav">
-            <div>
+            <div ng-show="authenticated">
               <img src="http://placehold.it/125x125" class="img-circle" id="sidebar-Pic" alt="Circular Image">
             </div>
             <li class="sidebar-brand">
-              <a href="#" ng-controller="authController" ng-click="signout()">
+              <a ui-sref="profile({ user_id:user_id, user_name:current_user })" ng-show="authenticated">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                Welcome Guest!
+                <span class="menu-text">&nbsp; {{current_user}}'s' Profile</span>
               </a>
             </li>
             <li>
@@ -70,7 +70,7 @@
             </li>
             <li>
               <a ui-sref="login" ng-hide="authenticated">
-                <i class="fa fa-user fa-2x" aria-hidden="true">
+                <i class="fa fa-sign-in fa-2x" aria-hidden="true">
                   <span class="menu-text">&nbsp; Login</span>
                 </i>
               </a>
@@ -83,19 +83,11 @@
               </a>
             </li>
             <li>
-              <a ng-controller="authController" ng-show="authenticated"  ng-href="/auth/logout">Log Out</a>
-            </li>
-            <li>
-              <a ui-sref="profile({ user_id:user_id, user_name:current_user })" ng-show="authenticated">
-                Profile for
-                {{current_user}}
-                <!-- <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i -->
+              <a ng-show="authenticated" ng-href="/auth/logout">
+                <i class="fa fa-sign-out fa-2x" aria-hidden="true">
+                  <span class="menu-text">&nbsp; LogOut</span>
+                </i>
               </a>
-            </li>
-            <li>
-              <a ng-show="authenticated">Welcome
-                {{current_user}}
-                to the CIMS App</a>
             </li>
             <li>
               <a ui-sref="calendar">
@@ -122,22 +114,15 @@
 
     </body>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <script src="../public/ang-Ctrl/app.js"></script>
-
     <script src="../public/ang-Ctrl/mainCtrl.js"></script>
-
     <script src="../public/ang-Ctrl/searchCtrl.js"></script>
-
     <script src="../public/ang-Ctrl/newsCtrl.js"></script>
-
     <script src="../public/ang-Ctrl/calendarCtrl.js"></script>
     <script src="../public/ang-Ctrl/calendarModal.js"></script>
-
     <script src="../public/ang-Ctrl/profileCtrl.js"></script>
-
     <script src="../../ang-Ctrl/appointmentModal.js"></script>
-
     <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
