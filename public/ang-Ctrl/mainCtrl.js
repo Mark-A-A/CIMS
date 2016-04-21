@@ -35,7 +35,7 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
 
   $scope.register = function() {
     $http.post('/auth/signup', $scope.user).success(function(data) {
-      // console.log(data.user);
+       console.log('login');
       if (data.username) {
         $rootScope.authenticated = true;
         $rootScope.current_user = data.username;
