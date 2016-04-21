@@ -55,7 +55,7 @@ app.use('/', index);
 app.use('/api', api);
 app.use('/auth', authenticate);
 app.use('/profile', authenticate);
-
+//app.use('/signOut', authenticate);
 
 app.listen(PORT, function() {
   console.log("Application is listening on PORT:" + PORT);

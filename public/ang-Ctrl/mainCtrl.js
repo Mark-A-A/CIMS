@@ -4,6 +4,9 @@ var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
 
 mainCtrl.controller("authController", function($scope, $rootScope, $http, $location, $stateParams, sharedProperties) {
   
+  $rootScope.authenticated = false;
+  $rootScope.current_user = " ";
+
   $scope.user = {
     user_id:  '',
     username: '',
@@ -58,7 +61,49 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
     });
   };
 
+  $scope.signout = function() {
+    debugger
+    console.log("Calling Angular logout -mainCtrl");
+    // $http.post('/auth/signout');
+    $http.get('/signOut').success(function (data) {
+      debugger
+      console.log("Signout Successful" + data);
+    }).error(function (error) {
+
+      console.log("logging out");
+      console.log("logout error" + error);
+    });
+    $rootScope.authenticated = false;
+    $rootScope.current_user = {};
+
+
+  };
+
+
  
+  $rootScope.signout = function() {
+    debugger
+    console.log("Calling Angular logout -app.js");
+    // $http.post('/auth/signout');
+    $http.get('/auth/signOut').success(function (req, res) {
+      debugger
+      console.log("Signout Successful" + data);
+
+      
+    
+      
+    }).error(function (error) {
+      debugger
+
+      
+      console.log("logout error" + error);
+    });
+    console.log("logging out..removing authentication and current user from cookie");
+    $rootScope.authenticated = false;
+    $rootScope.current_user = {};
+
+
+  };
 
 
 });

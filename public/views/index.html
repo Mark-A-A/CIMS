@@ -85,7 +85,8 @@
               </a>
             </li>
             <li>
-              <a ng-show="authenticated" ng-click="signout()">Log Out</a>
+              <a ng-show="authenticated" ng-click="signout()" href="#">Log Out</a>
+              <!-- <a ng-show="authenticated" ng-click="signout()" href="#">Log Out</a> -->
             </li>
             <li>
               <a ui-sref="profile({ user_id:user_id, user_name:current_user })" ng-show="authenticated">

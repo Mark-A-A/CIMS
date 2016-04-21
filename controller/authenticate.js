@@ -14,16 +14,17 @@ var Event = mongoose.model('Event');
 
 module.exports = function (passport) {
 
-  router.get('/success',function(req,res){
-    console.log(req.username);
-    res.send({state:'success',username:req.username ? req.username : null});
-  });
+  // router.get('/success',function(req,res){
+  //   console.log(req.username);
+  //   res.send({state:'success',username:req.username ? req.username : null});
+  // });
 
-  router.get('/failure', function(req,res){
-    res.send({state:'failure', user:null, message:"Invalid username or password"});
-  });
+  // router.get('/failure', function(req,res){
+  //   res.send({state:'failure', user:null, message:"Invalid username or password"});
+  // });
 
   router.post('/login', passport.authenticate('login'), function(req, res) {
+    console.log("logging in -login in authenticate.js")
     if(req.user) {
       res.json(req.user);
     } else {
@@ -39,13 +40,14 @@ module.exports = function (passport) {
     }
   });
 
-  router.get('/auth/signout', function(req,res){
+  router.get('/signOut', function (req,res) {
     debugger
-    console.log("Signout route hit");
+    console.log("Signout route hit FINALLY");
 
     
       req.logout();
       req.session.destroy();
+      console.log("now redirecting home")
       res.redirect('/');
     
       
@@ -115,3 +117,125 @@ module.exports = function (passport) {
 };
 
 
+
+
+// var express = require('express');
+// var router = express.Router();
+// var logout = require('express-passport-logout');
+
+// var passport = require('passport');
+// // var eventDb = mongojs("cims-db",["events"]);
+// // var Event = require('../model/events.js');
+// var db = require('../config/db.js');
+// var mongoose = require('mongoose');
+// var Event = mongoose.model('Event');
+
+// // eventDb.on('error',function(err){
+// //   console.log('database error'+err);
+// // });xs
+
+// //Starting Passport Authentication
+// router.use(passport.initialize());
+// router.use(passport.session());
+
+  
+//   // router.get('/success',function(req,res) {
+//   //   debugger
+//   //   console.log(req.username);
+//   //   res.send({state:'success',username:req.username ? req.username : null});
+//   // });
+
+//   // router.get('/failure', function(req,res){
+//   //   res.send({state:'failure', user:null, message:"Invalid username or password"});
+//   // });
+
+//   router.post('/login', passport.authenticate('login', function(req, res){
+//     if(req.user) {
+//       res.json(req.user);
+//     } else {
+//       res.json({});
+//     }
+    
+//   }));
+
+//   router.post('/signup', passport.authenticate('signup'), function(req, res) {
+//     if(req.user) {
+//       res.json(req.user);
+//     } else {
+//       res.json({});
+//     }
+//   });
+
+//   router.get('/signOut', function(req,res){
+//     debugger
+//     console.log("Signout route hit -authenticate.js");
+
+    
+//       req.logout();
+      
+//       res.redirect('/');
+    
+      
+//     // res.redirect('/');
+//     // if(req.user) {
+//     //   res.json(req.user);
+//     // } else {
+//     //   res.json({});
+//     // }
+//   });
+
+//   router.get('/populateCalendar/:id',function(req,res,next){
+//     var doctorId = req.params.id;
+//     // console.log("doctor id is :"+doctorId);
+//     // var newEvent = new Event();
+//     Event.find({drIdentifier: doctorId}, function(err, documents){
+//         if(err){
+//             console.log(err);
+//         } else {
+//           // console.log("Pulled Calendar for the doctor"+doctorId);
+//             res.json(documents);
+//         }
+//     })
+//   });
+
+//   router.post('/addEvent',function (req,res,next) {
+//     // console.log("In addEvent function");
+//     // console.log(req.body.appointment);
+//       var newEvent = new Event();
+
+//       newEvent.drIdentifier =  req.body.appointment.drIdentifier,
+//       newEvent.name = req.body.appointment.name,
+//       newEvent.eventStartsAt = req.body.appointment.eventStartsAt,
+//       newEvent.eventEndsAt = req.body.appointment.eventEndsAt,
+//       newEvent.aggree = req.body.appointment.aggree,
+//       newEvent.agreeSign = req.body.appointment.agreeSign,
+//       newEvent.email = req.body.appointment.email,
+//       newEvent.gender = req.body.appointment.gender,
+//       newEvent.phone = req.body.appointment.phone,
+
+//       // save the Event
+//       newEvent.save(function(err) {
+//         if (err){
+//           console.log('Error in Saving the Event: '+err);
+//           throw err;
+//         }
+//         // console.log("Event Successfully saved");
+//       });
+
+//      res.json({});
+//   });
+
+ 
+
+//   // route middleware to make sure a user is logged in
+//   function isLoggedIn(req, res, next) {
+
+//       // if user is authenticated in the session, carry on
+//       if (req.isAuthenticated())
+//           return next();
+
+//       // if they aren't redirect them to the home page
+//       res.redirect('/');
+//   }
+
+// module.exports = router;

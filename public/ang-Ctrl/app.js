@@ -4,31 +4,6 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtr
 .run(function($rootScope, $http) {
 
 
-  $rootScope.authenticated = false;
-  $rootScope.current_user = " ";
-
-  $rootScope.signout = function() {
-    debugger
-    console.log("Calling Angular logout");
-    // $http.post('/auth/signout');
-    $http.get('/auth/signout').success(function (req, res) {
-      debugger
-      console.log("Signout Successful" + data);
-
-      
-    
-      
-    }).error(function (error) {
-      debugger
-
-      console.log("logging out");
-      console.log("logout error" + error);
-    });
-    $rootScope.authenticated = false;
-    $rootScope.current_user = {};
-
-
-  };
 
   // $rootScope.signout = function() {
   //   console.log("Calling Angular logout");
