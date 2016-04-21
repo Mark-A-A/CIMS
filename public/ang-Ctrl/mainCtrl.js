@@ -33,15 +33,11 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
     });
   };
 
+
   $scope.signout = function() {
-    console.log("Calling Angular logout");
-    // $http.post('/auth/signout');
-    $http.get('/auth/signout').success(function(data) {
-      console.log("Signout Successful" + data);
-    }).error(function(error) {
-      console.log("logout error" + error);
+    $http.get('/auth/logout').success(function(data) {
+      console.log('i made it hee');
     });
-    $rootScope.authenticated = false;
-    $rootScope.current_user = {};
+
   };
 });

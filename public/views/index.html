@@ -41,7 +41,7 @@
               <img src="http://placehold.it/125x125" class="img-circle" id="sidebar-Pic" alt="Circular Image">
             </div>
             <li class="sidebar-brand">
-              <a href="#">
+              <a href="#" ng-controller="authController" ng-click="signout()">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 Welcome Guest!
               </a>
@@ -82,7 +82,7 @@
               </a>
             </li>
             <li>
-              <a ng-show="authenticated" ng-click="signout()">Log Out</a>
+              <a ng-controller="authController" ng-show="authenticated" ng-click="signout()" href="">Log Out</a>
             </li>
             <li>
               <a ng-show="authenticated">Welcome
