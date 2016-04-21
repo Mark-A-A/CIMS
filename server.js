@@ -16,7 +16,8 @@ var doctor = require('./model/doctors.js');
 var event = require('./model/events.js');
 
 
-//var authenticate = require('./controller/authenticate')(passport);
+var profileDocs = require('./controller/profile-documents.js');
+
 
 var app = express();
 
@@ -62,15 +63,8 @@ var authenticate = require('./controller/authenticate.js');
 app.use('/', index);
 //app.use('/api', api);
 app.use('/auth', authenticate);
-// app.use('/auth/example',
-//      passport.authenticate('oauth2'), function (req, res){
-//       console.log("did something: ");
-//       if(err){
-//         console.log("err: "+err);
-//       } else {
-//         res.render("oauth2 with passport did something")
-//       };
-// });
+app.use('/profile', authenticate);
+
 
 app.listen(PORT, function() {
   console.log("Application is listening on PORT:" + PORT);
