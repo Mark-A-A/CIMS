@@ -68,7 +68,7 @@
         <div class="col-md-12">
           <button type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">Schedule An Appointment</button>
           <hr>
-          <div uib-collapse="isCollapsed">
+          <div uib-collapse="isCollapsed" class="formPopup">
             <div class="well well-lg">
               <form class="simple-form" name="form" novalidate>
                 <div class="form-group"  ng-class="{'has-error': form.uName.$invalid}">
@@ -95,7 +95,7 @@
                 <input type="radio" ng-model="appointment.gender" value="female" /> female
                 <br /><br>
                 <div ng-model="appointment.startsAt">
-                  Request an Appointment(Date & Time) :
+                  Request an Appointment (Date & Time) :
                   <uib-timepicker
                     ng-model="event.startsAt"
                     hour-step="1"

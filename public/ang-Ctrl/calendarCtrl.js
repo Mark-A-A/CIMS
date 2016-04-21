@@ -5,7 +5,7 @@
     $scope.isCollapsed = true; //To show appoinment form only on click
     $scope.currentDate = new Date(); // To validate that appointment can not be made prior to current date
     $scope.maxAppointmentDate = moment($scope.currentDate).add(3, 'M')._d;
-    console.log("Current date :"+$scope.currentDate+" and Max date :"+$scope.maxAppointmentDate);
+    // console.log("Current date :"+$scope.currentDate+" and Max date :"+$scope.maxAppointmentDate);
 
     $scope.reset = function() {
         $scope.appointment = "";

@@ -66,4 +66,6 @@ section {
 .errorMessage{
   color: red;
 }
-
+.formPopup {
+  color: #9E9E9E;
+}
