@@ -1,8 +1,11 @@
+
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var User = require('../model/users');
+
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
+
 
 //DEFINING SIGNUP STRATEGY
 passport.use('signup', new Strategy({
@@ -17,7 +20,9 @@ passport.use('signup', new Strategy({
       if (err) {
         console.log('error');
         return (err);
+
       }
+      
       if (user) {
         console.log('cannot create');
       } else {

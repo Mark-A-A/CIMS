@@ -1,6 +1,10 @@
 var mainCtrl = angular.module('mainCtrl', ['ngAnimate', 'ngStorage']);
 
 mainCtrl.controller("authController", function($scope, $rootScope, $http, $location, $stateParams, sharedProperties, $localStorage) {
+
+  $rootScope.authenticated = false;
+  $rootScope.current_user = " ";
+
   $scope.user = {
     user_id: '',
     username: '',
@@ -43,7 +47,8 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
         $location.path('/');
       } else {
         $scope.error_message = data.message;
-      }
+      };
     });
   };
+
 });

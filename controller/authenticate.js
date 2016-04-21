@@ -2,13 +2,17 @@ var express = require('express');
 var logout = require('express-passport-logout');
 var passport = require('passport');
 var router = express.Router();
+
 //var mongojs = require('mongojs');
+
 // var eventDb = mongojs("cims-db",["events"]);
 // var Event = require('../model/events.js');
 var db = require('../config/db.js');
 var passport = require('../config/passport-login-authenticate.js');
 var mongoose = require('mongoose');
 var Event = mongoose.model('Event');
+
+
 
 
 router.post('/login', passport.authenticate('login'), function(req, res) {
@@ -30,24 +34,9 @@ router.post('/signup', passport.authenticate('signup'), function(req, res) {
 
 router.get('/logout', function(req, res) {
 req.logout();
-res.redirect('/');
+res.redirect('/#/login');
 });
 
-router.get('/populateCalendar/:id', function(req, res, next) {
-  var doctorId = req.params.id;
-  // console.log("doctor id is :"+doctorId);
-  // var newEvent = new Event();
-  Event.find({
-    drIdentifier: doctorId
-  }, function(err, documents) {
-    if (err) {
-      console.log(err);
-    } else {
-      // console.log("Pulled Calendar for the doctor"+doctorId);
-      res.json(documents);
-    }
-  });
-});
 
 /*router.post('/addEvent', function(req, res, next) {
   // console.log("In addEvent function");
@@ -75,6 +64,7 @@ router.get('/populateCalendar/:id', function(req, res, next) {
 
   res.json({});
 });*/
+
 
   router.get('/populateCalendar/:id',function(req,res,next){
     var doctorId = req.params.id;
@@ -119,4 +109,18 @@ router.get('/populateCalendar/:id', function(req, res, next) {
 
      res.json({});
   });
+ 
+
+  // route middleware to make sure a user is logged in
+  function isLoggedIn(req, res, next) {
+
+      // if user is authenticated in the session, carry on
+      if (req.isAuthenticated())
+          return next();
+
+      // if they aren't redirect them to the home page
+      res.redirect('/');
+  }
+
+  
 module.exports = router;

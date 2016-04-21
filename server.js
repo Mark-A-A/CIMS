@@ -16,7 +16,7 @@ var doctor = require('./model/doctors.js');
 var event = require('./model/events.js');
 
 
-//var profileDocs = require('./controller/profile-documents.js');
+var profileDocs = require('./controller/profile-documents.js');
 
 
 var app = express();
@@ -64,7 +64,9 @@ app.use('/', index);
 //app.use('/api', api);
 app.use('/auth', authenticate);
 app.use('/profile', authenticate);
-
+app.use('/submit_form', profileDocs);
+app.use('/sign_s3', profileDocs);
+//app.use('/signOut', authenticate);
 
 app.listen(PORT, function() {
   console.log("Application is listening on PORT:" + PORT);

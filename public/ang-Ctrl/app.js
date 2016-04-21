@@ -1,4 +1,6 @@
+
 var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','timerCtrl', 'CalendarCtrl2']);
+
 
 doctorApp.service('sharedProperties', function() {
   var user = 'test string value';
