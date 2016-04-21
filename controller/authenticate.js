@@ -21,7 +21,7 @@ router.post('/login', passport.authenticate('login'), function(req, res) {
 
 router.post('/signup', passport.authenticate('signup'), function(req, res) {
   if (req.user) {
-    res.send(req.user);
+    res.json(req.user);
     res.redirect('/');
 
   } else {
