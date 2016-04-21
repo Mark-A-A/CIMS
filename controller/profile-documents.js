@@ -9,7 +9,6 @@ var docsDb = mongojs("cims-db",["documents"]);
 var Keys = require("../.env");
 //var Keys = process.env.Keys;
 
-debugger
 console.log(Keys);
 console.log("Keys.AWS......"+ Keys.AWS);
 
@@ -54,6 +53,7 @@ module.exports = function (){
     });
   });
 
+
   router.post('/submit_form', function (req, res) {
     debugger
     username = req.body.username;
@@ -66,5 +66,6 @@ module.exports = function (){
 
     res.send("req.bod.avatar_url: "+ avatar_url);
 
-});
+  });
 }
+

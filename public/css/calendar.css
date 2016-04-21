@@ -1,8 +1,8 @@
-/*** Docs ***/
-body {
-  margin-top: 10px;
-  margin-bottom: 100px;
+  /*** Docs ***/
 
+body {
+  margin-bottom: 100px;
+}
 section {
   padding-top: 40px;
 }
@@ -63,3 +63,9 @@ section {
   background-color: #78FA89;
 }
 .modal-dialog{overflow:visible;min-height:100%!important;}
+.errorMessage{
+  color: red;
+}
+.formPopup {
+  color: #9E9E9E;
+}

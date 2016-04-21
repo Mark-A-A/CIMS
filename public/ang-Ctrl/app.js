@@ -1,38 +1,19 @@
 
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl', 'CalendarCtrl2'])
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','timerCtrl', 'CalendarCtrl2']);
 
-.run(function($rootScope, $http) {
-
-
-
-  // $rootScope.signout = function() {
-  //   console.log("Calling Angular logout");
-  //   $http({
-  //     method: 'GET',
-  //     url: '/auth/signout'
-  //   }).then(function successCallback(response) {
-  //     console.log("Signout Successful");
-  //     $rootScope.authenticated = false;
-  //     $rootScope.current_user = '';
-  //   }, function errorCallback(response) {
-  //     console.log("Signout failed" + response);
-  //   });
-  // };
-});
 
 doctorApp.service('sharedProperties', function() {
-    var user = 'test string value';
-    
-    return {
-        getUser: function() {
-            return user;
-        },
-        setUser: function(value) {
-            user = value;
-        }
-    }
-});
+  var user = 'test string value';
 
+  return {
+    getUser: function() {
+      return user;
+    },
+    setUser: function(value) {
+      user = value;
+    }
+  };
+});
 
 doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
@@ -41,7 +22,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('home', {
       url: "/",
       templateUrl: "partials/landing.html",
-      controller: ""
+      controller: "loadClock"
     })
     .state('search', {
       url: "/search/:query",
@@ -96,11 +77,11 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
       templateUrl: "partials/register.html",
       controller: "authController"
     })
-    .state('calendar', {
-      url: "/calendar",
-      templateUrl: "partials/calendar.html",
-      controller: "KitchenSinkCtrl"
-    })
+    // .state('calendar', {
+    //   url: "/calendar",
+    //   templateUrl: "partials/calendar.html",
+    //   controller: "KitchenSinkCtrl"
+    // })
     .state('profile', {
       url: "/profile/:user_id/:user_name",
       templateUrl: "partials/profile.html",

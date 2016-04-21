@@ -4,9 +4,9 @@ var favicon = require("serve-favicon");
 var logger = require("morgan");
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var passport = require('passport');
+var passport = require('./config/passport-login-authenticate');
 var session = require('express-session');
-var scraper = require('./config/scraper.js');
+//var scraper = require('./config/scraper.js');
 
 var PORT = process.env.PORT || 3000;
 
@@ -15,11 +15,9 @@ var user = require('./model/users.js');
 var doctor = require('./model/doctors.js');
 var event = require('./model/events.js');
 
-var index = require('./controller/index');
-var api = require('./controller/api');
-var authenticate = require('./controller/authenticate.js')(passport);
-var googleAuthenticate = require('./controller/google-authenticate.js');
+
 var profileDocs = require('./controller/profile-documents.js');
+
 
 var app = express();
 
@@ -33,8 +31,15 @@ app.use('/bower_components', express.static(__dirname + "/bower_components"));
 
 //MIDDLEWARE
 app.use(logger('dev'));
+//CREATE SECRET FOR USER LOGIN
 app.use(session({
-  secret: 'Super secret'
+  secret: 'DarkKnight',
+  cookie: {
+    secure: false,
+    maxAge: 1000 * 60 * 10
+  },
+  saveUninitialized: true,
+  resave: true
 }));
 
 app.use(bodyParser.json());
@@ -43,16 +48,20 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
+//PASSPORT INITIALIZE
 app.use(passport.initialize());
 app.use(passport.session());
 
-var initPassport = require('./config/passport-login-authenticate');
-initPassport(passport);
+
+
+
 
 //ROUTES
+var index = require('./controller/index.js');
+var authenticate = require('./controller/authenticate.js');
 
 app.use('/', index);
-app.use('/api', api);
+//app.use('/api', api);
 app.use('/auth', authenticate);
 app.use('/profile', authenticate);
 app.use('/submit_form', profileDocs);
