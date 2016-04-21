@@ -21,11 +21,9 @@
     <link rel="stylesheet" href="../css/calendar.css"/>
     <link rel="stylesheet" href="../css/fullscreen.css"/>
 
-
     <script src="../../bower_components/angular-ui-calendar/src/calendar.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
     <script src="../../bower_components/moment/moment.js"></script>
-
 
     <link href="../../bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
     <script src="../../bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
@@ -85,11 +83,12 @@
               </a>
             </li>
             <li>
-              <a ng-controller="authController" ng-show="authenticated" ng-click="signout()" href="">Log Out</a>
+              <a ng-controller="authController" ng-show="authenticated"  ng-href="/auth/logout">Log Out</a>
             </li>
             <li>
               <a ui-sref="profile({ user_id:user_id, user_name:current_user })" ng-show="authenticated">
-                Profile for {{current_user}}
+                Profile for
+                {{current_user}}
                 <!-- <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i -->
               </a>
             </li>
@@ -100,7 +99,6 @@
             </li>
             <li>
               <a ui-sref="calendar">
-
                 <i class="fa fa-calendar fa-2x" aria-hidden="true">
                   <span class="menu-text">&nbsp; Calendar</span>
                 </i>
@@ -124,20 +122,20 @@
 
     </body>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    
+
     <script src="../public/ang-Ctrl/app.js"></script>
-    
+
     <script src="../public/ang-Ctrl/mainCtrl.js"></script>
-    
+
     <script src="../public/ang-Ctrl/searchCtrl.js"></script>
-    
+
     <script src="../public/ang-Ctrl/newsCtrl.js"></script>
 
     <script src="../public/ang-Ctrl/calendarCtrl.js"></script>
     <script src="../public/ang-Ctrl/calendarModal.js"></script>
-    
+
     <script src="../public/ang-Ctrl/profileCtrl.js"></script>
-    
+
     <script src="../../ang-Ctrl/appointmentModal.js"></script>
 
     <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>

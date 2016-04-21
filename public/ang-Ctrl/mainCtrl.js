@@ -58,7 +58,7 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
 
   $scope.signout = function() {
     $http.get('/auth/logout').success(function(data) {
-      console.log('i made it hee');
+      console.log('hey');
     });
 
   };
