@@ -1,4 +1,3 @@
-
 var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl', 'CalendarCtrl2'])
 
 .run(function($rootScope, $http) {
@@ -23,16 +22,16 @@ var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtr
 });
 
 doctorApp.service('sharedProperties', function() {
-    var user = 'test string value';
-    
-    return {
-        getUser: function() {
-            return user;
-        },
-        setUser: function(value) {
-            user = value;
-        }
+  var user = 'test string value';
+
+  return {
+    getUser: function() {
+      return user;
+    },
+    setUser: function(value) {
+      user = value;
     }
+  };
 });
 
 

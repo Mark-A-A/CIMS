@@ -10,7 +10,6 @@ var docsDb = mongojs("cims-db",["documents"]);
 var Keys = require("../.env");
 //var Keys = process.env.Keys;
 
-debugger
 console.log(Keys);
 
 console.log("Keys.AWS......"+ Keys.AWS);

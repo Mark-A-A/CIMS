@@ -1,56 +1,81 @@
 var express = require('express');
 var logout = require('express-passport-logout');
 var router = express.Router();
-var mongojs = require('mongojs');
+//var mongojs = require('mongojs');
 // var eventDb = mongojs("cims-db",["events"]);
 // var Event = require('../model/events.js');
 var db = require('../config/db.js');
+var passport = require('../config/passport-login-authenticate.js');
 var mongoose = require('mongoose');
 var Event = mongoose.model('Event');
 
-// eventDb.on('error',function(err){
-//   console.log('database error'+err);
-// });
 
-module.exports = function (passport) {
+router.post('/login', passport.authenticate('login'), function(req, res) {
+  if (req.user) {
+    res.send(req.user);
+  } else {
+    res.send({});
+  }
+});
 
-  router.get('/success',function(req,res){
-    console.log(req.username);
-    res.send({state:'success',username:req.username ? req.username : null});
-  });
+router.post('/signup', passport.authenticate('signup'), function(req, res) {
+  if (req.user) {
+    res.send(req.user);
+    res.redirect('/');
 
-  router.get('/failure', function(req,res){
-    res.send({state:'failure', user:null, message:"Invalid username or password"});
-  });
+  } else {
+    res.send({});
+  }
+});
 
-  router.post('/login', passport.authenticate('login'), function(req, res) {
-    if(req.user) {
-      res.json(req.user);
+router.get('/logout', function(req, res) {
+  console.log('hey');
+  req.logOut();  // <-- not req.logout();
+  res.redirect('/');
+});
+
+router.get('/populateCalendar/:id', function(req, res, next) {
+  var doctorId = req.params.id;
+  // console.log("doctor id is :"+doctorId);
+  // var newEvent = new Event();
+  Event.find({
+    drIdentifier: doctorId
+  }, function(err, documents) {
+    if (err) {
+      console.log(err);
     } else {
-      res.json({});
+      // console.log("Pulled Calendar for the doctor"+doctorId);
+      res.json(documents);
     }
   });
+});
 
-  router.post('/signup', passport.authenticate('signup'), function(req, res) {
-    if(req.user) {
-      res.json(req.user);
-    } else {
-      res.json({});
-    }
-  });
+/*router.post('/addEvent', function(req, res, next) {
+  // console.log("In addEvent function");
+  // console.log(req.body.appointment);
+  var newEvent = new Event();
 
-  router.get('/signout', function(req,res){
-    console.log("Signout route hit");
-    logout();
-    // req.logout();
-    // req.session.destroy();
-    // res.redirect('/');
-    // if(req.user) {
-    //   res.json(req.user);
-    // } else {
-    //   res.json({});
-    // }
-  });
+  newEvent.drIdentifier = req.body.appointment.drIdentifier,
+    newEvent.name = req.body.appointment.name,
+    newEvent.eventStartsAt = req.body.appointment.eventStartsAt,
+    newEvent.eventEndsAt = req.body.appointment.eventEndsAt,
+    newEvent.aggree = req.body.appointment.aggree,
+    newEvent.agreeSign = req.body.appointment.agreeSign,
+    newEvent.email = req.body.appointment.email,
+    newEvent.gender = req.body.appointment.gender,
+    newEvent.phone = req.body.appointment.phone,
+
+    // save the Event
+    newEvent.save(function(err) {
+      if (err) {
+        console.log('Error in Saving the Event: ' + err);
+        throw err;
+      }
+      // console.log("Event Successfully saved");
+    });
+
+  res.json({});
+});*/
 
   router.get('/populateCalendar/:id',function(req,res,next){
     var doctorId = req.params.id;
@@ -63,7 +88,7 @@ module.exports = function (passport) {
           // console.log("Pulled Calendar for the doctor"+doctorId);
             res.json(documents);
         }
-    })
+    });
   });
 
   router.post('/addEvent',function (req,res,next) {
@@ -92,29 +117,4 @@ module.exports = function (passport) {
 
      res.json({});
   });
-
-  // GET /auth/google
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request.  The first step in Google authentication will involve
-  //   redirecting the user to google.com.  After authorization, Google
-  //   will redirect the user back to this application at /auth/google/callback
-  router.get('/auth/google',
-    passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] 
-  }));
-
-
-  // route middleware to make sure a user is logged in
-  function isLoggedIn(req, res, next) {
-
-      // if user is authenticated in the session, carry on
-      if (req.isAuthenticated())
-          return next();
-
-      // if they aren't redirect them to the home page
-      res.redirect('/');
-  }
-
-  return router;
-};
-
-
+module.exports = router;

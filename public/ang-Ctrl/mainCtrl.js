@@ -3,7 +3,7 @@ var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
 
 
 mainCtrl.controller("authController", function($scope, $rootScope, $http, $location, $stateParams, sharedProperties) {
-  
+
   $scope.user = {
     user_id:  '',
     username: '',
@@ -13,24 +13,22 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
   $scope.error_message = '';
 
   $scope.login = function() {
-    debugger
     console.log("stateParams" + $stateParams);
     $http.post('/auth/login', $scope.user).success( function (data) {
-      debugger
       console.log("data...... "+ data);
       console.log("show the current user is...." + data.username);
       if (data.username) {
 
 
         $rootScope.authenticated = true;
-        $rootScope.user_id = data._id
+        $rootScope.user_id = data._id;
         $rootScope.current_user = data.username;
-        
+
         //Object for the service
         $rootScope.user = {
           user_id: data._id,
           username: data.username,
-        }
+        };
 
         //Assign User Data to Service to share between controllers
         sharedProperties.setUser($rootScope.user);
@@ -58,7 +56,11 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
     });
   };
 
- 
+  $scope.signout = function() {
+    $http.get('/auth/logout').success(function(data) {
+      console.log('i made it hee');
+    });
 
+  };
 
 });
