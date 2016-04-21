@@ -1,5 +1,5 @@
 <div class="jumbotron" id="detailJumbo">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-9 col-md-offset-1">
         <p id="detailHead">
@@ -15,20 +15,18 @@
             {{singleDr.practices[0].name}}
           </span>
         </p>
+        <button type="button" class="btn btn-warning" class="$state.go('calendar')" ng-click="getAppointments()">Book an Appointment</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-8" id="detailCard">
       <div class="table-responsive">
         <table class="table">
-
-
               <h3>Qualifications & Education</h3>
-
           <tbody>
             <tr>
               <td>Education</td>
