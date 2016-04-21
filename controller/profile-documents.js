@@ -11,7 +11,6 @@ var Keys = require("../.env");
 
 debugger
 console.log(Keys);
-
 console.log("Keys.AWS......"+ Keys.AWS);
 
 docsDb.on('error',function(err){
@@ -25,7 +24,7 @@ module.exports = function (){
   // });
 
 
-  router.get('/sign_s3', function(req, res){
+  router.get('/sign_s3', function (req, res) {
     debugger
     aws.config.update({accessKeyId: Keys.AWS.ACCESS_KEY, secretAccessKey: Keys.AWS.SECRET_KEY});
     var s3 = new aws.S3();
@@ -37,17 +36,35 @@ module.exports = function (){
         ACL: 'public-read'
     };
     s3.getSignedUrl('putObject', s3_params, function(err, data){
-      if(err){
-        console.log(err);
+      if (err) {
+        debugger
+        console.log("error: "+ err);
       }
-      else{
+      else {
+        debugger
         var return_data = {
           signed_request: data,
           url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+req.query.file_name
         };
+        console.log("data url returned: "+ sreturned_data.url)
         res.write(JSON.stringify(return_data));
-        res.end();
+        //res.end();
+        res.send("got the file");
       }
     });
   });
+
+  router.post('/submit_form', function (req, res) {
+    debugger
+    username = req.body.username;
+    full_name = req.body.full_name;
+    avatar_url = req.body.avatar_url;
+    update_account(username, full_name, avatar_url); // TODO: create this function
+    // TODO: Return something useful or redirect
+    console.log("doing something");
+    console.log("need to make function to add documents to DB");
+
+    res.send("req.bod.avatar_url: "+ avatar_url);
+
+});
 }

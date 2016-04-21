@@ -55,6 +55,8 @@ app.use('/', index);
 app.use('/api', api);
 app.use('/auth', authenticate);
 app.use('/profile', authenticate);
+app.use('/submit_form', profileDocs);
+app.use('/sign_s3', profileDocs);
 //app.use('/signOut', authenticate);
 
 app.listen(PORT, function() {
