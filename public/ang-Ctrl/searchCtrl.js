@@ -88,36 +88,8 @@ searchCtrl.controller('loadDetails',['$scope','$http', '$stateParams', 'NgMap','
   });
 
   $scope.getAppointments = function (){
-    // myAppointment.getAppointments();
     $scope.drIdentifier = $stateParams.uid;
     console.log($scope.drIdentifier);
-
     appointment.show();
-
-    // $http.get('/auth/populateCalendar/'+$scope.drIdentifier).success(function(data) {
-    //   $scope.appointments = data;
-    //    console.log($scope.appointments);
-    //    return $scope.appointments;
-    // });
   };
 }]);
-
-// searchCtrl.factory('Appointment','$stateParams','$http',function($scope,$stateParams,$http){
-//   var appointments = [];
-//   var factory = {};
-//  factory.myAppointments = function (){
-//     $scope.drIdentifier = $stateParams.uid;
-//     console.log($scope.drIdentifier);
-//     $http.get('/auth/populateCalendar/'+$scope.drIdentifier).success(function(data) {
-//       $scope.appointments = data;
-//        console.log($scope.appointments);
-//     });
-//     return appointments;
-//   }
-
-//   factory.postAppointments = function(){
-
-//   }
-
-//   return factory;
-// });
