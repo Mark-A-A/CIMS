@@ -1,18 +1,36 @@
-var mainCtrl = angular.module('mainCtrl', ['ngAnimate']);
+var mainCtrl = angular.module('mainCtrl', ['ngAnimate', 'ngStorage']);
 
-mainCtrl.controller("authController", function($scope, $rootScope, $http, $location) {
+mainCtrl.controller("authController", function($scope, $rootScope, $http, $location, $stateParams, sharedProperties, $localStorage) {
+
+  $rootScope.authenticated = false;
+  $rootScope.current_user = " ";
+
   $scope.user = {
+    user_id: '',
     username: '',
     password: ''
   };
+
   $scope.error_message = '';
+
   $scope.login = function() {
     $http.post('/auth/login', $scope.user).success(function(data) {
       if (data.username) {
+
         $rootScope.authenticated = true;
+        $rootScope.user_id = data._id;
         $rootScope.current_user = data.username;
-        console.log("successfully Logged In");
-        $location.path('/');
+
+        //Object for the service
+        $rootScope.user = {
+          user_id: data._id,
+          username: data.username,
+        };
+        //Assign User Data to Service to share between controllers
+        sharedProperties.setUser($rootScope.user);
+
+        console.log("successfully Logged In  - Avengers Assemble");
+        $location.path('/profile');
       } else {
         $scope.error_message = data.message;
       }
@@ -21,7 +39,7 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
 
   $scope.register = function() {
     $http.post('/auth/signup', $scope.user).success(function(data) {
-      // console.log(data.user);
+       console.log('login');
       if (data.username) {
         $rootScope.authenticated = true;
         $rootScope.current_user = data.username;
@@ -29,19 +47,8 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
         $location.path('/');
       } else {
         $scope.error_message = data.message;
-      }
+      };
     });
   };
 
-  $scope.signout = function() {
-    console.log("Calling Angular logout");
-    // $http.post('/auth/signout');
-    $http.get('/auth/signout').success(function(data) {
-      console.log("Signout Successful" + data);
-    }).error(function(error) {
-      console.log("logout error" + error);
-    });
-    $rootScope.authenticated = false;
-    $rootScope.current_user = {};
-  };
 });

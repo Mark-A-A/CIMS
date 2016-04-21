@@ -20,6 +20,6 @@ var articleSchema = new mongoose.Schema({
   }
 });
 
-articleSchema.plugin(uniqueValidator, { message: 'Ignore!' });
+articleSchema.plugin(uniqueValidator, { message: 'Duplicate Record Found, Ignore!' });
 var Article = mongoose.model('Article', articleSchema);
 module.exports = Article;
