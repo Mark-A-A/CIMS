@@ -22,7 +22,6 @@ router.post('/login', passport.authenticate('login'), function(req, res) {
 router.post('/signup', passport.authenticate('signup'), function(req, res) {
   if (req.user) {
     res.send(req.user);
-    res.redirect('/');
 
   } else {
     res.send({});
@@ -105,6 +104,9 @@ router.get('/populateCalendar/:id', function(req, res, next) {
       newEvent.email = req.body.appointment.email,
       newEvent.gender = req.body.appointment.gender,
       newEvent.phone = req.body.appointment.phone,
+
+      console.log("event startsAt :"+newEvent.eventStartsAt);
+      console.log("event endsAt :"+newEvent.eventEndsAt);
 
       // save the Event
       newEvent.save(function(err) {
