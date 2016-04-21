@@ -1,6 +1,6 @@
-/*** Docs ***/
+  /*** Docs ***/
+
 body {
-  margin-top: 10px;
   margin-bottom: 100px;
 }
 section {
@@ -66,3 +66,4 @@ section {
 .errorMessage{
   color: red;
 }
+
