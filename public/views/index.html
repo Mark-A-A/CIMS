@@ -11,6 +11,7 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="../public/css/sidebar.css">
@@ -22,7 +23,7 @@
     <link rel="stylesheet" href="../css/fullscreen.css"/>
 
     <script src="../../bower_components/angular-ui-calendar/src/calendar.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="../../bower_components/moment/moment.js"></script>
 
     <link href="../../bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
@@ -44,11 +45,12 @@
             <li class="sidebar-brand">
               <a ui-sref="profile({ user_id:user_id, user_name:current_user })" ng-show="authenticated">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <span class="menu-text">&nbsp; {{current_user}}'s' Profile</span>
+                <span class="menu-text">&nbsp;
+                  {{current_user}}'s' Profile</span>
               </a>
             </li>
             <li>
-              <a ui-sref="home">
+              <a ui-sref="home" ng-click="activeState()">
                 <i class="fa fa-home fa-2x" aria-hidden="true">
                   <span class="menu-text">&nbsp; Home</span>
                 </i>
@@ -63,27 +65,27 @@
             </li>
             <li>
               <a ui-sref="news">
-                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true">
+                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true" ng-click="activeState()">
                   <span class="menu-text">&nbsp; News</span>
                 </i>
               </a>
             </li>
             <li>
-              <a ui-sref="login" ng-hide="authenticated">
+              <a ui-sref="login" ng-hide="authenticated" ng-click="activeState()">
                 <i class="fa fa-sign-in fa-2x" aria-hidden="true">
                   <span class="menu-text">&nbsp; Login</span>
                 </i>
               </a>
             </li>
             <li>
-              <a ui-sref="register" ng-hide="authenticated">
+              <a ui-sref="register" ng-hide="authenticated" ng-click="activeState()">
                 <i class="fa fa-user-plus fa-2x" aria-hidden="true">
                   <span class="menu-text">&nbsp; Register</span>
                 </i>
               </a>
             </li>
             <li>
-              <a ng-show="authenticated" ng-href="/auth/logout">
+              <a ng-show="authenticated" ng-href="/auth/logout" ng-click="activeState()">>
                 <i class="fa fa-sign-out fa-2x" aria-hidden="true">
                   <span class="menu-text">&nbsp; LogOut</span>
                 </i>
@@ -101,7 +103,7 @@
         </div>
         <!-- /#sidebar-wrapper -->
         <div id="page-content-wrapper" ng-class="{'toggled': showNav}">
-          <div class="container-fluid">
+          <div class="container-fluid" ng-class="{'animated fadeIn': animateState, 'animated fadeIn': !animateState}">
             <div class="row">
               <div class="col-lg-12 col-xs-12">
                 <div ui-view></div>
@@ -113,19 +115,20 @@
       <!-- /#page-content-wrapper -->
 
     </body>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
-    <script src="../public/ang-Ctrl/app.js"></script>
-    <script src="../public/ang-Ctrl/mainCtrl.js"></script>
-    <script src="../public/ang-Ctrl/searchCtrl.js"></script>
-    <script src="../public/ang-Ctrl/newsCtrl.js"></script>
-    <script src="../public/ang-Ctrl/calendarCtrl.js"></script>
-    <script src="../public/ang-Ctrl/calendarModal.js"></script>
-    <script src="../public/ang-Ctrl/profileCtrl.js"></script>
-    <script src="../../ang-Ctrl/appointmentModal.js"></script>
-    <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/app.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/mainCtrl.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/searchCtrl.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/newsCtrl.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/calendarCtrl.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/appointmentModal.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/calendarModal.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/profileCtrl.js"></script>
+    <script type="text/javascript" src="../public/ang-Ctrl/timerCtrl.js"></script>
 
+    <script type="text/javascript" src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   </html>

@@ -1,6 +1,4 @@
-var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl', 'CalendarCtrl2']);
-
-
+var doctorApp = angular.module('doctorApp', ['ui.router', 'mainCtrl', 'searchCtrl', 'newsCtrl','timerCtrl', 'CalendarCtrl2']);
 
 doctorApp.service('sharedProperties', function() {
   var user = 'test string value';
@@ -15,7 +13,6 @@ doctorApp.service('sharedProperties', function() {
   };
 });
 
-
 doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
 
@@ -23,7 +20,7 @@ doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('home', {
       url: "/",
       templateUrl: "partials/landing.html",
-      controller: ""
+      controller: "loadClock"
     })
     .state('search', {
       url: "/search/:query",
