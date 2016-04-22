@@ -111,7 +111,7 @@
                         readonly
                         uib-datepicker-popup="dd MMMM yyyy"
                         ng-model="event.startsAt"
-                        min="currentDate|date :'yyyy-MM-dd'"
+                        min="vm.currentDate|date :'yyyy-MM-dd'"
                         ng-max="vm.maxAppointmentDate|date :'yyyy-MM-dd'"
                         is-open="event.startOpen"
                         close-text="Close" >

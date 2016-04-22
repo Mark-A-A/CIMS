@@ -89,8 +89,7 @@ searchCtrl.controller('loadDetails',['$scope','$http', '$stateParams', 'NgMap','
 
   $scope.getAppointments = function (){
     $scope.drIdentifier = $stateParams.uid;
-    console.log($scope.drIdentifier);
-    console.log()
+    // console.log($scope.drIdentifier);
     appointment.show();
   };
 }]);

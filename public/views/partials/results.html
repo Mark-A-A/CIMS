@@ -4,7 +4,7 @@
 
       <ul class="results list-group" ng-show="showMap">
         <li class="doctors" ng-repeat="item in doctors ">
-          <a ui-sref="doctors({uid:'{{item.uid}}',npi:'{{item.npi}}', name:'{{item.profile.first_name}}-{{item.profile.last_name}}-{{item.profile.title}}'})">
+          <a ui-sref="doctors({uid:'{{item.uid}}', name:'{{item.profile.first_name}}-{{item.profile.last_name}}-{{item.profile.title}}'})">
             <div class="info" class="col-md-5">
               <h3 id="name">
                 {{item.profile.first_name}}
