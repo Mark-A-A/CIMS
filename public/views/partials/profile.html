@@ -46,6 +46,21 @@
   alert("hi -script in profile.html")
   console.log("doc JS is here")
 
+  /*
+     Function called when file input updated. If there is a file selected, then
+     start upload procedure by asking for a signed request from the app.
+  */
+  function init_upload() {
+      debugger
+      console.log("here on init_upload");
+      var files = document.getElementById("file_input").files;
+      var file = files[0];
+      if(file == null){
+          alert("No file selected.");
+          return;
+      }
+      get_signed_request(file);
+  }
 
   /*
     Function to get the temporary signed request from the app.
@@ -90,21 +105,7 @@
       xhr.send(file);
   }
 
-  /*
-     Function called when file input updated. If there is a file selected, then
-     start upload procedure by asking for a signed request from the app.
-  */
-  function init_upload() {
-      debugger
-      console.log("here on init_upload");
-      var files = document.getElementById("file_input").files;
-      var file = files[0];
-      if(file == null){
-          alert("No file selected.");
-          return;
-      }
-      get_signed_request(file);
-  }
+  
   /*
      Bind listeners when the page loads.
   */

@@ -1,3 +1,4 @@
+var dotenv  = require('dotenv').config();;
 var express = require('express');
 var path = require('path');
 var favicon = require("serve-favicon");
@@ -9,15 +10,18 @@ var session = require('express-session');
 //var scraper = require('./config/scraper.js');
 
 var PORT = process.env.PORT || 3000;
+debugger
+var Keys = process.env;
+console.log("Keys: "+Keys);
+console.log("Keys.AWS: "+Keys.AWS);
+
 
 var db = require('./config/db.js');
 var user = require('./model/users.js');
 var doctor = require('./model/doctors.js');
 var event = require('./model/events.js');
 
-
 var profileDocs = require('./controller/profile-documents.js');
-
 
 var app = express();
 
@@ -64,8 +68,11 @@ app.use('/', index);
 //app.use('/api', api);
 app.use('/auth', authenticate);
 app.use('/profile', authenticate);
-app.use('/submit_form', profileDocs);
+
+//Middleware for S3
 app.use('/sign_s3', profileDocs);
+//app.use('/submit_form', profileDocs);
+
 //app.use('/signOut', authenticate);
 
 app.listen(PORT, function() {

@@ -1,3 +1,4 @@
+var dotenv  = require('dotenv');
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
@@ -6,16 +7,16 @@ var aws = require('aws-sdk');
 
 var docsDb = mongojs("cims-db",["documents"]);
 
+debugger
+console.log('controller for documents hit')
 
-var Keys = process.env.Keys;
-
-
+// var Keys = process.env.AWS;
+// console.log("Keys: "+Keys);
 
 docsDb.on('error',function(err){
   console.log('database error: '+err);
 });
 
-module.exports = function (){
   // router.get('/success',function(req,res){
   //   console.log(req.username);
   //   res.send({state:'success',username:req.username ? req.username : null});
@@ -24,6 +25,7 @@ module.exports = function (){
 
   router.get('/sign_s3', function (req, res) {
     debugger
+    console.log("/sign_s3 hit!!!")
     aws.config.update({accessKeyId: Keys.AWS.ACCESS_KEY, secretAccessKey: Keys.AWS.SECRET_KEY});
     var s3 = new aws.S3();
     var s3_params = {
@@ -66,5 +68,6 @@ module.exports = function (){
     res.send("req.bod.avatar_url: "+ avatar_url);
 
   });
-}
+
+module.exports = router;
 
