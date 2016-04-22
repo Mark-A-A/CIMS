@@ -8,12 +8,18 @@
     <pre>{{ vm.action }}</pre>
     </p>
     <p>Event:
-    <pre>
-      Name             : {{ vm.event.title }},
-      Appointment on   : {{ vm.event.startsAt | date:'yyyy-MM-dd'}},
-      Appointment Time :{{ vm.event.startsAt | date:' HH:mm'}} Time Zone GMT {{ vm.event.startsAt | date:'Z'}},
-      <!-- Status          : Pending Acceptance -->
-    </pre>
+    <div class="container-fluid">
+      <div class="col-xs-12">
+        <pre>
+          Name             : {{ vm.event.title }},
+          Appointment on   : {{ vm.event.startsAt | date:'yyyy-MM-dd'}},
+          Appointment Time :{{ vm.event.startsAt | date:' HH:mm'}} Time Zone GMT {{ vm.event.startsAt | date:'Z'}},
+          <!-- Status          : Pending Acceptance -->
+        </pre>
+      </div>
+
+    </div>
+
     </p>
   </div>
 
