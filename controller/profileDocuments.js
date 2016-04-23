@@ -1,4 +1,4 @@
-var dotenv  = require('dotenv');
+var dotenv  = require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
@@ -8,14 +8,25 @@ var aws = require('aws-sdk');
 var docsDb = mongojs("cims-db",["documents"]);
 
 debugger
-console.log('controller for documents hit')
+console.log('controller for documents hit');
+
+debugger
+var Keys = process.env;
+console.log("Keys: "+ Keys);
+console.log("Keys.ACCESS_KEY_ID: " + Keys.ACCESS_KEY_ID);
 
 // var Keys = process.env.AWS;
 // console.log("Keys: "+Keys);
 
-docsDb.on('error',function(err){
-  console.log('database error: '+err);
-});
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+var S3_BUCKET      = process.env.S3_BUCKET;
+
+console.log ("S3_BUCKET: "+S3_BUCKET);
+
+// docsDb.on('error',function(err){
+//   console.log('database error: '+err);
+// });
 
   // router.get('/success',function(req,res){
   //   console.log(req.username);
@@ -23,13 +34,18 @@ docsDb.on('error',function(err){
   // });
 
 
+  router.get('/test', function(req, res){
+    debugger
+    res.send("OMG a route got hit -profileDocs ctrl!!!");
+  });
+
   router.get('/sign_s3', function (req, res) {
     debugger
     console.log("/sign_s3 hit!!!")
-    aws.config.update({accessKeyId: Keys.AWS.ACCESS_KEY, secretAccessKey: Keys.AWS.SECRET_KEY});
+    aws.config.update({accessKeyId: Keys.ACCESS_KEY_ID, secretAccessKey: Keys.SECRET_ACCESS_KEY});
     var s3 = new aws.S3();
     var s3_params = {
-        Bucket: Keys.AWS.S3_BUCKET,
+        Bucket: Keys.S3_BUCKETS3_BUCKET,
         Key: req.query.file_name,
         Expires: 60,
         ContentType: req.query.file_type,
@@ -46,7 +62,7 @@ docsDb.on('error',function(err){
           signed_request: data,
           url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+req.query.file_name
         };
-        console.log("data url returned: "+ sreturned_data.url)
+        console.log("data url returned: "+ returned_data.url)
         res.write(JSON.stringify(return_data));
         //res.end();
         res.send("got the file");
@@ -70,4 +86,30 @@ docsDb.on('error',function(err){
   });
 
 module.exports = router;
+
+
+
+// var express = require('express');
+// var knox = require('knox');
+
+// var app = express();
+// app.use(express.bodyParser());
+
+// var s3 = knox.createClient({
+//     key: process.env.AWS_ACCESS_KEY_ID,
+//     secret: process.env.AWS_SECRET_ACCESS_KEY,
+//     bucket: process.env.S3_BUCKET_NAME
+// });
+
+// app.post('/upload', function(req, res, next) {
+//     var photo = req.files.photo;
+//     var s3Headers = {
+//       'Content-Type': photo.type,
+//       'x-amz-acl': 'public-read'
+//     };
+
+//     s3.putFile(photo.path, photo.name, s3Headers, function(err, s3response){
+//       //handle, respond
+//     });
+// });
 
