@@ -70,7 +70,7 @@
           <hr>
           <div uib-collapse="isCollapsed" class="formPopup">
             <div class="well well-lg">
-              <form class="simple-form" name="form" novalidate >
+              <form class="simple-form" name="form" novalidate   ng-submit="addEvent(appointment)">
                 <div class="form-group"  ng-class="{'has-error': form.uName.$invalid}">
                   Name &nbsp: <input type="text" ng-model="appointment.name" name="uName" required=""/>
                   <div ng-show="form.$submitted">
@@ -85,7 +85,7 @@
                   </div>
                 </div>
                 <div class="form-group"  ng-class="{'has-error': form.uPhone.$invalid}">
-                  Phone : <input type="number" name="uPhone" ng-minlength="10" ng-maxlength="10" ng-model="appointment.phone" required/>
+                  Phone : <input type="text" name="uPhone" ng-minlength="10" ng-maxlength="10" ng-model="appointment.phone" required/>
                   <div ng-show="form.$submitted">
                     <span class="errorMessage" ng-show="form.uPhone.$error.required">Please provide your phone number.</span>
                     <span class="errorMessage" ng-show="form.uPhone.$error.phone">The phone must be 10 digit.</span>
@@ -137,7 +137,7 @@
                   </div>
                 </div>
                 <input type="button" class="btn btn-danger" ng-click="reset()" value="Reset" />&nbsp &nbsp
-                <input type="submit" class="btn btn-success" ng-disabled="!form.$valid" ng-click="addEvent(appointment)" value="Save" />
+                <input type="submit" class="btn btn-success" value="Save">
               </form>
             </div>
           </div>
