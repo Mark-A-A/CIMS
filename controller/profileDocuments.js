@@ -45,7 +45,7 @@ console.log ("S3_BUCKET: "+S3_BUCKET);
     aws.config.update({accessKeyId: Keys.ACCESS_KEY_ID, secretAccessKey: Keys.SECRET_ACCESS_KEY});
     var s3 = new aws.S3();
     var s3_params = {
-        Bucket: Keys.S3_BUCKETS3_BUCKET,
+        Bucket: Keys.S3_BUCKET,
         Key: req.query.file_name,
         Expires: 60,
         ContentType: req.query.file_type,
@@ -58,6 +58,7 @@ console.log ("S3_BUCKET: "+S3_BUCKET);
       }
       else {
         debugger
+        console.log("signing url -profiledocs")
         var return_data = {
           signed_request: data,
           url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+req.query.file_name

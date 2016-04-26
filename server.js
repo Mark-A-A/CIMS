@@ -60,11 +60,10 @@ var profileDocs = require('./controller/profileDocuments.js');
 app.use('/', index);
 //app.use('/api', api);
 app.use('/auth', authenticate);
-app.use('/profile', authenticate);
 
 //Middleware for S3
-app.use('/sign_s3', profileDocs);
-app.use('/test', authenticate);
+app.use('/profile', profileDocs);
+// app.use('/sign_s3', profileDocs);
 
 //app.use('/submit_form', profileDocs);
 //app.use('/signOut', authenticate);
