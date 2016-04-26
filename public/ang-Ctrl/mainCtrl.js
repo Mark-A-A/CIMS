@@ -26,6 +26,7 @@ mainCtrl.controller("authController", function($scope, $rootScope, $http, $locat
           user_id: data._id,
           username: data.username,
         };
+        
         //Assign User Data to Service to share between controllers
         sharedProperties.setUser($rootScope.user);
 
