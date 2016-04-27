@@ -3,7 +3,6 @@ var logout = require('express-passport-logout');
 var passport = require('passport');
 var router = express.Router();
 
-//var mongojs = require('mongojs');
 
 // var eventDb = mongojs("cims-db",["events"]);
 // var Event = require('../model/events.js');

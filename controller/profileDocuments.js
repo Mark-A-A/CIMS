@@ -1,11 +1,9 @@
 var dotenv  = require('dotenv').config();
 var express = require('express');
 var router = express.Router();
-var mongojs = require('mongojs');
+
 var path = require('path');
 var aws = require('aws-sdk');
-
-var docsDb = mongojs("cims-db",["documents"]);
 
 debugger
 console.log('controller for documents hit');
@@ -18,9 +16,11 @@ console.log("Keys.ACCESS_KEY_ID: " + Keys.ACCESS_KEY_ID);
 // var Keys = process.env.AWS;
 // console.log("Keys: "+Keys);
 
+
 // var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
 // var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
 // var S3_BUCKET      = process.env.S3_BUCKET;
+
 
 // console.log ("S3_BUCKET: "+S3_BUCKET);
 
