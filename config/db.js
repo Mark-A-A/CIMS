@@ -2,7 +2,9 @@ var mongoose = require('mongoose');
 
 //Database configuration
 if( process.env.PORT) {
-  mongoose.connect("mongodb://chinmay:chinmay@ds013981.mlab.com:13981/heroku_gg87f7mk");
+
+  mongoose.connect("mongodb://heroku_6ltfx28p:7trf9f2g8vnr3l4kltv9ch216m@ds027295.mlab.com:27295/heroku_6ltfx28p");
+
 } else {
   mongoose.connect('mongodb://localhost:27017/cims-db');
 }

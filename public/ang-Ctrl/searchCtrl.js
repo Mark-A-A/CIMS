@@ -21,6 +21,7 @@ searchCtrl.controller('sideNavCtrl', ['$scope', '$http', '$rootScope', '$state',
       $rootScope.geoCoord = $rootScope.userLat + '%2C' + $rootScope.userLon;
     }
   };
+
   $scope.showNav = false;
   $scope.activeNav = function() {
     $scope.showNav = !$scope.showNav;

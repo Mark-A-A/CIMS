@@ -1,3 +1,4 @@
+
 var express = require('express');
 var path = require('path');
 var favicon = require("serve-favicon");
@@ -15,8 +16,6 @@ var user = require('./model/users.js');
 var doctor = require('./model/doctors.js');
 var event = require('./model/events.js');
 
-
-var profileDocs = require('./controller/profile-documents.js');
 
 
 var app = express();
@@ -53,19 +52,26 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
-
-
 //ROUTES
 var index = require('./controller/index.js');
 var authenticate = require('./controller/authenticate.js');
+var profileDocs = require('./controller/profileDocuments.js');
 
 app.use('/', index);
 //app.use('/api', api);
 app.use('/auth', authenticate);
+<<<<<<< HEAD
+
+//Middleware for S3
+app.use('/profile', profileDocs);
+// app.use('/sign_s3', profileDocs);
+
+//app.use('/submit_form', profileDocs);
+=======
 // app.use('/profile', authenticate);
 // app.use('/submit_form', profileDocs);
 // app.use('/sign_s3', profileDocs);
+>>>>>>> e2b0cb4310b794984a1c4293b8919a1a668a85de
 //app.use('/signOut', authenticate);
 
 app.listen(PORT, function() {

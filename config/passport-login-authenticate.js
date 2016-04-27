@@ -54,7 +54,7 @@ passport.use('login', new Strategy({
     User.findOne({
       'username': req.body.username
     }, function(err, user) {
-      bcrypt.compare(req.body.password, user.password, function(err, res) {
+      bcrypt.compare(req.body.password, user.password, function (err, res) {
         if (err) {
           return done(err);
         }
