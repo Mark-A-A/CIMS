@@ -15,7 +15,7 @@ doctorApp.service('sharedProperties', function() {
   };
 });
 
-doctorApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+doctorApp.config( function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
