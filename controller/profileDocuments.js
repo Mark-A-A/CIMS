@@ -18,9 +18,9 @@ console.log("Keys.ACCESS_KEY_ID: " + Keys.ACCESS_KEY_ID);
 // var Keys = process.env.AWS;
 // console.log("Keys: "+Keys);
 
-var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
-var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-var S3_BUCKET      = process.env.S3_BUCKET;
+// var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+// var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+// var S3_BUCKET      = process.env.S3_BUCKET;
 
 // console.log ("S3_BUCKET: "+S3_BUCKET);
 

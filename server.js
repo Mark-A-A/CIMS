@@ -60,19 +60,11 @@ var profileDocs = require('./controller/profileDocuments.js');
 app.use('/', index);
 //app.use('/api', api);
 app.use('/auth', authenticate);
-<<<<<<< HEAD
 
-//Middleware for S3
 app.use('/profile', profileDocs);
 // app.use('/sign_s3', profileDocs);
-
-//app.use('/submit_form', profileDocs);
-=======
-// app.use('/profile', authenticate);
 // app.use('/submit_form', profileDocs);
-// app.use('/sign_s3', profileDocs);
->>>>>>> e2b0cb4310b794984a1c4293b8919a1a668a85de
-//app.use('/signOut', authenticate);
+
 
 app.listen(PORT, function() {
   console.log("Application is listening on PORT:" + PORT);
