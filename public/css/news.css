@@ -1,3 +1,15 @@
+@media only screen and (max-device-width: 480px) {
+  .articleImage {
+    display: block;
+    padding-top: 5px;
+    margin: 0 auto;
+  }
+  .articleTitle {
+    display: block;
+    text-align: center;
+  }
+}
+
 
 .articleImage {
   width: 220px;

@@ -34,44 +34,44 @@
             deletable :false
         })
        }
-        // console.log(vm.events);
       });
     };
 
     $scope.populateCalendar(); //It should be integrated with in the doctor search page
 
     $scope.addEvent = function(appointment,event){
-      $scope.appointment.drIdentifier = $stateParams.uid;
-      // $scope.appointment.drIdentifier = "1";
-      $scope.appointment.eventStartsAt = $scope.event.startsAt,
-      $scope.appointment.eventEndsAt = moment($scope.event.startsAt).add(1, 'h')._d,
+      if ($scope.form.$valid){
+        $scope.appointment.drIdentifier = $stateParams.uid;
+        $scope.appointment.eventStartsAt = $scope.event.startsAt,
+        $scope.appointment.eventEndsAt = moment($scope.event.startsAt).add(1, 'h')._d,
 
-      // Simple POST request to add Event into the database:
-      $http({
-        method: 'POST',
-        url: '/auth/addEvent',
-        data :{appointment:$scope.appointment}
-      }).then(function successCallback(response) {
-          // this callback will be called asynchronously
-          // when the response is available
-         vm.events.push({
-            title:$scope.appointment.name,
-            type: 'warning',
-            startsAt:$scope.event.startsAt ,
-            endsAt: moment($scope.event.startsAt).add(1, 'hour')._d,
-            draggable: true,
-            resizable: true,
-            editable: true,
-            deletable :true
-          });
-         $scope.appointment ={};
-         $scope.isCollapsed = true;
-        }, function errorCallback(response) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-          console.log("failed to load the event in database");
-      });
-
+        // Simple POST request to add Event into the database:
+        $http({
+          method: 'POST',
+          url: '/auth/addEvent',
+          data :{appointment:$scope.appointment}
+        }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+           vm.events.push({
+              title:$scope.appointment.name,
+              type: 'warning',
+              startsAt:$scope.event.startsAt ,
+              endsAt: moment($scope.event.startsAt).add(1, 'hour')._d,
+              draggable: true,
+              resizable: true,
+              editable: true,
+              deletable :true
+            });
+           $scope.appointment ={};
+           $scope.form = {};
+           $scope.isCollapsed = true;
+          }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            console.log("failed to load the event in database");
+        });
+      }
     };
 
     vm.isCellOpen = true;
