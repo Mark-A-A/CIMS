@@ -69,3 +69,6 @@ section {
 .formPopup {
   color: #9E9E9E;
 }
+#infoModal{
+  white-space: pre-line;
+}

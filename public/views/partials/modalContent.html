@@ -7,16 +7,17 @@
     <p>Action:
     <pre>{{ vm.action }}</pre>
     </p>
-    <p>Event:
-    <pre>
-      Name            : {{ vm.event.title }},
-      Appointment on  : {{ vm.event.startsAt | date:'yyyy-MM-dd'}},
-      Appoint Time    :{{ vm.event.startsAt | date:' HH:mm'}} Time Zone GMT {{ vm.event.startsAt | date:'Z'}},
-      <!-- Status          : Pending Acceptance -->
-    </pre>
+    <p >Event:
+      <pre id="infoModal">
+        <div class="row">
+         <div class="col-xs-12"> Name : {{ vm.event.title }},  </div>
+         <div class="col-xs-12"> Appointment on : {{ vm.event.startsAt | date:'yyyy-MM-dd'}}, </div>
+         <div class="col-xs-12"> Appointment Time : {{ vm.event.startsAt | date:' HH:mm'}} Time Zone GMT {{ vm.event.startsAt | date:'Z'}}, </div>
+        <!-- Status          : Pending Acceptance -->
+      </div>
+      </pre>
     </p>
   </div>
-
   <div class="modal-footer">
     <button class="btn btn-primary" ng-click="$close()">OK</button>
   </div>
