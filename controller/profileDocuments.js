@@ -1,11 +1,9 @@
 var dotenv  = require('dotenv').config();
 var express = require('express');
 var router = express.Router();
-var mongojs = require('mongojs');
+
 var path = require('path');
 var aws = require('aws-sdk');
-
-var docsDb = mongojs("cims-db",["documents"]);
 
 debugger
 console.log('controller for documents hit');
