@@ -22,7 +22,7 @@ var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
 var S3_BUCKET      = process.env.S3_BUCKET;
 
-console.log ("S3_BUCKET: "+S3_BUCKET);
+// console.log ("S3_BUCKET: "+S3_BUCKET);
 
 // docsDb.on('error',function(err){
 //   console.log('database error: '+err);
@@ -34,13 +34,12 @@ console.log ("S3_BUCKET: "+S3_BUCKET);
   // });
 
 
-  router.get('/test', function(req, res){
-    debugger
-    res.send("OMG a route got hit -profileDocs ctrl!!!");
-  });
+  // router.get('/test', function(req, res){
+  //   res.send("OMG a route got hit -profileDocs ctrl!!!");
+  // });
 
   router.get('/sign_s3', function (req, res) {
-    debugger
+    
     console.log("/sign_s3 hit!!!")
     aws.config.update({accessKeyId: Keys.ACCESS_KEY_ID, secretAccessKey: Keys.SECRET_ACCESS_KEY});
     var s3 = new aws.S3();
@@ -53,27 +52,28 @@ console.log ("S3_BUCKET: "+S3_BUCKET);
     };
     s3.getSignedUrl('putObject', s3_params, function(err, data){
       if (err) {
-        debugger
+       
         console.log("error: "+ err);
       }
       else {
-        debugger
+       
         console.log("signing url -profiledocs")
         var return_data = {
           signed_request: data,
           url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+req.query.file_name
         };
-        console.log("data url returned: "+ returned_data.url)
+
+        console.log("data url returned: "+ return_data.url)
         res.write(JSON.stringify(return_data));
-        //res.end();
-        res.send("got the file");
+        res.end();
+        // res.send("got the file");
       }
     });
   });
 
 
   router.post('/submit_form', function (req, res) {
-    debugger
+    
     username = req.body.username;
     full_name = req.body.full_name;
     avatar_url = req.body.avatar_url;
