@@ -8,7 +8,9 @@
     // console.log("Current date :"+$scope.currentDate+" and Max date :"+$scope.maxAppointmentDate);
 
     $scope.reset = function() {
-        $scope.appointment = "";
+        console.log($scope.form);
+        $scope.appointment = {};
+        $scope.form.$dirty = false;
         $scope.isCollapsed = true;
     };
 
